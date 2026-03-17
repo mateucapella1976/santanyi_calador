@@ -16,20 +16,12 @@ const horarisRes = await (client.queries as any).horaris({ relativePath: 'horari
   canonicalPath="/horaris"
   schemaType="home"
 >
-  <!-- Hero simple -->
-  <section class="pool-bg text-white py-14">
-    <div class="container-site text-center">
-      <h1 class="font-display font-bold text-4xl text-white mb-2">{t('schedule.title')}</h1>
-      <p class="text-white/80 text-lg">{t('schedule.subtitle')}</p>
-    </div>
-  </section>
-
-  <!-- Full schedule table -->
   <ScheduleTableComponent
     client:load
     query={horarisRes.query}
     variables={horarisRes.variables}
     data={horarisRes.data}
     lang={lang}
+    showHero={true}
   />
 </Page>

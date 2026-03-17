@@ -536,15 +536,37 @@ type PreusConnection implements Connection {
 
 type HorarisRows {
   activitat: String
+  logo: String
   dilluns: String
   dimarts: String
   dimecres: String
   dijous: String
   divendres: String
   dissabte: String
+  diumenge: String
+}
+
+type HorarisRowsCalaDor {
+  activitat: String
+  logo: String
+  dilluns: String
+  dimarts: String
+  dimecres: String
+  dijous: String
+  divendres: String
+  dissabte: String
+  diumenge: String
 }
 
 type Horaris implements Node & Document {
+  heroTitleCa: String
+  heroTitleEs: String
+  heroTitleEn: String
+  heroTitleDe: String
+  heroSubtitleCa: String
+  heroSubtitleEs: String
+  heroSubtitleEn: String
+  heroSubtitleDe: String
   temporada: String
   pdfSantanyi: String
   pdfCalaDor: String
@@ -558,11 +580,13 @@ type Horaris implements Node & Document {
   dayLabelDj: String
   dayLabelDv: String
   dayLabelDs: String
+  dayLabelDg: String
   footerNoteCa: String
   footerNoteEs: String
   footerNoteEn: String
   footerNoteDe: String
   rows: [HorarisRows]
+  rowsCalaDor: [HorarisRowsCalaDor]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -570,15 +594,37 @@ type Horaris implements Node & Document {
 
 input HorarisRowsFilter {
   activitat: StringFilter
+  logo: ImageFilter
   dilluns: StringFilter
   dimarts: StringFilter
   dimecres: StringFilter
   dijous: StringFilter
   divendres: StringFilter
   dissabte: StringFilter
+  diumenge: StringFilter
+}
+
+input HorarisRowsCalaDorFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+  dilluns: StringFilter
+  dimarts: StringFilter
+  dimecres: StringFilter
+  dijous: StringFilter
+  divendres: StringFilter
+  dissabte: StringFilter
+  diumenge: StringFilter
 }
 
 input HorarisFilter {
+  heroTitleCa: StringFilter
+  heroTitleEs: StringFilter
+  heroTitleEn: StringFilter
+  heroTitleDe: StringFilter
+  heroSubtitleCa: StringFilter
+  heroSubtitleEs: StringFilter
+  heroSubtitleEn: StringFilter
+  heroSubtitleDe: StringFilter
   temporada: StringFilter
   pdfSantanyi: ImageFilter
   pdfCalaDor: ImageFilter
@@ -592,11 +638,13 @@ input HorarisFilter {
   dayLabelDj: StringFilter
   dayLabelDv: StringFilter
   dayLabelDs: StringFilter
+  dayLabelDg: StringFilter
   footerNoteCa: StringFilter
   footerNoteEs: StringFilter
   footerNoteEn: StringFilter
   footerNoteDe: StringFilter
   rows: HorarisRowsFilter
+  rowsCalaDor: HorarisRowsCalaDorFilter
 }
 
 type HorarisConnectionEdges {
@@ -2597,15 +2645,37 @@ input PreusMutation {
 
 input HorarisRowsMutation {
   activitat: String
+  logo: String
   dilluns: String
   dimarts: String
   dimecres: String
   dijous: String
   divendres: String
   dissabte: String
+  diumenge: String
+}
+
+input HorarisRowsCalaDorMutation {
+  activitat: String
+  logo: String
+  dilluns: String
+  dimarts: String
+  dimecres: String
+  dijous: String
+  divendres: String
+  dissabte: String
+  diumenge: String
 }
 
 input HorarisMutation {
+  heroTitleCa: String
+  heroTitleEs: String
+  heroTitleEn: String
+  heroTitleDe: String
+  heroSubtitleCa: String
+  heroSubtitleEs: String
+  heroSubtitleEn: String
+  heroSubtitleDe: String
   temporada: String
   pdfSantanyi: String
   pdfCalaDor: String
@@ -2619,11 +2689,13 @@ input HorarisMutation {
   dayLabelDj: String
   dayLabelDv: String
   dayLabelDs: String
+  dayLabelDg: String
   footerNoteCa: String
   footerNoteEs: String
   footerNoteEn: String
   footerNoteDe: String
   rows: [HorarisRowsMutation]
+  rowsCalaDor: [HorarisRowsCalaDorMutation]
 }
 
 input PaginaSantanyiGalleryMutation {

@@ -1,5 +1,15 @@
 {
+  "heroTitleCa": "Horaris",
+  "heroTitleEs": "Horarios",
+  "heroTitleEn": "Schedule",
+  "heroTitleDe": "Öffnungszeiten",
+  "heroSubtitleCa": "Obert tot l'any, fins i tot festius",
+  "heroSubtitleEs": "Abierto todo el año, incluso festivos",
+  "heroSubtitleEn": "Open all year, including holidays",
+  "heroSubtitleDe": "Ganzjährig geöffnet, auch an Feiertagen",
   "temporada": "Temporada 2024-25",
+  "pdfSantanyi": "/images/public/pdfs/facturas.pdf",
+  "pdfCalaDor": null,
   "activityLabelCa": "Activitat",
   "activityLabelEs": "Actividad",
   "activityLabelEn": "Activity",
@@ -10,20 +20,96 @@
   "dayLabelDj": "Dj",
   "dayLabelDv": "Dv",
   "dayLabelDs": "Ds",
+  "dayLabelDg": "Dg",
   "footerNoteCa": "Els horaris poden variar en festius.",
   "footerNoteEs": "Los horarios pueden variar en festivos.",
   "footerNoteEn": "Hours may vary on public holidays.",
   "footerNoteDe": "An Feiertagen können die Zeiten abweichen.",
-  "pdfSantanyi": null,
-  "pdfCalaDor": null,
   "rows": [
-    { "activitat": "Piscina lliure",       "dilluns": "7:00–22:00", "dimarts": "7:00–22:00", "dimecres": "7:00–22:00", "dijous": "7:00–22:00", "divendres": "7:00–22:00", "dissabte": "8:00–21:00" },
-    { "activitat": "Aqua-fitness",         "dilluns": "10:00",      "dimarts": "",           "dimecres": "10:00",      "dijous": "",           "divendres": "10:00",      "dissabte": "" },
-    { "activitat": "Aqua-fitness tarda",   "dilluns": "19:30",      "dimarts": "",           "dimecres": "19:30",      "dijous": "",           "divendres": "",           "dissabte": "" },
-    { "activitat": "Ioga",                 "dilluns": "",           "dimarts": "10:00",      "dimecres": "",           "dijous": "10:00",      "divendres": "",           "dissabte": "" },
-    { "activitat": "Pilates",              "dilluns": "19:00",      "dimarts": "",           "dimecres": "19:00",      "dijous": "",           "divendres": "",           "dissabte": "" },
-    { "activitat": "Zumba",               "dilluns": "",           "dimarts": "19:30",      "dimecres": "",           "dijous": "19:30",      "divendres": "",           "dissabte": "" },
-    { "activitat": "Spinning",             "dilluns": "8:00",       "dimarts": "",           "dimecres": "8:00",       "dijous": "",           "divendres": "8:00",       "dissabte": "" },
-    { "activitat": "Gimnàs",              "dilluns": "7:00–22:00", "dimarts": "7:00–22:00", "dimecres": "7:00–22:00", "dijous": "7:00–22:00", "divendres": "7:00–22:00", "dissabte": "8:00–21:00" }
+    {
+      "activitat": "Piscina lliure",
+      "dilluns": "7:00–22:00",
+      "dimarts": "7:00–22:00",
+      "dimecres": "7:00–22:00",
+      "dijous": "7:00–22:00",
+      "divendres": "7:00–22:00",
+      "dissabte": "8:00–21:00",
+      "diumenge": ""
+    },
+    {
+      "activitat": "Aqua-fitness",
+      "dilluns": "10:00",
+      "dimarts": "",
+      "dimecres": "10:00",
+      "dijous": "",
+      "divendres": "10:00",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Aqua-fitness tarda",
+      "dilluns": "19:30",
+      "dimarts": "",
+      "dimecres": "19:30",
+      "dijous": "",
+      "divendres": "",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Ioga",
+      "dilluns": "",
+      "dimarts": "10:00",
+      "dimecres": "",
+      "dijous": "10:00",
+      "divendres": "",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Pilates",
+      "dilluns": "19:00",
+      "dimarts": "",
+      "dimecres": "19:00",
+      "dijous": "",
+      "divendres": "",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Zumba",
+      "dilluns": "",
+      "dimarts": "19:30",
+      "dimecres": "",
+      "dijous": "19:30",
+      "divendres": "",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Spinning",
+      "dilluns": "8:00",
+      "dimarts": "",
+      "dimecres": "8:00",
+      "dijous": "",
+      "divendres": "8:00",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Gimnàs",
+      "dilluns": "7:00–22:00",
+      "dimarts": "7:00–22:00",
+      "dimecres": "7:00–22:00",
+      "dijous": "7:00–22:00",
+      "divendres": "7:00–22:00",
+      "dissabte": "8:00–21:00"
+    }
+  ],
+  "rowsCalaDor": [
+    { "activitat": "Piscina lliure", "dilluns": "9:00–21:00", "dimarts": "9:00–21:00", "dimecres": "9:00–21:00", "dijous": "9:00–21:00", "divendres": "9:00–21:00", "dissabte": "9:00–21:00" },
+    { "activitat": "Power Ioga", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "17:15", "divendres": "", "dissabte": "" },
+    { "activitat": "Zumba", "dilluns": "", "dimarts": "", "dimecres": "17:30", "dijous": "", "divendres": "", "dissabte": "" },
+    { "activitat": "Hidrogym", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "18:30", "dissabte": "" },
+    { "activitat": "Aquafitness", "dilluns": "", "dimarts": "18:30", "dimecres": "", "dijous": "18:30", "divendres": "", "dissabte": "9:00" },
+    { "activitat": "Cross Training", "dilluns": "", "dimarts": "19:00", "dimecres": "", "dijous": "19:00", "divendres": "", "dissabte": "" },
+    { "activitat": "Core", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "18:30", "dissabte": "" },
+    { "activitat": "GAP", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "17:30", "dissabte": "" },
+    { "activitat": "Yin Ioga", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "", "dissabte": "18:45" },
+    { "activitat": "Gimnàs", "dilluns": "9:00–21:00", "dimarts": "9:00–21:00", "dimecres": "9:00–21:00", "dijous": "9:00–21:00", "divendres": "9:00–21:00", "dissabte": "9:00–21:00" }
   ]
 }

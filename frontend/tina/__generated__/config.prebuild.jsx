@@ -263,6 +263,14 @@ var config_default = defineConfig({
         },
         match: { include: "horaris" },
         fields: [
+          { type: "string", name: "heroTitleCa", label: "T\xEDtol hero (CA)" },
+          { type: "string", name: "heroTitleEs", label: "T\xEDtol hero (ES)" },
+          { type: "string", name: "heroTitleEn", label: "T\xEDtol hero (EN)" },
+          { type: "string", name: "heroTitleDe", label: "T\xEDtol hero (DE)" },
+          { type: "string", name: "heroSubtitleCa", label: "Subt\xEDtol hero (CA)" },
+          { type: "string", name: "heroSubtitleEs", label: "Subt\xEDtol hero (ES)" },
+          { type: "string", name: "heroSubtitleEn", label: "Subt\xEDtol hero (EN)" },
+          { type: "string", name: "heroSubtitleDe", label: "Subt\xEDtol hero (DE)" },
           { type: "string", name: "temporada", label: "Temporada (ex: Hivern 2024-25)" },
           { type: "image", name: "pdfSantanyi", label: "PDF Horari Santany\xED", uploadDir: () => "public/pdfs" },
           { type: "image", name: "pdfCalaDor", label: "PDF Horari Cala d'Or", uploadDir: () => "public/pdfs" },
@@ -277,6 +285,7 @@ var config_default = defineConfig({
           { type: "string", name: "dayLabelDj", label: "Dijous etiqueta" },
           { type: "string", name: "dayLabelDv", label: "Divendres etiqueta" },
           { type: "string", name: "dayLabelDs", label: "Dissabte etiqueta" },
+          { type: "string", name: "dayLabelDg", label: "Diumenge etiqueta" },
           // ── Nota peu ──
           { type: "string", name: "footerNoteCa", label: "Nota peu (CA)" },
           { type: "string", name: "footerNoteEs", label: "Nota peu (ES)" },
@@ -286,17 +295,37 @@ var config_default = defineConfig({
           {
             type: "object",
             name: "rows",
-            label: "Files de l'horari",
+            label: "\u{1F4CD} Horari Santany\xED",
             list: true,
             ui: { itemProps: (item) => ({ label: item?.activitat || "Activitat" }) },
             fields: [
               { type: "string", name: "activitat", label: "Activitat" },
+              { type: "image", name: "logo", label: "Logo activitat", uploadDir: () => "public/images/logos" },
               { type: "string", name: "dilluns", label: "Dilluns" },
               { type: "string", name: "dimarts", label: "Dimarts" },
               { type: "string", name: "dimecres", label: "Dimecres" },
               { type: "string", name: "dijous", label: "Dijous" },
               { type: "string", name: "divendres", label: "Divendres" },
-              { type: "string", name: "dissabte", label: "Dissabte" }
+              { type: "string", name: "dissabte", label: "Dissabte" },
+              { type: "string", name: "diumenge", label: "Diumenge" }
+            ]
+          },
+          {
+            type: "object",
+            name: "rowsCalaDor",
+            label: "\u{1F4CD} Horari Cala d'Or",
+            list: true,
+            ui: { itemProps: (item) => ({ label: item?.activitat || "Activitat" }) },
+            fields: [
+              { type: "string", name: "activitat", label: "Activitat" },
+              { type: "image", name: "logo", label: "Logo activitat", uploadDir: () => "public/images/logos" },
+              { type: "string", name: "dilluns", label: "Dilluns" },
+              { type: "string", name: "dimarts", label: "Dimarts" },
+              { type: "string", name: "dimecres", label: "Dimecres" },
+              { type: "string", name: "dijous", label: "Dijous" },
+              { type: "string", name: "divendres", label: "Divendres" },
+              { type: "string", name: "dissabte", label: "Dissabte" },
+              { type: "string", name: "diumenge", label: "Diumenge" }
             ]
           }
         ]

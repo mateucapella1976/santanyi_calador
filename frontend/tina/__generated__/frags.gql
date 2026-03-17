@@ -156,6 +156,14 @@ fragment PreusParts on Preus {
 
 fragment HorarisParts on Horaris {
   __typename
+  heroTitleCa
+  heroTitleEs
+  heroTitleEn
+  heroTitleDe
+  heroSubtitleCa
+  heroSubtitleEs
+  heroSubtitleEn
+  heroSubtitleDe
   temporada
   pdfSantanyi
   pdfCalaDor
@@ -169,6 +177,7 @@ fragment HorarisParts on Horaris {
   dayLabelDj
   dayLabelDv
   dayLabelDs
+  dayLabelDg
   footerNoteCa
   footerNoteEs
   footerNoteEn
@@ -176,12 +185,26 @@ fragment HorarisParts on Horaris {
   rows {
     __typename
     activitat
+    logo
     dilluns
     dimarts
     dimecres
     dijous
     divendres
     dissabte
+    diumenge
+  }
+  rowsCalaDor {
+    __typename
+    activitat
+    logo
+    dilluns
+    dimarts
+    dimecres
+    dijous
+    divendres
+    dissabte
+    diumenge
   }
 }
 
