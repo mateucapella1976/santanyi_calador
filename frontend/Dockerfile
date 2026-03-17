@@ -1,4 +1,4 @@
-# Stage 1: Build with TinaCMS local server
+# Stage 1: Build
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -7,19 +7,13 @@ COPY package.json package-lock.json* ./
 RUN npm ci
 
 COPY . .
-
-# Start tina local server in background, wait for it, then build astro
-RUN npx tinacms dev &>/dev/null & \
-    sleep 5 && \
-    npx astro build && \
-    kill %1 2>/dev/null || true
+RUN npx tinacms build && npx astro build
 
 # Stage 2: Serve static files with nginx
 FROM nginx:alpine
 
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Custom nginx config for clean URLs and 404 handling
 RUN printf 'server {\n\
     listen 3000;\n\
     root /usr/share/nginx/html;\n\
