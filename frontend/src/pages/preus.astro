@@ -1,0 +1,38 @@
+---
+import Page from '../layouts/Page.astro';
+import PreusPage from '../components/PreusPage';
+import DayPassCTAComponent from '../components/DayPassCTA';
+import { getLangFromUrl, useTranslations, type Lang } from '../i18n/utils';
+import client from '../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const preusRes   = await (client.queries as any).preus({ relativePath: 'preus.json' });
+const daypassRes = await (client.queries as any).daypass({ relativePath: 'daypass.json' });
+---
+
+<Page
+  title={t('meta.prices.title')}
+  description={t('meta.prices.description')}
+  canonicalPath="/preus"
+  schemaType="home"
+>
+  <PreusPage
+    client:load
+    query={preusRes.query}
+    variables={preusRes.variables}
+    data={preusRes.data}
+    lang={lang}
+  />
+
+  <!-- Day Pass CTA -->
+  <DayPassCTAComponent
+    client:load
+    query={daypassRes.query}
+    variables={daypassRes.variables}
+    data={daypassRes.data}
+    lang={lang}
+    variant="section"
+  />
+</Page>

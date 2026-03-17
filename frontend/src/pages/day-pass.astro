@@ -1,0 +1,38 @@
+---
+import Page from '../layouts/Page.astro';
+import DayPassPage from '../components/DayPassPage';
+import ContactForm from '../components/ContactForm';
+import { getLangFromUrl, useTranslations, type Lang } from '../i18n/utils';
+import client from '../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const daypassPageRes = await (client.queries as any).paginaDayPass({ relativePath: 'pagina-daypass.json' });
+---
+
+<Page
+  title={t('meta.daypass.title')}
+  description={t('meta.daypass.description')}
+  canonicalPath="/day-pass"
+  schemaType="home"
+>
+  <DayPassPage
+    client:load
+    query={daypassPageRes.query}
+    variables={daypassPageRes.variables}
+    data={daypassPageRes.data}
+    lang={lang}
+  />
+
+  <!-- Contact form -->
+  <section class="section bg-white">
+    <div class="container-site">
+      <div class="max-w-lg mx-auto">
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+          <ContactForm lang={lang} variant="compact" client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+</Page>

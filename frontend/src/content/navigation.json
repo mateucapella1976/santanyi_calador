@@ -1,0 +1,63 @@
+{
+  "ctaDayPassLabelCa": "Day Pass",
+  "ctaDayPassLabelEs": "Day Pass",
+  "ctaDayPassLabelEn": "Day Pass",
+  "ctaDayPassLabelDe": "Tagesticket",
+  "ctaDayPassUrl": "/day-pass",
+  "ctaBookLabelCa": "Reservar",
+  "ctaBookLabelEs": "Reservar",
+  "ctaBookLabelEn": "Book now",
+  "ctaBookLabelDe": "Buchen",
+  "ctaBookUrl": "/contacte",
+  "items": [
+    {
+      "labelCa": "Natació",
+      "labelEs": "Natación",
+      "labelEn": "Swimming",
+      "labelDe": "Schwimmen",
+      "href": "/natacio"
+    },
+    {
+      "labelCa": "Gimnàs",
+      "labelEs": "Gimnasio",
+      "labelEn": "Gym",
+      "labelDe": "Fitnessstudio",
+      "href": "/gimnas"
+    },
+    {
+      "labelCa": "Activitats",
+      "labelEs": "Actividades",
+      "labelEn": "Activities",
+      "labelDe": "Aktivitäten",
+      "href": "/activitats"
+    },
+    {
+      "labelCa": "Pàdel",
+      "labelEs": "Pádel",
+      "labelEn": "Padel",
+      "labelDe": "Padel",
+      "href": "/padel"
+    },
+    {
+      "labelCa": "Preus",
+      "labelEs": "Precios",
+      "labelEn": "Prices",
+      "labelDe": "Preise",
+      "href": "/preus"
+    },
+    {
+      "labelCa": "Horaris",
+      "labelEs": "Horarios",
+      "labelEn": "Schedule",
+      "labelDe": "Öffnungszeiten",
+      "href": "/horaris"
+    },
+    {
+      "labelCa": "Contacte",
+      "labelEs": "Contacto",
+      "labelEn": "Contact",
+      "labelDe": "Kontakt",
+      "href": "/contacte"
+    }
+  ]
+}

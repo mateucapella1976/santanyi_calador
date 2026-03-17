@@ -1,0 +1,53 @@
+---
+import Page from '../layouts/Page.astro';
+import SantanyiPage from '../components/SantanyiPage';
+import ScheduleTableComponent from '../components/ScheduleTable';
+import DayPassCTAComponent from '../components/DayPassCTA';
+import { getLangFromUrl, useTranslations, type Lang } from '../i18n/utils';
+import client from '../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const santanyiRes = await (client.queries as any).paginaSantanyi({ relativePath: 'pagina-santanyi.json' });
+const horarisRes  = await (client.queries as any).horaris({ relativePath: 'horaris.json' });
+const daypassRes  = await (client.queries as any).daypass({ relativePath: 'daypass.json' });
+---
+
+<Page
+  title={t('meta.santanyi.title')}
+  description={t('meta.santanyi.description')}
+  canonicalPath="/santanyi"
+  schemaType="facility"
+  facilityName="Piscina Municipal Santanyí"
+>
+  <SantanyiPage
+    client:load
+    query={santanyiRes.query}
+    variables={santanyiRes.variables}
+    data={santanyiRes.data}
+    lang={lang}
+  />
+
+  <!-- Schedule -->
+  <section class="section bg-gray-50">
+    <div class="container-site">
+      <h2 class="section-title text-center mb-8">{t('schedule.title')}</h2>
+      <ScheduleTableComponent client:load query={horarisRes.query} variables={horarisRes.variables} data={horarisRes.data} lang={lang} compact />
+    </div>
+  </section>
+
+  <!-- Day Pass -->
+  <section class="py-8 bg-gray-50">
+    <div class="container-site">
+      <DayPassCTAComponent
+        client:load
+        query={daypassRes.query}
+        variables={daypassRes.variables}
+        data={daypassRes.data}
+        lang={lang}
+        variant="banner"
+      />
+    </div>
+  </section>
+</Page>

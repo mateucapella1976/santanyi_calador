@@ -1,0 +1,29 @@
+---
+import Page from '../layouts/Page.astro';
+import GimnasPageComponent from '../components/GimnasPage';
+import { getLangFromUrl, type Lang } from '../i18n/utils';
+import client from '../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+
+const gimnasRes  = await client.queries.paginaGimnas({ relativePath: 'pagina-gimnas.json' });
+const horarisRes = await client.queries.horaris({ relativePath: 'horaris.json' });
+---
+
+<Page
+  title={lang === 'en' ? 'Gym & Fitness | Piscines Santanyí Cala d\'Or' : lang === 'de' ? 'Fitnessstudio | Piscines Santanyí Cala d\'Or' : lang === 'es' ? 'Gimnasio & Fitness | Piscines Santanyí Cala d\'Or' : 'Gimnàs & Fitness | Piscines Santanyí Cala d\'Or'}
+  description={lang === 'en' ? 'Fully equipped gym with personalised training via Trainingym app. Open all year in Santanyí and Cala d\'Or.' : lang === 'de' ? 'Vollausgestattetes Fitnessstudio mit personalisiertem Training via Trainingym-App in Santanyí und Cala d\'Or.' : lang === 'es' ? 'Gimnasio completamente equipado con entrenamiento personalizado via app Trainingym. Abierto todo el año en Santanyí y Cala d\'Or.' : "Sala completament equipada amb entrenament personalitzat via app Trainingym. Obert tot l'any a Santanyí i Cala d'Or."}
+  canonicalPath="/gimnas"
+  schemaType="facility"
+>
+  <GimnasPageComponent
+    client:load
+    query={gimnasRes.query}
+    variables={gimnasRes.variables}
+    data={gimnasRes.data}
+    horarisQuery={horarisRes.query}
+    horarisVariables={horarisRes.variables}
+    horarisData={horarisRes.data}
+    lang={lang}
+  />
+</Page>

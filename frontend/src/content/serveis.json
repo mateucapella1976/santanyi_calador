@@ -1,0 +1,93 @@
+{
+  "titleCa": "Tot el que necessites en un sol lloc",
+  "titleEs": "Todo lo que necesitas en un solo lugar",
+  "titleEn": "Everything you need in one place",
+  "titleDe": "Alles was Sie brauchen an einem Ort",
+  "subtitleCa": "Serveis de qualitat per a tota la família, tot l'any",
+  "subtitleEs": "Servicios de calidad para toda la familia, todo el año",
+  "subtitleEn": "Quality services for the whole family, all year round",
+  "subtitleDe": "Qualitätsangebote für die ganze Familie, das ganze Jahr",
+  "items": [
+    {
+      "titleCa": "Natació",
+      "titleEs": "Natación",
+      "titleEn": "Swimming",
+      "titleDe": "Schwimmen",
+      "descCa": "Metodologia pròpia amb 25 cursos per a totes les edats i nivells. Avaluació contínua del progrés.",
+      "descEs": "Metodología propia con 25 cursos para todas las edades y niveles. Evaluación continua del progreso.",
+      "descEn": "Own methodology with 25 courses for all ages and levels. Continuous progress evaluation.",
+      "descDe": "Eigene Methodik mit 25 Kursen für alle Altersgruppen. Kontinuierliche Fortschrittsbewertung.",
+      "href": "/natacio",
+      "img": "/images/swim.png",
+      "color": "blue"
+    },
+    {
+      "titleCa": "Gimnàs & Fitness",
+      "titleEs": "Gimnasio & Fitness",
+      "titleEn": "Gym & Fitness",
+      "titleDe": "Fitnessstudio",
+      "descCa": "Sala completament equipada amb rutines personalitzades via app Trainingym. Cardio, musculació i molt més.",
+      "descEs": "Sala completamente equipada con rutinas personalizadas via app Trainingym. Cardio, musculación y mucho más.",
+      "descEn": "Fully equipped gym with personalised routines via the Trainingym app. Cardio, weights and much more.",
+      "descDe": "Vollausgestattetes Studio mit personalisierten Trainingsplänen via Trainingym-App.",
+      "href": "/gimnas",
+      "img": "/images/gym.png",
+      "color": "purple"
+    },
+    {
+      "titleCa": "Activitats Dirigides",
+      "titleEs": "Actividades Dirigidas",
+      "titleEn": "Fitness Classes",
+      "titleDe": "Gruppenkurse",
+      "descCa": "Més de 20 activitats amb instructors titulats: aqua-fitness, ioga, pilates, zumba, spinning i moltes més.",
+      "descEs": "Más de 20 actividades con instructores titulados: aqua-fitness, yoga, pilates, zumba, spinning y muchas más.",
+      "descEn": "Over 20 activities with qualified instructors: aqua-fitness, yoga, pilates, zumba, spinning and many more.",
+      "descDe": "Über 20 Aktivitäten mit qualifizierten Trainern: Aqua-Fitness, Yoga, Pilates, Zumba, Spinning.",
+      "href": "/activitats",
+      "img": "/images/wellness.png",
+      "color": "green"
+    },
+    {
+      "titleCa": "Pàdel",
+      "titleEs": "Pádel",
+      "titleEn": "Padel",
+      "titleDe": "Padel",
+      "descCa": "Reserva pista i participa en el ranking de la instal·lació via Playtomic. Competicions internes regulars.",
+      "descEs": "Reserva pista y participa en el ranking de la instalación via Playtomic. Competiciones internas regulares.",
+      "descEn": "Book a court and join the facility ranking via Playtomic. Regular internal competitions.",
+      "descDe": "Platz buchen und am Anlagenranking via Playtomic teilnehmen. Regelmäßige interne Turniere.",
+      "href": "/padel",
+      "img": "/images/padel.png",
+      "color": "orange"
+    },
+    {
+      "titleCa": "Entrenador Personal",
+      "titleEs": "Entrenador Personal",
+      "titleEn": "Personal Training",
+      "titleDe": "Personal Training",
+      "descCa": "Entrenament personalitzat per als teus objectius, readaptació de lesions i programes específics de salut.",
+      "descEs": "Entrenamiento personalizado para tus objetivos, readaptación de lesiones y programas específicos de salud.",
+      "descEn": "Personalised training for your goals, injury rehabilitation and specific health programmes.",
+      "descDe": "Individuelles Training für Ihre Ziele, Verletzungsrehabilitation und spezielle Gesundheitsprogramme.",
+      "href": "/entrenador-personal",
+      "img": "/images/diet.png",
+      "color": "red"
+    },
+    {
+      "titleCa": "Esport & Salut",
+      "titleEs": "Deporte & Salud",
+      "titleEn": "Sport & Health",
+      "titleDe": "Sport & Gesundheit",
+      "descCa": "Programes adaptats per a condicions mèdiques específiques. Exercici terapèutic amb professionals.",
+      "descEs": "Programas adaptados para condiciones médicas específicas. Ejercicio terapéutico con profesionales.",
+      "descEn": "Adapted programmes for specific medical conditions. Therapeutic exercise with professionals.",
+      "descDe": "Angepasste Programme für spezifische medizinische Erkrankungen. Therapeutisches Bewegungsangebot.",
+      "href": "/esport-salut",
+      "img": "/images/spine.png",
+      "color": "teal"
+    },
+    {
+      "titleCa": "prova"
+    }
+  ]
+}

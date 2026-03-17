@@ -1,0 +1,163 @@
+{
+  "heroBadgeCa": "Natació",
+  "heroBadgeEs": "Natación",
+  "heroBadgeEn": "Swimming",
+  "heroBadgeDe": "Schwimmen",
+  "heroTitleCa": "25 Cursos de Natació per a Totes les Edats",
+  "heroTitleEs": "25 Cursos de Natación para Todas las Edades",
+  "heroTitleEn": "25 Swimming Courses for All Ages",
+  "heroTitleDe": "25 Schwimmkurse für alle Altersgruppen",
+  "heroSubtitleCa": "La nostra metodologia pròpia garanteix l'avaluació contínua del progrés i una atenció personalitzada.",
+  "heroSubtitleEs": "Nuestra metodología propia garantiza la evaluación continua del progreso y atención personalizada.",
+  "heroSubtitleEn": "Our own methodology ensures continuous progress evaluation and personalised attention for every swimmer.",
+  "heroSubtitleDe": "Unsere eigene Methodik gewährleistet kontinuierliche Fortschrittsbewertung und persönliche Betreuung.",
+  "heroCtaCa": "Inscriure'm",
+  "heroCtaEs": "Inscribirme",
+  "heroCtaEn": "Enroll now",
+  "heroCtaDe": "Jetzt anmelden",
+  "heroCtaUrl": "/contacte",
+  "heroCta2Ca": "Preus",
+  "heroCta2Es": "Precios",
+  "heroCta2En": "Prices",
+  "heroCta2De": "Preise",
+  "heroCta2Url": "/preus",
+  "whyTitleCa": "Per què aprendre a nedar amb nosaltres?",
+  "whyTitleEs": "¿Por qué aprender natación con nosotros?",
+  "whyTitleEn": "Why learn swimming with us?",
+  "whyTitleDe": "Warum bei uns schwimmen lernen?",
+  "whyImage": "/images/img_2.jpg",
+  "whyGallery": [
+    {
+      "src": "/images/img_2.jpg",
+      "alt": "Piscina coberta Santanyí"
+    },
+    {
+      "src": "/images/public/images/imatge 6.jpeg",
+      "alt": "Cursos de natació"
+    }
+  ],
+  "whyItems": [
+    {
+      "textCa": "Metodologia pròpia amb seguiment continu",
+      "textEs": "Metodología propia con seguimiento continuo",
+      "textEn": "Own methodology with continuous progress tracking",
+      "textDe": "Eigene Methodik mit kontinuierlicher Fortschrittsverfolgung"
+    },
+    {
+      "textCa": "Grups de màxim 8-10 alumnes per a atenció personalitzada",
+      "textEs": "Grupos de máximo 8-10 alumnos para atención personalizada",
+      "textEn": "Groups of maximum 8-10 swimmers for personalised attention",
+      "textDe": "Gruppen von max. 8-10 Schwimmern für individuelle Betreuung"
+    },
+    {
+      "textCa": "Piscina coberta de 25m amb temperatura controlada",
+      "textEs": "Piscina cubierta de 25m con temperatura controlada",
+      "textEn": "25m indoor pool with professional temperature control",
+      "textDe": "25m Hallenbad mit professioneller Temperaturkontrolle"
+    },
+    {
+      "textCa": "Monitors titulats amb certificació FEB",
+      "textEs": "Monitores titulados con certificación FEB",
+      "textEn": "Qualified swimming instructors with FEB certification",
+      "textDe": "Qualifizierte Schwimmlehrer mit FEB-Zertifizierung"
+    },
+    {
+      "textCa": "25 nivells diferents per a una classificació perfecta",
+      "textEs": "25 niveles diferentes para una clasificación perfecta",
+      "textEn": "25 different levels to perfectly match your current skills",
+      "textDe": "25 verschiedene Niveaus für die optimale Einstufung"
+    }
+  ],
+  "coursesTitleCa": "Els nostres cursos de natació",
+  "coursesTitleEs": "Nuestros cursos de natación",
+  "coursesTitleEn": "Our Swimming Courses",
+  "coursesTitleDe": "Unsere Schwimmkurse",
+  "coursesSubCa": "Des de bebès fins a adults – hi ha un curs per a tothom",
+  "coursesSubEs": "Desde bebés hasta adultos – hay un curso para todos",
+  "coursesSubEn": "From babies to adults – there's a course for everyone",
+  "coursesSubDe": "Von Babys bis Erwachsene – für jeden gibt es den richtigen Kurs",
+  "coursesCtaCa": "Reservar la meva plaça",
+  "coursesCtaEs": "Reservar mi plaza",
+  "coursesCtaEn": "Reserve your place",
+  "coursesCtaDe": "Platz reservieren",
+  "coursesCtaUrl": "/contacte",
+  "courses": [
+    {
+      "nameCa": "Bebès nedadors",
+      "nameEs": "Bebés nadadores",
+      "nameEn": "Baby swimmers",
+      "nameDe": "Babyschwimmen",
+      "age": "4-36m",
+      "max": "6"
+    },
+    {
+      "nameCa": "Iniciació a l'aigua",
+      "nameEs": "Iniciación al agua",
+      "nameEn": "Water initiation",
+      "nameDe": "Wassergewöhnung",
+      "age": "3-5",
+      "max": "8"
+    },
+    {
+      "nameCa": "Natació bàsica",
+      "nameEs": "Natación básica",
+      "nameEn": "Basic swimming",
+      "nameDe": "Grundschwimmen",
+      "age": "6-8",
+      "max": "8"
+    },
+    {
+      "nameCa": "Perfeccionament",
+      "nameEs": "Perfeccionamiento",
+      "nameEn": "Technique swimming",
+      "nameDe": "Technik",
+      "age": "9-14",
+      "max": "10"
+    },
+    {
+      "nameCa": "Natació joves",
+      "nameEs": "Natación jóvenes",
+      "nameEn": "Teen swimmers",
+      "nameDe": "Jugendschwimmen",
+      "age": "14-17",
+      "max": "10"
+    },
+    {
+      "nameCa": "Adults principiants",
+      "nameEs": "Adultos principiantes",
+      "nameEn": "Adult beginners",
+      "nameDe": "Erwachsene Anfänger",
+      "age": "+18",
+      "max": "8"
+    },
+    {
+      "nameCa": "Adults tècnica",
+      "nameEs": "Adultos técnica",
+      "nameEn": "Adult technique",
+      "nameDe": "Erwachsene Technik",
+      "age": "+18",
+      "max": "8"
+    },
+    {
+      "nameCa": "Masters / competició",
+      "nameEs": "Masters / competición",
+      "nameEn": "Masters / competition",
+      "nameDe": "Masters / Wettkampf",
+      "age": "+18",
+      "max": "12"
+    }
+  ],
+  "freeTitleCa": "Natació lliure – neda al teu ritme",
+  "freeTitleEs": "Nado libre – nada a tu ritmo",
+  "freeTitleEn": "Free Swimming – swim at your own pace",
+  "freeTitleDe": "Freischwimmen – in Ihrem eigenen Tempo",
+  "freeDescCa": "Tots els abonats poden usar la piscina lliurement durant les hores de natació lliure.",
+  "freeDescEs": "Todos los abonados pueden usar la piscina libremente durante el nado libre.",
+  "freeDescEn": "All members can use the pool freely during open swimming hours. Lanes available for all skill levels.",
+  "freeDescDe": "Alle Mitglieder können die Schwimmbahnen während der Freischwimmzeiten nutzen.",
+  "freeCtaCa": "Abona't des de 10€/mes",
+  "freeCtaEs": "Abónate desde 10€/mes",
+  "freeCtaEn": "Membership from €10/month",
+  "freeCtaDe": "Mitgliedschaft ab 10€/Monat",
+  "freeCtaUrl": "/preus"
+}

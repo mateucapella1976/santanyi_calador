@@ -1,0 +1,25 @@
+{
+  "badgeCa": "Nova App",
+  "badgeEs": "Nueva App",
+  "badgeEn": "New App",
+  "badgeDe": "Neue App",
+  "titleCa": "Gestiona les teves reserves des del mòbil",
+  "titleEs": "Gestiona tus reservas desde el móvil",
+  "titleEn": "Manage your bookings from your phone",
+  "titleDe": "Buchungen vom Smartphone verwalten",
+  "subtitleCa": "Amb la nostra app PWA reserva activitats, consulta horaris i accedeix amb QR a les instal·lacions.",
+  "subtitleEs": "Con nuestra app PWA reserva actividades, consulta horarios y accede con QR a las instalaciones.",
+  "subtitleEn": "With our PWA app, book activities, check schedules and enter facilities with a QR code.",
+  "subtitleDe": "Mit unserer PWA-App Aktivitäten buchen, Öffnungszeiten abrufen und per QR-Code eintreten.",
+  "ctaCa": "Descarrega l'App",
+  "ctaEs": "Descargar la App",
+  "ctaEn": "Download the App",
+  "ctaDe": "App herunterladen",
+  "features": [
+    { "textCa": "Reserva d'activitats en temps real", "textEs": "Reserva de actividades en tiempo real", "textEn": "Real-time activity booking", "textDe": "Echtzeit-Buchung" },
+    { "textCa": "QR d'accés a les instal·lacions", "textEs": "QR de acceso a las instalaciones", "textEn": "QR entry to facilities", "textDe": "QR-Zutritt" },
+    { "textCa": "Historial de reserves", "textEs": "Historial de reservas", "textEn": "Booking history", "textDe": "Buchungsverlauf" },
+    { "textCa": "Notificacions de classes", "textEs": "Notificaciones de clases", "textEn": "Class notifications", "textDe": "Kursbenachrichtigungen" },
+    { "textCa": "Seguiment entrenament (Trainingym)", "textEs": "Seguimiento entrenamiento (Trainingym)", "textEn": "Training tracking (Trainingym)", "textDe": "Trainingsverfolgung (Trainingym)" }
+  ]
+}

@@ -1,0 +1,53 @@
+---
+import Page from '../layouts/Page.astro';
+import CalaDorPage from '../components/CalaDorPage';
+import ScheduleTableComponent from '../components/ScheduleTable';
+import DayPassCTAComponent from '../components/DayPassCTA';
+import { getLangFromUrl, useTranslations, type Lang } from '../i18n/utils';
+import client from '../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const calaDorRes = await (client.queries as any).paginaCalaDor({ relativePath: 'pagina-cala-dor.json' });
+const horarisRes = await (client.queries as any).horaris({ relativePath: 'horaris.json' });
+const daypassRes = await (client.queries as any).daypass({ relativePath: 'daypass.json' });
+---
+
+<Page
+  title={t('meta.calaDor.title')}
+  description={t('meta.calaDor.description')}
+  canonicalPath="/cala-dor"
+  schemaType="facility"
+  facilityName="Piscina Cala d'Or"
+>
+  <CalaDorPage
+    client:load
+    query={calaDorRes.query}
+    variables={calaDorRes.variables}
+    data={calaDorRes.data}
+    lang={lang}
+  />
+
+  <!-- Schedule -->
+  <section class="section bg-gray-50">
+    <div class="container-site">
+      <h2 class="section-title text-center mb-8">{t('schedule.title')}</h2>
+      <ScheduleTableComponent client:load query={horarisRes.query} variables={horarisRes.variables} data={horarisRes.data} lang={lang} compact />
+    </div>
+  </section>
+
+  <!-- Day Pass -->
+  <section class="py-8 bg-gray-50">
+    <div class="container-site">
+      <DayPassCTAComponent
+        client:load
+        query={daypassRes.query}
+        variables={daypassRes.variables}
+        data={daypassRes.data}
+        lang={lang}
+        variant="banner"
+      />
+    </div>
+  </section>
+</Page>

@@ -1,0 +1,161 @@
+---
+import { useTranslations, localePath, type Lang } from '../i18n/utils';
+import galSantanyi from '../content/galeria-santanyi.json';
+import galCalaDor  from '../content/galeria-cala-dor.json';
+import settings    from '../content/settings.json';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const s = settings as any;
+const santanyiPhotos = ((galSantanyi as any).fotos ?? []).map((f: any) => ({ src: f.imatge, alt: f.alt }));
+const calaDorPhotos  = ((galCalaDor  as any).fotos ?? []).map((f: any) => ({ src: f.imatge, alt: f.alt }));
+
+const phoneSantanyi      = s.phoneSantanyi      || '673 003 828';
+const phoneCalaDor       = s.phoneCalaDor       || '673 008 715';
+const emailSantanyi      = s.emailSantanyi      || 'piscinasantanyi@algaliasport.net';
+const emailCalaDor       = s.emailCalaDor       || 'piscinacalador@algaliasport.net';
+const addressSantanyi    = s.addressSantanyi    || 'Carrer Bernat Vidal i Tomàs, 83';
+const addressCalaDor     = s.addressCalaDor     || "Avinguda Sementer, S/N";
+const googleMapsSantanyi = s.googleMapsSantanyi || 'https://maps.google.com/?q=Carrer+Bernat+Vidal+Santanyi';
+const googleMapsCalaDor  = s.googleMapsCalaDor  || 'https://maps.google.com/?q=Avinguda+Sementer+Cala+d+Or';
+---
+
+<section class="section bg-gray-50" aria-labelledby="facilities-heading">
+  <div class="container-site">
+    <div class="text-center mb-12">
+      <span class="badge-blue mb-3">
+        {lang === 'en' ? 'Facilities' : lang === 'de' ? 'Anlagen' : lang === 'es' ? 'Instalaciones' : 'Instal·lacions'}
+      </span>
+      <h2 id="facilities-heading" class="section-title">{t('facilities.title')}</h2>
+      <p class="section-subtitle">{t('facilities.subtitle')}</p>
+    </div>
+
+    <div class="flex gap-2 bg-white rounded-2xl p-1.5 shadow-sm border border-gray-100 mb-8 w-fit mx-auto">
+      <button id="tab-santanyi" class="tab-btn px-6 py-2.5 rounded-xl font-semibold text-sm transition-all bg-primary-500 text-white shadow-sm" aria-selected="true" data-tab="santanyi">
+        {t('nav.santanyi')}
+      </button>
+      <button id="tab-calador" class="tab-btn px-6 py-2.5 rounded-xl font-semibold text-sm transition-all text-gray-500 hover:text-gray-700" aria-selected="false" data-tab="calaDor">
+        {t('nav.calaDor')}
+      </button>
+    </div>
+
+    <!-- Panel Santanyí -->
+    <div id="panel-santanyi" class="tab-panel">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="grid grid-cols-2 gap-3">
+          {santanyiPhotos.map(({ src, alt }: any, i: number) => (
+            <div class:list={['rounded-2xl overflow-hidden', i === 0 ? 'col-span-2 h-56' : 'h-36']}>
+              <img src={src} alt={alt} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-2xl text-dark mb-2">{t('facilities.santanyi.name')}</h3>
+          <p class="text-gray-500 mb-6 leading-relaxed">{t('facilities.santanyi.desc')}</p>
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            {['Piscina coberta 25m', 'Gimnàs equipat', 'Activitats dirigides', 'Pàdel', 'Vestuaris moderns', 'Aparcament'].map(f => (
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <svg class="w-4 h-4 text-primary-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </div>
+            ))}
+          </div>
+          <div class="space-y-2.5 text-sm mb-6">
+            <div class="flex items-start gap-2 text-gray-600">
+              <svg class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {addressSantanyi}
+            </div>
+            <a href={`tel:+34${phoneSantanyi.replace(/\s/g, '')}`} class="flex items-center gap-2 text-gray-600 hover:text-primary-500 transition-colors">
+              <svg class="w-4 h-4 text-primary-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.45a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {phoneSantanyi}
+            </a>
+            <a href={`mailto:${emailSantanyi}`} class="flex items-center gap-2 text-gray-600 hover:text-primary-500 transition-colors">
+              <svg class="w-4 h-4 text-primary-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              {emailSantanyi}
+            </a>
+          </div>
+          <div class="flex gap-3">
+            <a href={localePath(lang, '/santanyi')} class="btn-primary text-sm py-2.5">
+              {lang === 'en' ? 'View facility' : lang === 'de' ? 'Anlage ansehen' : lang === 'es' ? 'Ver instalación' : 'Veure instal·lació'}
+            </a>
+            <a href={googleMapsSantanyi} target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm py-2.5">Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel Cala d'Or -->
+    <div id="panel-calaDor" class="tab-panel hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div class="grid grid-cols-2 gap-3">
+          {calaDorPhotos.map(({ src, alt }: any, i: number) => (
+            <div class:list={['rounded-2xl overflow-hidden', i === 0 ? 'col-span-2 h-56' : 'h-36']}>
+              <img src={src} alt={alt} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-2xl text-dark mb-2">{t('facilities.calaDor.name')}</h3>
+          <p class="text-gray-500 mb-6 leading-relaxed">{t('facilities.calaDor.desc')}</p>
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            {['Piscina', 'Gimnàs modern', 'Activitats dirigides', 'Pàdel', 'Zona exterior', 'Proper al port'].map(f => (
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <svg class="w-4 h-4 text-primary-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                {f}
+              </div>
+            ))}
+          </div>
+          <div class="space-y-2.5 text-sm mb-6">
+            <div class="flex items-start gap-2 text-gray-600">
+              <svg class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {addressCalaDor}
+            </div>
+            <a href={`tel:+34${phoneCalaDor.replace(/\s/g, '')}`} class="flex items-center gap-2 text-gray-600 hover:text-primary-500 transition-colors">
+              <svg class="w-4 h-4 text-primary-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.45a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              {phoneCalaDor}
+            </a>
+            <a href={`mailto:${emailCalaDor}`} class="flex items-center gap-2 text-gray-600 hover:text-primary-500 transition-colors">
+              <svg class="w-4 h-4 text-primary-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              {emailCalaDor}
+            </a>
+          </div>
+          <div class="flex gap-3">
+            <a href={localePath(lang, '/cala-dor')} class="btn-primary text-sm py-2.5">
+              {lang === 'en' ? 'View facility' : lang === 'de' ? 'Anlage ansehen' : lang === 'es' ? 'Ver instalación' : 'Veure instal·lació'}
+            </a>
+            <a href={googleMapsCalaDor} target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm py-2.5">Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const panels: Record<string, HTMLElement | null> = {
+    santanyi: document.getElementById('panel-santanyi'),
+    calaDor:  document.getElementById('panel-calaDor'),
+  };
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab!;
+      tabBtns.forEach(b => {
+        const active = b.dataset.tab === tab;
+        b.classList.toggle('bg-primary-500', active);
+        b.classList.toggle('text-white', active);
+        b.classList.toggle('shadow-sm', active);
+        b.classList.toggle('text-gray-500', !active);
+        b.setAttribute('aria-selected', String(active));
+      });
+      Object.entries(panels).forEach(([key, panel]) => {
+        panel?.classList.toggle('hidden', key !== tab);
+      });
+    });
+  });
+</script>

@@ -1,0 +1,213 @@
+{
+  "lang": "de",
+  "langName": "Deutsch",
+  "nav": {
+    "home": "Start",
+    "swimming": "Schwimmen",
+    "gym": "Fitnessstudio",
+    "activities": "Aktivitäten",
+    "padel": "Padel",
+    "prices": "Preise",
+    "schedule": "Öffnungszeiten",
+    "santanyi": "Santanyí",
+    "calaDor": "Cala d'Or",
+    "dayPass": "Tagesticket",
+    "contact": "Kontakt",
+    "bookNow": "Jetzt buchen",
+    "app": "App herunterladen"
+  },
+  "hero": {
+    "badge": "Kommunale Sportzentren Santanyí",
+    "title": "Ihr Wellness-Zentrum in der Bucht von Santanyí",
+    "subtitle": "Schwimmen · Fitnessstudio · Gruppenkurse · Padel",
+    "description": "Zwei erstklassige Sportanlagen in Santanyí und Cala d'Or. Monatsmitgliedschaft ab 10€ oder probieren Sie unser Tagesticket.",
+    "ctaPrimary": "Mitglied werden",
+    "ctaSecondary": "Preise ansehen",
+    "ctaDayPass": "Touristen Tagesticket",
+    "stats": {
+      "members": "550+ Mitglieder",
+      "experience": "15 Jahre Erfahrung",
+      "activities": "20+ Aktivitäten",
+      "locations": "2 Anlagen"
+    }
+  },
+  "trustBar": {
+    "members": "550+ zufriedene Mitglieder",
+    "experience": "15 Jahre kommunaler Sport",
+    "activities": "20+ geführte Aktivitäten",
+    "courses": "25 Schwimmkurse",
+    "locations": "2 Sportzentren"
+  },
+  "services": {
+    "title": "Alles was Sie brauchen an einem Ort",
+    "subtitle": "Qualitätsangebote für die ganze Familie, das ganze Jahr",
+    "swimming": {
+      "title": "Schwimmen",
+      "desc": "Eigene Methodik mit 25 Kursen für alle Altersgruppen. Kontinuierliche Fortschrittsbewertung."
+    },
+    "gym": {
+      "title": "Fitnessstudio",
+      "desc": "Vollausgestattetes Studio mit personalisierten Trainingsplänen via Trainingym-App."
+    },
+    "activities": {
+      "title": "Gruppenkurse",
+      "desc": "Über 20 Aktivitäten mit qualifizierten Trainern: Aqua-Fitness, Yoga, Pilates, Zumba, Spinning."
+    },
+    "padel": {
+      "title": "Padel",
+      "desc": "Platz buchen und am Anlagenranking via Playtomic teilnehmen. Regelmäßige interne Turniere."
+    },
+    "personal": {
+      "title": "Personal Training",
+      "desc": "Individuelles Training für Ihre Ziele, Verletzungsrehabilitation und spezielle Gesundheitsprogramme."
+    },
+    "health": {
+      "title": "Sport & Gesundheit",
+      "desc": "Angepasste Programme für spezifische medizinische Erkrankungen. Therapeutisches Bewegungsangebot."
+    }
+  },
+  "pricing": {
+    "title": "Klare Preise, keine Überraschungen",
+    "subtitle": "Ab 10€/Monat für Einwohner. Keine Mindestlaufzeit.",
+    "enrollment": "Aufnahmegebühr",
+    "monthly": "Monatsbeitrag",
+    "daypass": "Tagesticket",
+    "plans": {
+      "child": {
+        "name": "Kind",
+        "age": "bis 14 Jahre",
+        "price": "10",
+        "features": ["Freischwimmen", "Umkleide", "Kinderprogramme", "Buchungs-App"]
+      },
+      "youth": {
+        "name": "Jugend",
+        "age": "15–25 Jahre",
+        "price": "20",
+        "features": ["Freischwimmen", "Fitnessstudio", "Gruppenkurse", "Buchungs-App"]
+      },
+      "adult": {
+        "name": "Erwachsene",
+        "age": "26–64 Jahre",
+        "price": "25",
+        "badge": "Beliebteste Option",
+        "features": ["Freischwimmen", "Fitnessstudio", "Gruppenkurse", "Buchungs-App", "Kursrabatte"]
+      },
+      "senior": {
+        "name": "Senior",
+        "age": "65+ Jahre",
+        "price": "20",
+        "features": ["Freischwimmen", "Fitnessstudio", "Gruppenkurse", "Buchungs-App"]
+      },
+      "family": {
+        "name": "Familie",
+        "age": "2 Erwachsene + Kinder",
+        "price": "55",
+        "features": ["Ganze Familie", "Freischwimmen", "Fitnessstudio", "Aktivitäten", "Garantierte Einsparungen"]
+      }
+    },
+    "daypassPlans": {
+      "pool": { "name": "Schwimmbad", "price": "5", "desc": "1-Tages-Schwimmbadbeitritt" },
+      "poolGym": { "name": "Bad + Studio", "price": "8", "desc": "Voll-Tageszugang" }
+    },
+    "enrollment_fee": "30",
+    "cta": "Jetzt Mitglied werden",
+    "noCommitment": "Keine Mindestlaufzeit · Jederzeit kündbar",
+    "residentNote": "Preise für Einwohner von Santanyí. Kontaktieren Sie uns für Nicht-Einwohner."
+  },
+  "schedule": {
+    "title": "Öffnungszeiten",
+    "subtitle": "Ganzjährig geöffnet, auch an Feiertagen",
+    "weekdays": "Montag – Freitag",
+    "weekdaysHours": "7:00 – 22:00",
+    "saturday": "Samstag",
+    "saturdayHours": "8:00 – 21:00",
+    "sunday": "Sonntag & Feiertage",
+    "sundayHours": "9:00 – 14:00"
+  },
+  "daypass": {
+    "badge": "Touristen · Besucher",
+    "title": "Tagesticket – Tageszugang",
+    "subtitle": "Besuchen Sie Santanyí oder Cala d'Or? Nutzen Sie unsere Anlagen ohne Verpflichtung.",
+    "pool": "Schwimmbad",
+    "poolGym": "Bad + Fitnessstudio",
+    "perDay": "/ Tag",
+    "includes": "Inkl.: Umkleide, Duschen, Schließfach",
+    "cta": "Tagesticket kaufen",
+    "or": "oder an der Rezeption fragen"
+  },
+  "facilities": {
+    "title": "Zwei Anlagen, ein Erlebnis",
+    "subtitle": "Santanyí und Cala d'Or, nur wenige Minuten entfernt",
+    "santanyi": {
+      "name": "Schwimmbad Santanyí",
+      "desc": "25m-Hallenbad, vollausgestattetes Fitnessstudio, Kursstudio und moderne Umkleiden.",
+      "address": "Carrer Bernat Vidal i Tomàs, 83, 07650 Santanyí",
+      "phone": "673 003 828",
+      "email": "piscinasantanyi@algaliasport.net",
+      "features": ["25m Hallenbad", "Fitnessstudio", "Kursstudio", "Padel-Courts"]
+    },
+    "calaDor": {
+      "name": "Schwimmbad Cala d'Or",
+      "desc": "Sportkomplex in Cala d'Or mit Schwimmbad, modernem Fitnessstudio und Nähe zum Yachthafen.",
+      "address": "Avinguda Sementer, S/N, 07691 Cala d'Or",
+      "phone": "673 008 715",
+      "email": "piscinacalador@algaliasport.net",
+      "features": ["Schwimmbad", "Modernes Fitnessstudio", "Gruppenkurse", "Außenbereich"]
+    }
+  },
+  "app": {
+    "badge": "Neue App",
+    "title": "Buchungen vom Smartphone verwalten",
+    "subtitle": "Mit unserer PWA-App Aktivitäten buchen, Öffnungszeiten abrufen und per QR-Code eintreten.",
+    "features": ["Echtzeit-Buchung", "QR-Zutritt", "Buchungsverlauf", "Kursbenachrichtigungen"],
+    "cta": "App herunterladen"
+  },
+  "contact": {
+    "title": "Kontakt aufnehmen",
+    "subtitle": "Wir beantworten Ihre Fragen innerhalb von 24 Stunden",
+    "form": {
+      "name": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefon (optional)",
+      "facility": "Anlage",
+      "facilityOptions": ["Santanyí", "Cala d'Or", "Egal"],
+      "interest": "Gewünschter Service",
+      "interestOptions": ["Monatsmitgliedschaft", "Schwimmkurs", "Fitnessstudio", "Gruppenkurse", "Personal Training", "Padel", "Tagesticket", "Andere Anfrage"],
+      "message": "Nachricht (optional)",
+      "messagePlaceholder": "Schreiben Sie Ihre Anfrage hier...",
+      "submit": "Anfrage senden",
+      "privacy": "Ich akzeptiere die Datenschutzrichtlinie",
+      "success": "Nachricht gesendet! Wir melden uns bald.",
+      "error": "Ein Fehler ist aufgetreten. Bitte erneut versuchen oder anrufen."
+    },
+    "whatsapp": "WhatsApp-Chat",
+    "callUs": "Anrufen",
+    "emailUs": "E-Mail senden"
+  },
+  "footer": {
+    "tagline": "Betrieben von Algàlia Esport SL · Kommunale Konzession der Gemeinde Santanyí",
+    "links": {
+      "privacy": "Datenschutzerklärung",
+      "cookies": "Cookie-Richtlinie",
+      "legal": "Impressum",
+      "accessibility": "Barrierefreiheit"
+    },
+    "social": { "instagram": "Instagram", "facebook": "Facebook" }
+  },
+  "meta": {
+    "home": {
+      "title": "Schwimmbäder Santanyí & Cala d'Or | Mitgliedschaft ab 10€/Monat",
+      "description": "Kommunale Sportzentren in Santanyí und Cala d'Or, Mallorca. Schwimmen, Fitness, Kurse und Padel. Ab 10€/Monat oder Tagesticket. Ganzjährig geöffnet."
+    },
+    "swimming": { "title": "Schwimmen Santanyí | 25 Kurse", "description": "Schwimmkurse für Erwachsene und Kinder in Santanyí und Cala d'Or." },
+    "gym": { "title": "Fitnessstudio Santanyí | Fitness & Kraft", "description": "Kommunales Fitnessstudio in Santanyí mit personalisierten Trainingsplänen." },
+    "activities": { "title": "Gruppenkurse Santanyí | 20+ wöchentliche Kurse", "description": "Yoga, Pilates, Aqua-Fitness und mehr in Santanyí, Mallorca." },
+    "padel": { "title": "Padel Santanyí | Buchung via Playtomic", "description": "Padel-Courts in Santanyí. Online-Buchung via Playtomic." },
+    "prices": { "title": "Preise Santanyí Schwimmbäder | Ab 10€/Monat", "description": "Mitgliedsbeiträge, Kurse und Tagesticket in Santanyí und Cala d'Or." },
+    "schedule": { "title": "Öffnungszeiten Santanyí & Cala d'Or", "description": "Öffnungszeiten: Mo-Fr 7-22h, Sa 8-21h, So 9-14h. Ganzjährig." },
+    "santanyi": { "title": "Hallenbad Santanyí | Kommunales Sportzentrum", "description": "25m Hallenbad, Fitnessstudio und Kurse im Zentrum von Santanyí." },
+    "calaDor": { "title": "Schwimmbad Cala d'Or | Kommunaler Sportkomplex", "description": "Bad, Fitnessstudio und Aktivitäten in Cala d'Or, Mallorca." },
+    "daypass": { "title": "Tagesticket Santanyí | Schwimmbad ab 5€", "description": "Tageszugang zu Bad und Fitnessstudio in Santanyí und Cala d'Or." },
+    "contact": { "title": "Kontakt | Schwimmbäder Santanyí & Cala d'Or", "description": "Kontakt: Tel. 673 003 828." }
+  }
+}

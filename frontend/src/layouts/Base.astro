@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl, getAlternateLangs, supportedLangs, type Lang } from '../i18n/utils';
+import SchemaMarkup from '../components/SchemaMarkup.astro';
+import NavComponent from '../components/Nav';
+import FooterComponent from '../components/Footer';
+import CookieBanner from '../components/CookieBanner.astro';
+import client from '../../tina/__generated__/client';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalPath?: string;
+  schemaType?: 'home' | 'facility' | 'activity' | 'contact';
+  facilityName?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-default.jpg',
+  canonicalPath = '/',
+  schemaType = 'home',
+  facilityName,
+  noindex = false,
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const siteUrl = 'https://piscinessantanyicalador.com';
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+const alternates = getAlternateLangs(canonicalPath);
+const ogImage = `${siteUrl}${image}`;
+const currentPath = Astro.url.pathname;
+
+// Fetch nav + settings per TinaCMS visual editing
+const navRes      = await client.queries.navigation({ relativePath: 'navigation.json' });
+const settingsRes = await client.queries.settings({ relativePath: 'settings.json' });
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+
+    {supportedLangs.map(l => (
+      <link
+        rel="alternate"
+        hreflang={l === 'ca' ? 'ca-ES' : l === 'es' ? 'es-ES' : l === 'en' ? 'en-GB' : 'de-DE'}
+        href={`${siteUrl}${alternates[l]}`}
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${canonicalPath}`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === 'ca' ? 'ca_ES' : lang === 'es' ? 'es_ES' : lang === 'en' ? 'en_GB' : 'de_DE'} />
+    <meta property="og:site_name" content="Piscines Santanyí i Cala d'Or" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <SchemaMarkup type={schemaType} lang={lang} facilityName={facilityName} />
+  </head>
+  <body>
+    <!-- Nav amb visual editing -->
+    <NavComponent
+      client:load
+      navQuery={navRes.query}
+      navVariables={navRes.variables}
+      navData={navRes.data}
+      settingsQuery={settingsRes.query}
+      settingsVariables={settingsRes.variables}
+      settingsData={settingsRes.data}
+      lang={lang}
+      currentPath={currentPath}
+    />
+
+    <slot />
+
+    <!-- Footer amb visual editing -->
+    <FooterComponent
+      client:load
+      query={settingsRes.query}
+      variables={settingsRes.variables}
+      data={settingsRes.data}
+      lang={lang}
+    />
+
+    <!-- Cookie banner -->
+    <CookieBanner />
+
+    <!-- TinaCMS: botó d'edició/sortir (només en localhost) -->
+    <script define:vars={{ canonicalPath }}>
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        const inIframe = window.self !== window.top;
+        const btn = document.createElement('a');
+        btn.style.cssText = [
+          'position:fixed', 'bottom:24px', 'right:24px', 'z-index:9999',
+          'color:white', 'border-radius:50px',
+          'padding:12px 20px', 'font-size:14px', 'font-weight:700',
+          'text-decoration:none', 'display:flex', 'align-items:center',
+          'gap:8px', 'box-shadow:0 4px 20px rgba(0,0,0,0.25)',
+          'font-family:system-ui,sans-serif', 'transition:transform 0.15s',
+        ].join(';');
+        btn.onmouseenter = () => { btn.style.transform = 'scale(1.05)'; };
+        btn.onmouseleave = () => { btn.style.transform = 'scale(1)'; };
+
+        if (inIframe) {
+          // Dins el visual editor de TinaCMS → botó per sortir
+          btn.href = window.location.pathname + window.location.search;
+          btn.target = '_top';
+          btn.title = 'Sortir de l\'editor';
+          btn.style.background = '#1e293b';
+          btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg> Sortir de l'editor`;
+        } else {
+          // Format visual editor TinaCMS: #/~/{ruta} mostra pàgina + formulari junts
+          btn.href = `/admin/index.html#/~${canonicalPath}`;
+          btn.title = 'Editar contingut';
+          btn.style.background = '#EC4815';
+          btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Editar`;
+        }
+
+        document.body.appendChild(btn);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+{
+  "lang": "es",
+  "langName": "Castellano",
+  "nav": {
+    "home": "Inicio",
+    "swimming": "Natación",
+    "gym": "Gimnasio",
+    "activities": "Actividades",
+    "padel": "Pádel",
+    "prices": "Precios",
+    "schedule": "Horarios",
+    "santanyi": "Santanyí",
+    "calaDor": "Cala d'Or",
+    "dayPass": "Day Pass",
+    "contact": "Contacto",
+    "bookNow": "Reservar ahora",
+    "app": "Descarga la App"
+  },
+  "hero": {
+    "badge": "Piscinas Municipales de Santanyí",
+    "title": "Tu espacio de bienestar en la bahía de Santanyí",
+    "subtitle": "Natación · Gimnasio · Actividades dirigidas · Pádel",
+    "description": "Dos instalaciones deportivas de primer nivel en Santanyí y Cala d'Or. Abónate desde 10€/mes o prueba nuestro Day Pass.",
+    "ctaPrimary": "Hazte abonado",
+    "ctaSecondary": "Ver precios",
+    "ctaDayPass": "Day Pass turista",
+    "stats": {
+      "members": "550+ abonados",
+      "experience": "15 años de experiencia",
+      "activities": "20+ actividades",
+      "locations": "2 instalaciones"
+    }
+  },
+  "trustBar": {
+    "members": "550+ Abonados satisfechos",
+    "experience": "15 años gestionando deporte municipal",
+    "activities": "20+ actividades dirigidas",
+    "courses": "25 cursos de natación",
+    "locations": "2 centros deportivos"
+  },
+  "services": {
+    "title": "Todo lo que necesitas en un solo lugar",
+    "subtitle": "Servicios de calidad para toda la familia, todo el año",
+    "swimming": {
+      "title": "Natación",
+      "desc": "Metodología propia con 25 cursos para todas las edades y niveles. Evaluación continua del progreso."
+    },
+    "gym": {
+      "title": "Gimnasio & Fitness",
+      "desc": "Sala completamente equipada con rutinas personalizadas via app Trainingym. Cardio, musculación y mucho más."
+    },
+    "activities": {
+      "title": "Actividades Dirigidas",
+      "desc": "Más de 20 actividades con instructores titulados: aqua-fitness, yoga, pilates, zumba, spinning y muchas más."
+    },
+    "padel": {
+      "title": "Pádel",
+      "desc": "Reserva pista y participa en el ranking de la instalación via Playtomic. Competiciones internas regulares."
+    },
+    "personal": {
+      "title": "Entrenador Personal",
+      "desc": "Entrenamiento personalizado para tus objetivos, readaptación de lesiones y programas específicos de salud."
+    },
+    "health": {
+      "title": "Deporte & Salud",
+      "desc": "Programas adaptados para condiciones médicas específicas. Ejercicio terapéutico con profesionales."
+    }
+  },
+  "pricing": {
+    "title": "Precios claros, sin sorpresas",
+    "subtitle": "Desde 10€/mes para residentes. Sin permanencia.",
+    "enrollment": "Cuota de inscripción",
+    "monthly": "Cuota mensual",
+    "daypass": "Day Pass",
+    "plans": {
+      "child": {
+        "name": "Infantil",
+        "age": "hasta 14 años",
+        "price": "10",
+        "features": ["Piscina libre", "Acceso vestuarios", "Actividades infantiles", "App reservas"]
+      },
+      "youth": {
+        "name": "Joven",
+        "age": "15 a 25 años",
+        "price": "20",
+        "features": ["Piscina libre", "Gimnasio", "Actividades dirigidas", "App reservas"]
+      },
+      "adult": {
+        "name": "Adulto",
+        "age": "26 a 64 años",
+        "price": "25",
+        "badge": "Más popular",
+        "features": ["Piscina libre", "Gimnasio", "Actividades dirigidas", "App reservas", "Descuentos cursos"]
+      },
+      "senior": {
+        "name": "Senior",
+        "age": "+65 años",
+        "price": "20",
+        "features": ["Piscina libre", "Gimnasio", "Actividades dirigidas", "App reservas"]
+      },
+      "family": {
+        "name": "Familia",
+        "age": "2 adultos + hijos",
+        "price": "55",
+        "features": ["Toda la familia", "Piscina libre", "Gimnasio adultos", "Actividades", "Ahorro garantizado"]
+      }
+    },
+    "daypassPlans": {
+      "pool": { "name": "Piscina", "price": "5", "desc": "Acceso 1 día piscina" },
+      "poolGym": { "name": "Piscina + Gimnasio", "price": "8", "desc": "Acceso completo 1 día" }
+    },
+    "enrollment_fee": "30",
+    "cta": "Hazte abonado ahora",
+    "noCommitment": "Sin permanencia · Cancela cuando quieras",
+    "residentNote": "Precios para residentes en Santanyí. Consulta para no residentes."
+  },
+  "schedule": {
+    "title": "Horarios",
+    "subtitle": "Abierto todo el año, incluso festivos",
+    "weekdays": "Lunes – Viernes",
+    "weekdaysHours": "7:00 – 22:00",
+    "saturday": "Sábado",
+    "saturdayHours": "8:00 – 21:00",
+    "sunday": "Domingo y festivos",
+    "sundayHours": "9:00 – 14:00"
+  },
+  "daypass": {
+    "badge": "Turistas · Visitantes",
+    "title": "Day Pass – Acceso de un día",
+    "subtitle": "¿Visitas Santanyí o Cala d'Or? Disfruta de nuestras instalaciones sin compromiso.",
+    "pool": "Piscina",
+    "poolGym": "Piscina + Gimnasio",
+    "perDay": "/ día",
+    "includes": "Incluye: vestuarios, duchas, taquilla",
+    "cta": "Comprar Day Pass",
+    "or": "o consulta en recepción"
+  },
+  "facilities": {
+    "title": "Dos instalaciones, una sola experiencia",
+    "subtitle": "Santanyí y Cala d'Or, a poca distancia",
+    "santanyi": {
+      "name": "Piscina de Santanyí",
+      "desc": "Piscina cubierta de 25m, gimnasio completamente equipado, sala de actividades y vestuarios modernos.",
+      "address": "Carrer Bernat Vidal i Tomàs, 83, 07650 Santanyí",
+      "phone": "673 003 828",
+      "email": "piscinasantanyi@algaliasport.net",
+      "features": ["Piscina cubierta 25m", "Gimnasio equipado", "Sala actividades", "Pádel"]
+    },
+    "calaDor": {
+      "name": "Piscina de Cala d'Or",
+      "desc": "Complejo deportivo en Cala d'Or con piscina, gimnasio moderno y acceso directo desde la marina.",
+      "address": "Avinguda Sementer, S/N, 07691 Cala d'Or",
+      "phone": "673 008 715",
+      "email": "piscinacalador@algaliasport.net",
+      "features": ["Piscina", "Gimnasio moderno", "Actividades dirigidas", "Zona exterior"]
+    }
+  },
+  "app": {
+    "badge": "Nueva App",
+    "title": "Gestiona tus reservas desde el móvil",
+    "subtitle": "Con nuestra app PWA reserva actividades, consulta horarios y accede con QR a las instalaciones.",
+    "features": ["Reserva de actividades en tiempo real", "QR de acceso a las instalaciones", "Historial de reservas", "Notificaciones de clases"],
+    "cta": "Descargar la App"
+  },
+  "contact": {
+    "title": "Ponte en contacto",
+    "subtitle": "Resolvemos tus dudas en menos de 24 horas",
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono (opcional)",
+      "facility": "Instalación",
+      "facilityOptions": ["Santanyí", "Cala d'Or", "Indistinto"],
+      "interest": "Servicio de interés",
+      "interestOptions": ["Abonado mensual", "Natación – curso", "Gimnasio", "Actividades dirigidas", "Entrenador personal", "Pádel", "Day Pass", "Otra consulta"],
+      "message": "Mensaje (opcional)",
+      "messagePlaceholder": "Escribe aquí tu consulta...",
+      "submit": "Enviar consulta",
+      "privacy": "Acepto la política de privacidad",
+      "success": "¡Mensaje enviado! Nos pondremos en contacto pronto.",
+      "error": "Ha ocurrido un error. Inténtalo de nuevo o llámanos."
+    },
+    "whatsapp": "Chatea por WhatsApp",
+    "callUs": "Llámanos",
+    "emailUs": "Escríbenos"
+  },
+  "footer": {
+    "tagline": "Gestionado por Algàlia Esport SL · Concesión municipal del Ayuntamiento de Santanyí",
+    "links": {
+      "privacy": "Política de privacidad",
+      "cookies": "Política de cookies",
+      "legal": "Aviso legal",
+      "accessibility": "Accesibilidad"
+    },
+    "social": { "instagram": "Instagram", "facebook": "Facebook" }
+  },
+  "meta": {
+    "home": {
+      "title": "Piscinas Santanyí y Cala d'Or | Abónate desde 10€/mes",
+      "description": "Piscinas municipales de Santanyí y Cala d'Or. Natación, gimnasio, actividades dirigidas y pádel. Desde 10€/mes o Day Pass. Abierto todo el año."
+    },
+    "swimming": { "title": "Natación Santanyí | 25 Cursos", "description": "Cursos de natación en Santanyí y Cala d'Or para adultos y niños." },
+    "gym": { "title": "Gimnasio Santanyí | Fitness y Musculación", "description": "Gimnasio municipal en Santanyí con rutinas personalizadas." },
+    "activities": { "title": "Actividades Dirigidas Santanyí | 20+ Clases", "description": "Yoga, pilates, aqua-fitness, zumba y mucho más en Santanyí." },
+    "padel": { "title": "Pádel Santanyí | Reservas via Playtomic", "description": "Pistas de pádel en Santanyí. Reserva online via Playtomic." },
+    "prices": { "title": "Precios Piscinas Santanyí | Desde 10€/mes", "description": "Tarifas de abonados, cursos y day pass en Santanyí y Cala d'Or." },
+    "schedule": { "title": "Horarios Piscinas Santanyí y Cala d'Or", "description": "Horarios de apertura: Lun-Vie 7-22h, Sáb 8-21h, Dom 9-14h." },
+    "santanyi": { "title": "Piscina Municipal Santanyí", "description": "Piscina cubierta 25m, gimnasio y actividades en el centro de Santanyí." },
+    "calaDor": { "title": "Piscina Cala d'Or | Complejo Deportivo Municipal", "description": "Piscina, gimnasio y actividades en Cala d'Or, Mallorca." },
+    "daypass": { "title": "Day Pass Santanyí | Piscina desde 5€", "description": "Acceso de un día a piscina y gimnasio en Santanyí y Cala d'Or." },
+    "contact": { "title": "Contacto | Piscinas Santanyí y Cala d'Or", "description": "Contacta con las piscinas de Santanyí. Tel: 673 003 828." }
+  }
+}

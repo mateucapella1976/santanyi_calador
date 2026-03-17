@@ -1,0 +1,157 @@
+---
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  type: 'home' | 'facility' | 'activity' | 'contact';
+  lang: Lang;
+  facilityName?: string;
+}
+
+const { type, lang, facilityName } = Astro.props;
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "@id": "https://piscinessantanyicalador.com/#organization",
+  "name": "Piscines Santanyí i Cala d'Or",
+  "alternateName": "Algàlia Esport SL",
+  "url": "https://piscinessantanyicalador.com",
+  "logo": "https://piscinessantanyicalador.com/images/logo.png",
+  "telephone": "+34673003828",
+  "email": "piscinasantanyi@algaliasport.net",
+  "description": "Instal·lacions esportives municipals a Santanyí i Cala d'Or (Mallorca) gestionades per Algàlia Esport SL. Natació, gimnàs, activitats dirigides i pàdel.",
+  "sameAs": [
+    "https://www.instagram.com/piscinasantanyicalador/",
+    "https://www.facebook.com/piscinasantanyi"
+  ],
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "Carrer Bernat Vidal i Tomàs, 83",
+      "addressLocality": "Santanyí",
+      "postalCode": "07650",
+      "addressCountry": "ES",
+      "addressRegion": "Illes Balears"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "39.3561",
+    "longitude": "3.1253"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "22:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "08:00",
+      "closes": "21:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "hasMap": "https://maps.google.com/?q=Piscina+Santanyí",
+  "containsPlace": [
+    {
+      "@type": "SwimmingPool",
+      "name": "Piscina Coberta Santanyí",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrer Bernat Vidal i Tomàs, 83",
+        "addressLocality": "Santanyí",
+        "postalCode": "07650",
+        "addressCountry": "ES"
+      },
+      "telephone": "+34673003828"
+    },
+    {
+      "@type": "SwimmingPool",
+      "name": "Piscina Cala d'Or",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avinguda Sementer, S/N",
+        "addressLocality": "Cala d'Or",
+        "postalCode": "07691",
+        "addressCountry": "ES"
+      },
+      "telephone": "+34673008715"
+    }
+  ],
+  "priceRange": "€",
+  "currenciesAccepted": "EUR",
+  "paymentAccepted": "Cash, Credit Card",
+  "inLanguage": ["ca", "es", "en", "de"]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inici",
+      "item": "https://piscinessantanyicalador.com"
+    }
+  ]
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "SportsActivityLocation", "SwimmingPool"],
+  "name": "Piscines Santanyí i Cala d'Or",
+  "description": "Piscines municipals de Santanyí i Cala d'Or. Natació, gimnàs, activitats dirigides i pàdel. Gestionat per Algàlia Esport SL.",
+  "url": "https://piscinessantanyicalador.com",
+  "telephone": "+34673003828",
+  "priceRange": "€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Carrer Bernat Vidal i Tomàs, 83",
+    "addressLocality": "Santanyí",
+    "postalCode": "07650",
+    "addressCountry": "ES"
+  },
+  "openingHours": ["Mo-Fr 07:00-22:00", "Sa 08:00-21:00", "Su 09:00-14:00"],
+  "image": "https://piscinessantanyicalador.com/images/og-default.jpg"
+};
+---
+
+{type === 'home' && (
+  <>
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </>
+)}
+
+{type === 'facility' && (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    ...organizationSchema,
+    "name": facilityName || organizationSchema.name
+  })} />
+)}
+
+{type === 'contact' && (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": `Contacte – Piscines Santanyí i Cala d'Or`,
+    "url": "https://piscinessantanyicalador.com/contacte",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Algàlia Esport SL",
+      "telephone": "+34673003828",
+      "email": "piscinasantanyi@algaliasport.net"
+    }
+  })} />
+)}
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

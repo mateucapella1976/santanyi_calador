@@ -1,0 +1,131 @@
+---
+import Page from '../../layouts/Page.astro';
+import { getLangFromUrl, useTranslations, type Lang } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Page
+  title="Política de Galetes – Piscines Santanyí Cala d'Or"
+  description="Política de galetes (cookies) del lloc web piscinessantanyicalador.com"
+  canonicalPath="/politica-cookies"
+  schemaType="home"
+  noindex={true}
+>
+  <section class="section bg-white">
+    <div class="container-site max-w-3xl prose prose-gray">
+
+      <h1 class="font-display font-bold text-3xl text-dark mb-8">Política de Galetes (Cookies)</h1>
+
+      <p>L'entitat ALGALIA SPORT, S.L., amb NIF/CIF: B57239873, domicili en C/ Laberint Nº11, 07210 Algaida, Illes Balears, adreça de correu electrònic: <a href="mailto:algalia@algaliasport.net" class="text-primary-600">algalia@algaliasport.net</a> i web: <strong>www.piscinessantanyicalador.com</strong> informa l'usuari de manera expressa que, de conformitat amb l'art. 22.2 de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic (LSSI), aquesta web utilitza galetes amb l'objectiu de prestar un millor servei i proporcionar-li una millor experiència de navegació.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Què és una galeta?</h2>
+      <p>Una galeta és un fitxer que es descarrega en els llocs web i que determinades pàgines web envien al navegador, i que s'emmagatzemen en el terminal de l'usuari, el qual pot ser un ordinador personal, un telèfon mòbil, una tauleta, etc. Aquests arxius permeten que el lloc web recordi informació sobre la seva visita, com l'idioma i les opcions preferides, la qual cosa li permet recuperar informació sobre la navegació que s'efectua des del seu equip.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Com s'utilitzen les galetes?</h2>
+      <p>En navegar per aquesta pàgina web, l'usuari està acceptant que es puguin instal·lar galetes en la seva terminal, les quals ens permeten conèixer la següent informació:</p>
+      <ul class="space-y-1 text-sm">
+        <li>Reconèixer-li com a usuari.</li>
+        <li>Obtenir informació sobre els seus hàbits de navegació.</li>
+        <li>Personalitzar la forma en què es mostra el contingut.</li>
+        <li>Informació estadística de l'ús de la web.</li>
+        <li>El login de l'usuari per a mantenir la sessió activa en la web.</li>
+        <li>El format de la web preferent en l'accés des de dispositius mòbils.</li>
+        <li>Les últimes cerques realitzades en els serveis de la web.</li>
+        <li>Informació sobre els anuncis que es mostren a l'usuari.</li>
+        <li>Dades de la connexió amb les xarxes socials.</li>
+      </ul>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Tipus de galetes</h2>
+
+      <h3 class="font-display font-semibold text-lg text-dark mt-6 mb-3">A. Segons el termini de temps</h3>
+      <ul class="space-y-2 text-sm">
+        <li><strong>Galetes de sessió:</strong> emmagatzemen dades únicament mentre l'usuari accedeix a la web. Desapareixen en acabar la sessió.</li>
+        <li><strong>Galetes persistents/permanents:</strong> emmagatzemen les dades en el terminal perquè siguin accedits i utilitzats en més d'una sessió. Poden anar d'uns minuts a diversos anys.</li>
+      </ul>
+
+      <h3 class="font-display font-semibold text-lg text-dark mt-6 mb-3">B. Segons la seva finalitat</h3>
+      <ul class="space-y-2 text-sm">
+        <li><strong>Galetes estrictament necessàries:</strong> són absolutament essencials perquè el lloc web funcioni correctament. No emmagatzemen cap informació personal.</li>
+        <li><strong>Galetes tècniques:</strong> permeten la navegació a través de la pàgina web i la utilització de les diferents opcions o serveis que en ella existeixin.</li>
+        <li><strong>Galetes de personalització:</strong> permeten a l'usuari accedir al servei amb algunes característiques predefinides com l'idioma, el tipus de navegador, la configuració regional, etc.</li>
+        <li><strong>Galetes analítiques:</strong> permeten quantificar el nombre d'usuaris i realitzar el mesurament i anàlisi estadística de la utilització que fan els usuaris del servei ofert.</li>
+        <li><strong>Galetes de publicitat comportamental:</strong> emmagatzemen informació del comportament dels usuaris obtinguda a través de l'observació continuada dels seus hàbits de navegació, la qual cosa permet desenvolupar un perfil específic per a mostrar publicitat en funció d'aquest.</li>
+      </ul>
+
+      <h3 class="font-display font-semibold text-lg text-dark mt-6 mb-3">C. Segons l'entitat que les gestioni</h3>
+      <ul class="space-y-2 text-sm">
+        <li><strong>Galetes pròpies:</strong> s'envien a l'equip terminal de l'usuari des d'un equip o domini gestionat pel propi editor.</li>
+        <li><strong>Galetes de tercers:</strong> s'envien a l'equip terminal de l'usuari des d'un equip o domini gestionat per una altra entitat. Per exemple, serveis estadístics de Google Analytics.</li>
+      </ul>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Galetes utilitzades en aquest lloc web</h2>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse border border-gray-200 mt-4">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="border border-gray-200 px-3 py-2 text-left font-semibold">Cookie</th>
+              <th class="border border-gray-200 px-3 py-2 text-left font-semibold">Tipus</th>
+              <th class="border border-gray-200 px-3 py-2 text-left font-semibold">Durada</th>
+              <th class="border border-gray-200 px-3 py-2 text-left font-semibold">Finalitat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2">_ga</td>
+              <td class="border border-gray-200 px-3 py-2">Tercers (Google Analytics)</td>
+              <td class="border border-gray-200 px-3 py-2">1 any</td>
+              <td class="border border-gray-200 px-3 py-2">Analítica</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2">_gat</td>
+              <td class="border border-gray-200 px-3 py-2">Tercers (Google Analytics)</td>
+              <td class="border border-gray-200 px-3 py-2">1 minut</td>
+              <td class="border border-gray-200 px-3 py-2">Analítica</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2">_gid</td>
+              <td class="border border-gray-200 px-3 py-2">Tercers (Google Analytics)</td>
+              <td class="border border-gray-200 px-3 py-2">24 hores</td>
+              <td class="border border-gray-200 px-3 py-2">Analítica</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2">CONSENT</td>
+              <td class="border border-gray-200 px-3 py-2">Tercers (Google)</td>
+              <td class="border border-gray-200 px-3 py-2">2 anys</td>
+              <td class="border border-gray-200 px-3 py-2">Tècnica</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-200 px-3 py-2">NID</td>
+              <td class="border border-gray-200 px-3 py-2">Tercers (Google)</td>
+              <td class="border border-gray-200 px-3 py-2">6 mesos</td>
+              <td class="border border-gray-200 px-3 py-2">Preferència / Personalització</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4 text-sm">Les galetes no contenen informació que permeti per si sola identificar a un usuari concret. La informació obtinguda només podrà ser associada a un usuari concret en cas que aquest usuari estigui identificat en la web.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Com administrar galetes en el navegador?</h2>
+      <p>L'usuari té l'opció de permetre, bloquejar o eliminar les galetes instal·lades en el seu equip mitjançant la configuració de les opcions del navegador instal·lat en la seva terminal.</p>
+      <p>En cas de bloquejar l'ús de galetes en el seu navegador, és possible que alguns serveis o funcionalitats de la pàgina web no estiguin disponibles.</p>
+
+      <p class="mt-4">A continuació s'indiquen els enllaços per gestionar galetes en els principals navegadors:</p>
+      <ul class="space-y-1 text-sm">
+        <li><a href="https://support.google.com/chrome/answer/95647?hl=ca" target="_blank" rel="noopener noreferrer" class="text-primary-600">Google Chrome</a></li>
+        <li><a href="https://support.microsoft.com/es-es/windows/administrar-cookies-en-microsoft-edge-ver-permitir-bloquear-eliminar-y-usar-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank" rel="noopener noreferrer" class="text-primary-600">Microsoft Edge</a></li>
+        <li><a href="https://support.mozilla.org/ca/kb/galetes-informacio-que-els-llocs-web-desen-al" target="_blank" rel="noopener noreferrer" class="text-primary-600">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/ca-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" class="text-primary-600">Apple Safari</a></li>
+      </ul>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Actualització de la Política de Galetes</h2>
+      <p>ALGALIA SPORT, S.L. actualitzarà la present política quan sigui necessari, ja sigui perquè ho exigeixi una normativa o bé suprimeixi o empri noves galetes. Qualsevol modificació d'aquestes condicions serà publicada en aquest lloc web.</p>
+
+      <p class="mt-4">Si té dubtes sobre aquesta política de galetes, pot contactar amb l'entitat ALGALIA SPORT, S.L. a través del correu electrònic <a href="mailto:algalia@algaliasport.net" class="text-primary-600">algalia@algaliasport.net</a>.</p>
+
+    </div>
+  </section>
+</Page>

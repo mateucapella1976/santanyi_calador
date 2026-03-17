@@ -1,0 +1,41 @@
+---
+import Page from '../../layouts/Page.astro';
+import GenericPage from '../../components/GenericPage';
+import { getLangFromUrl, type Lang } from '../../i18n/utils';
+import client from '../../../tina/__generated__/client';
+
+export async function getStaticPaths() {
+  // List all JSON files in src/content/pagines/ to generate routes dynamically.
+  // Each file like "entrenador-personal.json" creates a route at "/entrenador-personal".
+  const files = import.meta.glob('../content/pagines/*.json');
+  return Object.keys(files).map((path) => {
+    const slug = path.split('/').pop()!.replace('.json', '');
+    return { params: { slug } };
+  });
+}
+
+const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url) as Lang;
+const lk = lang === 'es' ? 'Es' : lang === 'en' ? 'En' : lang === 'de' ? 'De' : 'Ca';
+
+const pageRes = await (client.queries as any).pagines({ relativePath: `${slug}.json` });
+const page = pageRes.data?.pagines ?? {};
+
+const seoTitle = page[`seoTitle${lk}`] || page.seoTitleCa || page[`heroTitle${lk}`] || page.heroTitleCa || slug!;
+const seoDesc  = page[`seoDesc${lk}`]  || page.seoDescCa  || '';
+---
+
+<Page
+  title={seoTitle}
+  description={seoDesc}
+  canonicalPath={`/${slug}`}
+  schemaType="facility"
+>
+  <GenericPage
+    client:load
+    query={pageRes.query}
+    variables={pageRes.variables}
+    data={pageRes.data}
+    lang={lang}
+  />
+</Page>

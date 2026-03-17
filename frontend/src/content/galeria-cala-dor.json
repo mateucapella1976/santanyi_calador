@@ -1,0 +1,31 @@
+{
+  "fotos": [
+    {
+      "imatge": "/images/img_7.jpg",
+      "alt": "Entrada principal Piscina Cala d'Or"
+    },
+    {
+      "imatge": "/images/img_9.jpg",
+      "alt": "Piscina Cala d'Or"
+    },
+    {
+      "imatge": "/images/img_8.jpg",
+      "alt": "Recepció Cala d'Or"
+    },
+    {
+      "imatge": "/images/img_4.png",
+      "alt": "Sala fitness Cala d'Or"
+    },
+    {
+      "imatge": "/images/img_10.jpg",
+      "alt": "Pàdel Cala d'Or"
+    },
+    {
+      "imatge": "/images/img_11.jpg",
+      "alt": "Box Cala d'Or"
+    },
+    {
+      "imatge": ""
+    }
+  ]
+}

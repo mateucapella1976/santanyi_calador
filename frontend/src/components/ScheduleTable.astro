@@ -1,0 +1,95 @@
+---
+import { useTranslations, type Lang } from '../i18n/utils';
+import horarisData from '../content/horaris.json';
+
+interface Props {
+  lang: Lang;
+  compact?: boolean;
+}
+
+const { lang, compact = false } = Astro.props;
+const t = useTranslations(lang);
+
+const data = horarisData as any;
+const temporada = data.temporada ?? '';
+const rows = data.rows ?? [];
+
+const days = [
+  { key: 'dilluns',   label: lang === 'es' ? 'Lun' : lang === 'en' ? 'Mon' : lang === 'de' ? 'Mo' : 'Dl' },
+  { key: 'dimarts',   label: lang === 'es' ? 'Mar' : lang === 'en' ? 'Tue' : lang === 'de' ? 'Di' : 'Dm' },
+  { key: 'dimecres',  label: lang === 'es' ? 'Mié' : lang === 'en' ? 'Wed' : lang === 'de' ? 'Mi' : 'Dc' },
+  { key: 'dijous',    label: lang === 'es' ? 'Jue' : lang === 'en' ? 'Thu' : lang === 'de' ? 'Do' : 'Dj' },
+  { key: 'divendres', label: lang === 'es' ? 'Vie' : lang === 'en' ? 'Fri' : lang === 'de' ? 'Fr' : 'Dv' },
+  { key: 'dissabte',  label: lang === 'es' ? 'Sáb' : lang === 'en' ? 'Sat' : lang === 'de' ? 'Sa' : 'Ds' },
+];
+---
+
+{compact ? (
+  <div class="bg-primary-50 rounded-2xl p-6 border border-primary-100">
+    <h3 class="font-display font-semibold text-dark mb-4">{t('schedule.title')}</h3>
+    {temporada && <p class="text-xs text-primary-600 font-medium mb-3">{temporada}</p>}
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr>
+            <th class="text-left py-1 pr-3 text-gray-500 font-medium">
+              {lang === 'es' ? 'Actividad' : lang === 'en' ? 'Activity' : lang === 'de' ? 'Aktivität' : 'Activitat'}
+            </th>
+            {days.map(d => <th class="text-center py-1 px-1 text-gray-500 font-medium">{d.label}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row: any) => (
+            <tr class="border-t border-primary-100">
+              <td class="py-1.5 pr-3 font-semibold text-dark">{row.activitat}</td>
+              {days.map(d => <td class="text-center py-1.5 px-1 text-gray-600 text-xs">{row[d.key] || '–'}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+) : (
+  <section class="section bg-white" aria-labelledby="schedule-heading">
+    <div class="container-site">
+      <div class="text-center mb-12">
+        <span class="badge-blue mb-3">{t('schedule.title')}</span>
+        <h2 id="schedule-heading" class="section-title">{t('schedule.title')}</h2>
+        <p class="section-subtitle">{t('schedule.subtitle')}</p>
+        {temporada && <p class="text-sm text-primary-600 font-semibold mt-2">{temporada}</p>}
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+        <table class="w-full text-sm">
+          <thead class="bg-primary-500 text-white">
+            <tr>
+              <th class="text-left px-4 py-3 font-semibold rounded-tl-2xl">
+                {lang === 'es' ? 'Actividad' : lang === 'en' ? 'Activity' : lang === 'de' ? 'Aktivität' : 'Activitat'}
+              </th>
+              {days.map((d, i) => (
+                <th class:list={['text-center px-3 py-3 font-semibold', i === days.length - 1 ? 'rounded-tr-2xl' : '']}>{d.label}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row: any, i: number) => (
+              <tr class:list={['border-t border-gray-100', i % 2 === 0 ? 'bg-white' : 'bg-gray-50']}>
+                <td class="px-4 py-3 font-semibold text-dark">{row.activitat}</td>
+                {days.map(d => <td class="text-center px-3 py-3 text-gray-600">{row[d.key] || '–'}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 p-4 bg-gray-50 rounded-xl text-sm text-gray-500 flex items-start gap-2">
+        <svg class="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <span>
+          {lang === 'en' ? 'Hours may vary on public holidays.' : lang === 'de' ? 'An Feiertagen können die Zeiten abweichen.' : lang === 'es' ? 'Los horarios pueden variar en festivos.' : 'Els horaris poden variar en festius.'}
+        </span>
+      </div>
+    </div>
+  </section>
+)}

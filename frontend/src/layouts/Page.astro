@@ -1,0 +1,24 @@
+---
+import Base from './Base.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalPath?: string;
+  schemaType?: 'home' | 'facility' | 'activity' | 'contact';
+  facilityName?: string;
+  noindex?: boolean;
+  heroClass?: string;
+}
+
+const props = Astro.props;
+---
+
+<Base {...props}>
+  <main id="main-content">
+    <slot />
+  </main>
+  <WhatsAppButton />
+</Base>

@@ -1,0 +1,72 @@
+---
+import Page from '../layouts/Page.astro';
+import { getLangFromUrl, useTranslations, type Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+---
+
+<Page
+  title="Avís Legal – Piscines Santanyí Cala d'Or"
+  description="Avís legal i condicions d'ús del lloc web piscinessantanyicalador.com"
+  canonicalPath="/avis-legal"
+  schemaType="home"
+  noindex={true}
+>
+  <section class="section bg-white">
+    <div class="container-site max-w-3xl prose prose-gray">
+
+      <h1 class="font-display font-bold text-3xl text-dark mb-8">Avís Legal</h1>
+
+      <p>De conformitat amb el que es disposa en els articles 10 i 11 de la Llei 34/2002, d'11 de juliol, de Serveis de la Societat de la Informació i de Comerç Electrònic es posa a la disposició dels usuaris i visitants la informació legal relativa a l'entitat propietària del lloc web situat en l'adreça d'Internet <strong>www.piscinessantanyicalador.com</strong>.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Titular de la pàgina web</h2>
+      <ul class="list-none pl-0 space-y-1 text-sm">
+        <li><strong>Denominació social:</strong> ALGALIA SPORT, S.L.</li>
+        <li><strong>CIF/NIF:</strong> B57239873</li>
+        <li><strong>Domicili:</strong> C/ Laberint Nº11, 07210 Algaida, Illes Balears</li>
+        <li><strong>Correu electrònic:</strong> algalia@algaliasport.net</li>
+        <li><strong>Telèfon:</strong> 971 668 086</li>
+        <li><strong>Registre Mercantil:</strong> Illes Balears, Tom 2021, Foli 218, Full 45467, Secció 8</li>
+        <li><strong>Activitat:</strong> Gestió i explotació d'instal·lacions esportives</li>
+      </ul>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Condicions d'ús</h2>
+
+      <p>Per a navegar en aquesta pàgina web com a visitant o per a registrar-se i poder accedir als serveis oferts per ALGALIA SPORT, S.L., s'hauran d'acceptar les següents condicions de servei i ús:</p>
+
+      <ol class="list-[lower-alpha] space-y-3 text-sm" type="a">
+        <li>L'usuari assumeix les presents condicions generals d'ús i servei de la pàgina web www.piscinessantanyicalador.com. Si l'usuari no accepta les presents condicions, no podrà fer ús dels serveis i continguts de la pàgina web.</li>
+        <li>Les presents condicions d'ús regulen l'accés i utilització de la pàgina web. La utilització d'aquesta web li atribueix la condició d'usuari des de l'accés i inici de la navegació en aquesta. Des del moment d'accés a qualsevol dels seus continguts, l'usuari accepta de manera expressa les presents condicions generals.</li>
+        <li>A través de la pàgina web es facilita als usuaris l'accés i la utilització de diversa informació i diversos serveis.</li>
+        <li>L'usuari ha de ser major d'edat per a utilitzar els serveis de la web. Els menors de 18 anys només podran utilitzar els serveis sota la supervisió d'un progenitor o un tutor legal.</li>
+        <li>L'usuari es compromet a realitzar un ús adequat dels continguts i serveis de la pàgina web. Aquest ús ha de realitzar-se de conformitat amb la Llei, els bons costums, l'ordre públic i amb el que es disposa en les presents condicions generals.</li>
+        <li>Amb caràcter general, per a la prestació dels serveis i l'accés a la informació de la pàgina web no s'exigeix la prèvia subscripció o registre de l'usuari. No obstant això, ALGALIA SPORT, S.L. condiciona la utilització d'alguns dels serveis oferts en la web al previ emplenament del corresponent registre o formulari de recollida de dades de caràcter personal de l'usuari.</li>
+        <li>L'usuari assumeix l'obligació de no realitzar cap actuació que pugui danyar, inutilitzar, fer inaccessible o deteriorar els continguts, els serveis i/o impedir un normal gaudi de la pàgina web per altres usuaris. En particular, l'usuari es compromet a:
+          <ul class="mt-2 space-y-1">
+            <li>No realitzar cap acció que pugui afectar, destruir, alterar, inutilitzar o danyar dades de caràcter personal, programes o documents electrònics que es trobin en la web.</li>
+            <li>No introduir, emmagatzemar o difondre cap programa d'ordinador, dades, virus o codi que sigui susceptible de causar danys en la pàgina web, en qualsevol dels serveis, o en qualsevol dels equips, sistemes o xarxes de l'entitat.</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Modificacions</h2>
+      <p>L'entitat es reserva el dret a modificar unilateralment en qualsevol moment les presents condicions a causa de l'existència de noves circumstàncies econòmiques i/o comercials que així ho aconsellin, així com per la modificació, evolució i promulgació de lleis, reglaments i normes d'aplicació que afectin la prestació del servei. En aquests casos, es procedirà a la seva publicació i avís amb la màxima antelació possible. D'igual manera, es reserva el dret a modificar unilateralment en qualsevol moment la presentació i configuració de la web.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Enllaços amb tercers</h2>
+      <p>El present Avís Legal es refereix únicament a la pàgina web, i no s'aplica als enllaços o a les pàgines web de tercers accessibles a través de la pàgina web. L'entitat no és responsable del contingut de cap de les pàgines web de destí d'un enllaç, ni de cap enllaç inclòs en una pàgina web a la qual s'arribi des de la web de l'entitat.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Propietat Intel·lectual</h2>
+      <p>Tots els continguts de la pàgina web són titularitat exclusiva de l'entitat i, amb caràcter enunciatiu, que no limitatiu, el disseny gràfic, codi font, logos, textos, gràfics, il·lustracions, fotografies, i altres elements que apareixen en la pàgina web. Així mateix els noms comercials, marques o signes distintius de qualsevol classe continguts en la pàgina web estan protegits per la Llei de propietat intel·lectual i industrial.</p>
+      <p>Correspon a l'entitat l'exercici exclusiu dels drets d'explotació de la propietat intel·lectual esmentada, en qualsevol forma i, especialment, els drets de reproducció, distribució i comunicació pública. L'usuari té prohibit qualsevol ús no consentit total o parcial de qualsevol dels continguts de la pàgina web que integren els drets de propietat intel·lectual o industrial de l'entitat.</p>
+      <p>L'entitat es reserva el dret a realitzar qualsevol tipus d'acció legal contra qualsevol usuari que realitzi una acció que impliqui reproducció, distribució, comercialització, transformació i, en general, qualsevol altra forma d'explotació, per qualsevol procediment, de tot o part dels continguts de la pàgina web, i que constitueixi una infracció dels drets de propietat intel·lectual i/o industrial d'aquesta.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Notificacions</h2>
+      <p>A l'efecte de les presents condicions generals, i per a qualsevol comunicació que sigui precisa entre l'entitat i l'usuari, aquest últim haurà de fer ús del correu electrònic <a href="mailto:algalia@algaliasport.net" class="text-primary-600">algalia@algaliasport.net</a>. L'usuari accepta expressament la utilització del correu electrònic com a procediment vàlid per a la remissió de comunicacions.</p>
+
+      <h2 class="font-display font-semibold text-xl text-dark mt-8 mb-4">Legislació aplicable</h2>
+      <p>Les relacions establertes entre el titular de la pàgina web i l'usuari es regiran per la normativa espanyola vigent, i la resolució de qualsevol possible controvèrsia que pugui sorgir quedarà sotmesa als Jutjats i Tribunals competents. En el cas que l'usuari tingui la condició de consumidor, seran competents els Jutjats i Tribunals que corresponguin segons el que es preveu en la normativa de consumidors vigent.</p>
+
+    </div>
+  </section>
+</Page>

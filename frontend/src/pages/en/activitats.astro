@@ -1,0 +1,34 @@
+---
+import Page from '../../layouts/Page.astro';
+import ActivitatsPage from '../../components/ActivitatsPage';
+import DayPassCTA from '../../components/DayPassCTA.astro';
+import { getLangFromUrl, useTranslations, type Lang } from '../../i18n/utils';
+import client from '../../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const activitatsRes = await (client.queries as any).paginaActivitats({ relativePath: 'pagina-activitats.json' });
+---
+
+<Page
+  title={t('meta.activities.title')}
+  description={t('meta.activities.description')}
+  canonicalPath="/activitats"
+  schemaType="activity"
+>
+  <ActivitatsPage
+    client:load
+    query={activitatsRes.query}
+    variables={activitatsRes.variables}
+    data={activitatsRes.data}
+    lang={lang}
+  />
+
+  <!-- Day Pass -->
+  <section class="py-8 bg-white">
+    <div class="container-site">
+      <DayPassCTA lang={lang} variant="banner" />
+    </div>
+  </section>
+</Page>

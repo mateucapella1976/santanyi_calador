@@ -1,0 +1,219 @@
+---
+import { useTranslations, supportedLangs, localePath, type Lang } from '../i18n/utils';
+import navData from '../content/navigation.json';
+import settings from '../content/settings.json';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const labelKey = lang === 'es' ? 'labelEs' : lang === 'en' ? 'labelEn' : lang === 'de' ? 'labelDe' : 'labelCa';
+
+const navLinks = (navData.items ?? []).map((item: any) => ({
+  label: item[labelKey] || item.labelCa,
+  href: item.href,
+}));
+
+const phoneSantanyi = settings.phoneSantanyi ?? '673 003 828';
+const phoneCalaDor  = settings.phoneCalaDor  ?? '673 008 715';
+const instagram     = settings.instagram     ?? 'https://www.instagram.com/piscinasantanyicalador/';
+const facebook      = settings.facebook      ?? 'https://www.facebook.com/piscinasantanyi';
+const logo          = settings.logo          ? `/${settings.logo}` : '/logo.png';
+
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Top bar -->
+<div class="bg-dark text-white text-sm py-2 border-b border-white/10">
+  <div class="container-site flex items-center justify-between gap-4">
+    <div class="flex items-center gap-5">
+      <span class="flex items-center gap-1.5">
+        <span class="text-white/60 text-xs">Santanyí:</span>
+        <a href={`tel:+34${phoneSantanyi.replace(/\s/g, '')}`} class="text-primary-400 font-semibold hover:text-primary-300 transition-colors">{phoneSantanyi.replace(/\s/g, '')}</a>
+      </span>
+      <span class="flex items-center gap-1.5">
+        <span class="text-white/60 text-xs">Cala d'Or:</span>
+        <a href={`tel:+34${phoneCalaDor.replace(/\s/g, '')}`} class="text-primary-400 font-semibold hover:text-primary-300 transition-colors">{phoneCalaDor.replace(/\s/g, '')}</a>
+      </span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href={facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-white/60 hover:text-white transition-colors">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        </svg>
+      </a>
+      <a href={instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-white/60 hover:text-white transition-colors">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar principal -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm" id="navbar">
+  <div class="container-site">
+    <nav class="flex items-center justify-between h-[72px]" aria-label="Navegació principal">
+
+      <a href={localePath(lang, '/')} class="flex-shrink-0" aria-label="Piscines Santanyí i Cala d'Or - Inici">
+        <img
+          src={logo}
+          alt="Piscines Santanyí Cala d'Or"
+          class="h-14 w-auto"
+          width="120"
+          height="56"
+          loading="eager"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden lg:flex items-center gap-0.5" role="list">
+        {navLinks.map(({ label, href }: { label: string; href: string }) => (
+          <li>
+            <a
+              href={localePath(lang, href)}
+              class:list={[
+                'px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-150',
+                currentPath === localePath(lang, href)
+                  ? 'text-primary-500'
+                  : 'text-dark hover:text-primary-500'
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Right actions -->
+      <div class="flex items-center gap-2">
+        <!-- Language switcher -->
+        <div class="hidden md:flex items-center gap-1 bg-gray-50 rounded-lg p-1">
+          {supportedLangs.map(l => (
+            <a
+              href={localePath(l, currentPath.replace(`/${lang}`, '') || '/')}
+              class:list={[
+                'px-2 py-1 rounded text-xs font-bold uppercase transition-colors',
+                l === lang
+                  ? 'bg-primary-500 text-white shadow-sm'
+                  : 'text-gray-500 hover:text-gray-700'
+              ]}
+              lang={l}
+              aria-label={l}
+            >
+              {l}
+            </a>
+          ))}
+        </div>
+
+        <!-- Day Pass CTA -->
+        <a
+          href={localePath(lang, '/day-pass')}
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-amber-500 text-white text-sm font-bold rounded-lg hover:bg-amber-600 transition-colors"
+        >
+          Day Pass
+        </a>
+
+        <!-- Book CTA -->
+        <a href={localePath(lang, '/contacte')} class="btn-primary text-sm py-2 px-4 hidden sm:inline-flex">
+          {t('nav.bookNow')}
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Obrir menú"
+        >
+          <svg id="menu-icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+          <svg id="menu-icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hidden lg:hidden border-t border-gray-100 py-4 pb-6"
+      aria-label="Menú mòbil"
+    >
+      <ul class="space-y-1" role="list">
+        {navLinks.map(({ label, href }: { label: string; href: string }) => (
+          <li>
+            <a
+              href={localePath(lang, href)}
+              class="flex items-center px-3 py-2.5 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-500 font-semibold transition-colors"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-2">
+        <a href={localePath(lang, '/day-pass')} class="flex items-center justify-center gap-2 py-2.5 bg-amber-500 text-white font-bold rounded-xl hover:bg-amber-600 transition-colors">
+          Day Pass
+        </a>
+        <a href={localePath(lang, '/contacte')} class="btn-primary w-full justify-center">
+          {t('nav.bookNow')}
+        </a>
+      </div>
+
+      <!-- Mobile language -->
+      <div class="mt-3 flex gap-2 justify-center">
+        {supportedLangs.map(l => (
+          <a
+            href={localePath(l, '/')}
+            class:list={[
+              'px-3 py-1.5 rounded-lg text-sm font-bold uppercase transition-colors',
+              l === lang
+                ? 'bg-primary-500 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            ]}
+          >
+            {l}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!btn?.contains(e.target as Node) && !menu?.contains(e.target as Node)) {
+      menu?.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

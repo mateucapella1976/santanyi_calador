@@ -1,0 +1,94 @@
+{
+  "seoTitleCa": "Exemple de pàgina | Piscines Santanyí Cala d'Or",
+  "seoTitleEs": "Ejemplo de página | Piscines Santanyí Cala d'Or",
+  "seoTitleEn": "Page example | Piscines Santanyí Cala d'Or",
+  "seoTitleDe": "Seitenbeispiel | Piscines Santanyí Cala d'Or",
+  "seoDescCa": "Aquesta és una pàgina d'exemple creada amb el sistema de pàgines generals.",
+  "seoDescEs": "Esta es una página de ejemplo creada con el sistema de páginas generales.",
+  "seoDescEn": "This is an example page created with the general pages system.",
+  "seoDescDe": "Dies ist eine Beispielseite, die mit dem allgemeinen Seitensystem erstellt wurde.",
+  "heroBg": "blue",
+  "heroBadgeCa": "Exemple",
+  "heroBadgeEs": "Ejemplo",
+  "heroBadgeEn": "Example",
+  "heroBadgeDe": "Beispiel",
+  "heroTitleCa": "Títol de la pàgina",
+  "heroTitleEs": "Título de la página",
+  "heroTitleEn": "Page title",
+  "heroTitleDe": "Seitentitel",
+  "heroSubtitleCa": "Subtítol o descripció breu de la pàgina.",
+  "heroSubtitleEs": "Subtítulo o descripción breve de la página.",
+  "heroSubtitleEn": "Short description of the page.",
+  "heroSubtitleDe": "Kurze Beschreibung der Seite.",
+  "heroCtaCa": "Contacta'ns",
+  "heroCtaEs": "Contáctanos",
+  "heroCtaEn": "Contact us",
+  "heroCtaDe": "Kontakt",
+  "heroCtaUrl": "/contacte",
+  "contingutCa": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Contingut de la pàgina" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Aquí pots escriure el contingut principal de la pàgina. Pots afegir títols, paràgrafs, llistes i molt més." }]
+      }
+    ]
+  },
+  "contingutEs": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Contenido de la página" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Aquí puedes escribir el contenido principal de la página. Puedes añadir títulos, párrafos, listas y mucho más." }]
+      }
+    ]
+  },
+  "contingutEn": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Page content" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Here you can write the main content of the page. You can add headings, paragraphs, lists and much more." }]
+      }
+    ]
+  },
+  "contingutDe": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Seiteninhalt" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Hier können Sie den Hauptinhalt der Seite schreiben. Sie können Überschriften, Absätze, Listen und vieles mehr hinzufügen." }]
+      }
+    ]
+  },
+  "ctaTitleCa": "Vols saber-ne més?",
+  "ctaTitleEs": "¿Quieres saber más?",
+  "ctaTitleEn": "Want to know more?",
+  "ctaTitleDe": "Möchten Sie mehr wissen?",
+  "ctaBtn1Ca": "Contacta'ns",
+  "ctaBtn1Es": "Contáctanos",
+  "ctaBtn1En": "Contact us",
+  "ctaBtn1De": "Kontakt",
+  "ctaBtn1Url": "/contacte",
+  "ctaBtn2Ca": "Veure preus",
+  "ctaBtn2Es": "Ver precios",
+  "ctaBtn2En": "View prices",
+  "ctaBtn2De": "Preise ansehen",
+  "ctaBtn2Url": "/preus"
+}

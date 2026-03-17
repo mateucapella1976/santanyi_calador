@@ -1,0 +1,26 @@
+---
+import Page from '../../layouts/Page.astro';
+import PadelPage from '../../components/PadelPage';
+import { getLangFromUrl, useTranslations, type Lang } from '../../i18n/utils';
+import client from '../../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const padelRes = await (client.queries as any).paginaPadel({ relativePath: 'pagina-padel.json' });
+---
+
+<Page
+  title={t('meta.padel.title')}
+  description={t('meta.padel.description')}
+  canonicalPath="/padel"
+  schemaType="facility"
+>
+  <PadelPage
+    client:load
+    query={padelRes.query}
+    variables={padelRes.variables}
+    data={padelRes.data}
+    lang={lang}
+  />
+</Page>

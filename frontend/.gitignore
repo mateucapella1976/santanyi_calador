@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+
+# TinaCMS generated
+tina/__generated__/
+public/admin/

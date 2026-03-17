@@ -1,0 +1,147 @@
+---
+import Page from '../layouts/Page.astro';
+import HeroComponent from '../components/Hero';
+import TrustBarComponent from '../components/TrustBar';
+import ServicesGridComponent from '../components/ServicesGrid';
+import PricingTableComponent from '../components/PricingTable';
+import DayPassCTAComponent from '../components/DayPassCTA';
+import FacilityTabsComponent from '../components/FacilityTabs';
+import ScheduleTableComponent from '../components/ScheduleTable';
+import AppPromoComponent from '../components/AppPromo';
+import ContactInfoComponent from '../components/ContactInfo';
+import ContactForm from '../components/ContactForm';
+import { getLangFromUrl, useTranslations, type Lang } from '../i18n/utils';
+import client from '../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+// TinaCMS queries per visual editing
+const heroRes        = await client.queries.hero({ relativePath: 'hero.json' });
+const preusRes       = await client.queries.preus({ relativePath: 'preus.json' });
+const horarisRes     = await client.queries.horaris({ relativePath: 'horaris.json' });
+const galSantanyiRes = await client.queries.galeriaSantanyi({ relativePath: 'galeria-santanyi.json' });
+const galCalaDorRes  = await client.queries.galeriaCalaDor({ relativePath: 'galeria-cala-dor.json' });
+const settingsRes    = await client.queries.settings({ relativePath: 'settings.json' });
+const trustbarRes    = await (client.queries as any).trustbar({ relativePath: 'trustbar.json' });
+const serveisRes     = await (client.queries as any).serveis({ relativePath: 'serveis.json' });
+const daypassRes     = await (client.queries as any).daypass({ relativePath: 'daypass.json' });
+const appPromoRes    = await (client.queries as any).appPromo({ relativePath: 'app-promo.json' });
+---
+
+<Page
+  title={t('meta.home.title')}
+  description={t('meta.home.description')}
+  canonicalPath="/"
+  schemaType="home"
+>
+  <!-- Hero -->
+  <HeroComponent
+    client:load
+    query={heroRes.query}
+    variables={heroRes.variables}
+    data={heroRes.data}
+    lang={lang}
+  />
+
+  <!-- Trust Bar -->
+  <TrustBarComponent
+    client:load
+    query={trustbarRes.query}
+    variables={trustbarRes.variables}
+    data={trustbarRes.data}
+    lang={lang}
+  />
+
+  <!-- Serveis -->
+  <ServicesGridComponent
+    client:load
+    query={serveisRes.query}
+    variables={serveisRes.variables}
+    data={serveisRes.data}
+    lang={lang}
+  />
+
+  <!-- Preus -->
+  <PricingTableComponent
+    client:load
+    query={preusRes.query}
+    variables={preusRes.variables}
+    data={preusRes.data}
+    lang={lang}
+  />
+
+  <!-- Day Pass CTA -->
+  <DayPassCTAComponent
+    client:load
+    query={daypassRes.query}
+    variables={daypassRes.variables}
+    data={daypassRes.data}
+    lang={lang}
+    variant="section"
+  />
+
+  <!-- Instal·lacions amb tabs -->
+  <FacilityTabsComponent
+    client:load
+    galSantanyiQuery={galSantanyiRes.query}
+    galSantanyiVariables={galSantanyiRes.variables}
+    galSantanyiData={galSantanyiRes.data}
+    galCalaDorQuery={galCalaDorRes.query}
+    galCalaDorVariables={galCalaDorRes.variables}
+    galCalaDorData={galCalaDorRes.data}
+    settingsQuery={settingsRes.query}
+    settingsVariables={settingsRes.variables}
+    settingsData={settingsRes.data}
+    lang={lang}
+  />
+
+  <!-- Horaris -->
+  <ScheduleTableComponent
+    client:load
+    query={horarisRes.query}
+    variables={horarisRes.variables}
+    data={horarisRes.data}
+    lang={lang}
+  />
+
+  <!-- App promo -->
+  <AppPromoComponent
+    client:load
+    query={appPromoRes.query}
+    variables={appPromoRes.variables}
+    data={appPromoRes.data}
+    lang={lang}
+  />
+
+  <!-- Formulari contacte -->
+  <section class="section bg-gray-50" id="contacte" aria-labelledby="contact-home-heading">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+        <!-- Left: info -->
+        <div>
+          <span class="badge-blue mb-3">
+            {lang === 'en' ? 'Contact' : lang === 'de' ? 'Kontakt' : lang === 'es' ? 'Contacto' : 'Contacte'}
+          </span>
+          <h2 id="contact-home-heading" class="section-title mb-4">{t('contact.title')}</h2>
+          <p class="section-subtitle mb-8">{t('contact.subtitle')}</p>
+
+          <!-- Contact cards — editables via TinaCMS (settings) -->
+          <ContactInfoComponent
+            client:load
+            query={settingsRes.query}
+            variables={settingsRes.variables}
+            data={settingsRes.data}
+            lang={lang}
+          />
+        </div>
+
+        <!-- Right: form -->
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+          <ContactForm lang={lang} variant="full" client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+</Page>

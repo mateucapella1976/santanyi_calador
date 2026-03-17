@@ -1,0 +1,77 @@
+---
+import { useTranslations, localePath, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const services = [
+  { key: 'swimming', href: '/natacio', img: '/images/swim.png',     color: 'blue'   },
+  { key: 'gym',      href: '/gimnas',  img: '/images/gym.png',      color: 'purple' },
+  { key: 'activities',href:'/activitats',img:'/images/wellness.png',color: 'green'  },
+  { key: 'padel',    href: '/padel',   img: '/images/padel.png',    color: 'orange' },
+  { key: 'personal', href: '/entrenador-personal', img: '/images/diet.png', color: 'red' },
+  { key: 'health',   href: '/esport-salut', img: '/images/spine.png', color: 'teal' },
+];
+
+const colorMap: Record<string, { bg: string; hover: string; ring: string }> = {
+  blue:   { bg: 'bg-blue-50',   hover: 'group-hover:bg-blue-500',   ring: 'hover:ring-blue-200' },
+  purple: { bg: 'bg-purple-50', hover: 'group-hover:bg-purple-500', ring: 'hover:ring-purple-200' },
+  green:  { bg: 'bg-emerald-50',hover: 'group-hover:bg-emerald-500',ring: 'hover:ring-emerald-200' },
+  orange: { bg: 'bg-orange-50', hover: 'group-hover:bg-orange-500', ring: 'hover:ring-orange-200' },
+  red:    { bg: 'bg-rose-50',   hover: 'group-hover:bg-rose-500',   ring: 'hover:ring-rose-200' },
+  teal:   { bg: 'bg-primary-50',hover: 'group-hover:bg-primary-500',ring: 'hover:ring-primary-200' },
+};
+---
+
+<section class="section bg-white" aria-labelledby="services-heading">
+  <div class="container-site">
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <span class="badge-blue mb-3">
+        {lang === 'en' ? 'Services' : lang === 'de' ? 'Leistungen' : lang === 'es' ? 'Servicios' : 'Serveis'}
+      </span>
+      <h2 id="services-heading" class="section-title">{t('services.title')}</h2>
+      <p class="section-subtitle max-w-xl mx-auto">{t('services.subtitle')}</p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map(({ key, href, img, color }) => {
+        const c = colorMap[color];
+        return (
+          <a
+            href={localePath(lang, href)}
+            class:list={['card p-6 group transition-all duration-200 cursor-pointer hover:ring-2', c.ring]}
+          >
+            <div class:list={['w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-all duration-200', c.bg, c.hover]}>
+              <img
+                src={img}
+                alt={t(`services.${key}.title`)}
+                class="w-9 h-9 object-contain group-hover:brightness-0 group-hover:invert transition-all"
+                loading="lazy"
+                width="36"
+                height="36"
+              />
+            </div>
+            <h3 class="font-display font-semibold text-dark text-lg mb-2">
+              {t(`services.${key}.title`)}
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              {t(`services.${key}.desc`)}
+            </p>
+            <div class="mt-4 flex items-center gap-1 text-primary-500 text-sm font-semibold group-hover:gap-2 transition-all">
+              <span>{lang === 'en' ? 'Learn more' : lang === 'de' ? 'Mehr erfahren' : lang === 'es' ? 'Saber más' : 'Saber-ne més'}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

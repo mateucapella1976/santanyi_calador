@@ -1,0 +1,42 @@
+---
+import Page from '../../layouts/Page.astro';
+import NatacioPage from '../../components/NatacioPage';
+import DayPassCTAComponent from '../../components/DayPassCTA';
+import { getLangFromUrl, useTranslations, type Lang } from '../../i18n/utils';
+import client from '../../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const natacioRes = await (client.queries as any).paginaNatacio({ relativePath: 'pagina-natacio.json' });
+const daypassRes = await (client.queries as any).daypass({ relativePath: 'daypass.json' });
+---
+
+<Page
+  title={t('meta.swimming.title')}
+  description={t('meta.swimming.description')}
+  canonicalPath="/natacio"
+  schemaType="activity"
+>
+  <NatacioPage
+    client:load
+    query={natacioRes.query}
+    variables={natacioRes.variables}
+    data={natacioRes.data}
+    lang={lang}
+  />
+
+  <!-- Day Pass banner -->
+  <section class="py-8 bg-gray-50">
+    <div class="container-site">
+      <DayPassCTAComponent
+        client:load
+        query={daypassRes.query}
+        variables={daypassRes.variables}
+        data={daypassRes.data}
+        lang={lang}
+        variant="banner"
+      />
+    </div>
+  </section>
+</Page>

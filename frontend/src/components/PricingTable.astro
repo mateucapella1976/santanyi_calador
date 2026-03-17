@@ -1,0 +1,94 @@
+---
+import { useTranslations, localePath, type Lang } from '../i18n/utils';
+import preusData from '../content/preus.json';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const nameKey = lang === 'es' ? 'nameEs' : lang === 'en' ? 'nameEn' : lang === 'de' ? 'nameDe' : 'nameCa';
+const descKey = lang === 'es' ? 'descEs' : lang === 'en' ? 'descEn' : lang === 'de' ? 'descDe' : 'descCa';
+
+const periodLabel: Record<string, string> = {
+  mes:      lang === 'es' ? '/mes'       : lang === 'en' ? '/month'   : lang === 'de' ? '/Monat'  : '/mes',
+  trimestre:lang === 'es' ? '/trimestre' : lang === 'en' ? '/quarter' : lang === 'de' ? '/Quartal': '/trimestre',
+  any:      lang === 'es' ? '/año'       : lang === 'en' ? '/year'    : lang === 'de' ? '/Jahr'   : '/any',
+  sessio:   lang === 'es' ? '/sesión'    : lang === 'en' ? '/session' : lang === 'de' ? '/Einheit': '/sessió',
+};
+
+const plans = ((preusData as any).plans ?? []).map((p: any) => ({
+  name:        p[nameKey] || p.nameCa,
+  desc:        p[descKey] || p.descCa,
+  price:       p.price,
+  period:      periodLabel[p.period] ?? `/${p.period}`,
+  highlighted: p.highlighted,
+}));
+---
+
+<section class="section bg-gray-50" aria-labelledby="pricing-heading" id="preus">
+  <div class="container-site">
+
+    <div class="text-center mb-12">
+      <span class="badge-blue mb-3">{t('pricing.monthly')}</span>
+      <h2 id="pricing-heading" class="section-title">{t('pricing.title')}</h2>
+      <p class="section-subtitle max-w-lg mx-auto">{t('pricing.subtitle')}</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
+      {plans.map(({ name, desc, price, period, highlighted }: any) => (
+        <div class:list={[
+          'rounded-2xl p-6 flex flex-col relative transition-all duration-200',
+          highlighted
+            ? 'bg-primary-500 text-white shadow-xl shadow-primary-500/30 scale-105'
+            : 'bg-white border border-gray-200 hover:border-primary-300 hover:shadow-md'
+        ]}>
+          {highlighted && (
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+              ⭐ {lang === 'es' ? 'Más popular' : lang === 'en' ? 'Most popular' : lang === 'de' ? 'Am beliebtesten' : 'Més popular'}
+            </span>
+          )}
+          <div class="mb-4">
+            <div class:list={['font-display font-bold text-lg', highlighted ? 'text-white' : 'text-dark']}>{name}</div>
+            {desc && <div class:list={['text-sm mt-1 leading-snug', highlighted ? 'text-primary-100' : 'text-gray-400']}>{desc}</div>}
+          </div>
+          <div class="mb-5">
+            <span class:list={['font-display font-bold text-4xl', highlighted ? 'text-white' : 'text-dark']}>{price}€</span>
+            <span class:list={['text-sm ml-1', highlighted ? 'text-primary-100' : 'text-gray-400']}>{period}</span>
+          </div>
+          <div class="flex-1"></div>
+          <a
+            href={localePath(lang, '/contacte')}
+            class:list={[
+              'block text-center py-2.5 rounded-xl text-sm font-semibold transition-colors mt-4',
+              highlighted ? 'bg-white text-primary-600 hover:bg-primary-50' : 'bg-primary-50 text-primary-600 hover:bg-primary-100'
+            ]}
+          >
+            {t('pricing.cta')}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-primary-50 rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-4 justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
+          <svg class="w-5 h-5 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div>
+          <div class="font-semibold text-dark text-sm">{t('pricing.enrollment')}: {t('pricing.enrollment_fee')}€ (pagament únic)</div>
+          <div class="text-xs text-gray-500 mt-0.5">{t('pricing.noCommitment')}</div>
+        </div>
+      </div>
+      <a href={localePath(lang, '/preus')} class="btn-primary text-sm py-2 whitespace-nowrap">
+        {lang === 'en' ? 'Full price list' : lang === 'de' ? 'Vollständige Preisliste' : lang === 'es' ? 'Ver todos los precios' : 'Veure tots els preus'}
+      </a>
+    </div>
+
+    <p class="text-center text-sm text-gray-400">* {t('pricing.residentNote')}</p>
+  </div>
+</section>

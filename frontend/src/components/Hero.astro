@@ -1,0 +1,94 @@
+---
+import { localePath, type Lang } from '../i18n/utils';
+import heroData from '../content/hero.json';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const titleKey    = lang === 'es' ? 'titleEs'      : lang === 'en' ? 'titleEn'      : lang === 'de' ? 'titleDe'      : 'titleCa';
+const subtitleKey = lang === 'es' ? 'subtitleEs'   : lang === 'en' ? 'subtitleEn'   : lang === 'de' ? 'subtitleDe'   : 'subtitleCa';
+const ctaKey      = lang === 'es' ? 'ctaPrimaryEs' : lang === 'en' ? 'ctaPrimaryEn' : lang === 'de' ? 'ctaPrimaryDe' : 'ctaPrimaryCa';
+
+const data = heroData as any;
+const title    = data[titleKey]    || 'El teu gimnàs i piscina a Santanyí i Cala d\'Or';
+const subtitle = data[subtitleKey] || 'Natació, fitness, pàdel i activitats dirigides';
+const ctaLabel = data[ctaKey]      || 'Inscriu-te ara';
+
+const stats = [
+  { number: data.stat1Number || '2.000+', label: data.stat1LabelCa || 'Socis actius',         icon: '👥' },
+  { number: data.stat2Number || '20+',    label: data.stat2LabelCa || 'Anys d\'experiència',  icon: '🏆' },
+  { number: data.stat3Number || '30+',    label: data.stat3LabelCa || 'Activitats setmanals', icon: '🏊' },
+  { number: data.stat4Number || '2',      label: data.stat4LabelCa || 'Instal·lacions',       icon: '📍' },
+];
+---
+
+<section class="relative min-h-[90vh] flex items-center overflow-hidden" style="background: linear-gradient(135deg, #1a4543 0%, #2e7e7a 40%, #5db7b3 100%);" aria-labelledby="hero-heading">
+  <div class="absolute inset-0 opacity-10">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="wave-pattern" x="0" y="0" width="80" height="40" patternUnits="userSpaceOnUse">
+          <path d="M0 20 Q20 10 40 20 Q60 30 80 20" stroke="white" stroke-width="1.5" fill="none"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#wave-pattern)"/>
+    </svg>
+  </div>
+  <div class="absolute top-20 right-10 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-primary-300/10 rounded-full blur-3xl"></div>
+
+  <div class="container-site relative z-10 py-20">
+    <div class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full mb-6 border border-white/20">
+        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+        {lang === 'es' ? 'Abierto todo el año' : lang === 'en' ? 'Open all year' : lang === 'de' ? 'Ganzjährig geöffnet' : 'Obert tot l\'any'}
+      </div>
+
+      <h1 id="hero-heading" class="font-display font-bold text-white text-4xl sm:text-5xl lg:text-6xl leading-tight mb-4">
+        {title}
+      </h1>
+
+      <p class="text-primary-200 text-xl font-medium mb-8 max-w-xl">
+        {subtitle}
+      </p>
+
+      <div class="flex flex-wrap gap-3 mb-12">
+        <a href={localePath(lang, '/contacte')} class="btn-primary text-lg px-8 py-4 shadow-xl shadow-primary-900/30">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          {ctaLabel}
+        </a>
+        <a href={localePath(lang, '/preus')} class="btn-ghost text-lg px-8 py-4">
+          {lang === 'es' ? 'Ver precios' : lang === 'en' ? 'See prices' : lang === 'de' ? 'Preise ansehen' : 'Veure preus'}
+        </a>
+        <a href={localePath(lang, '/day-pass')} class="inline-flex items-center gap-2 px-6 py-4 bg-amber-500 hover:bg-amber-400 text-white font-semibold rounded-xl transition-colors text-lg shadow-lg shadow-amber-900/20">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="13" rx="2"/>
+            <path d="M8 6V4m8 2V4M3 10h18"/>
+          </svg>
+          Day Pass
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        {stats.map(({ number, label, icon }) => (
+          <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/20 text-center">
+            <div class="text-2xl mb-1">{icon}</div>
+            <div class="text-white font-bold text-lg leading-tight">{number}</div>
+            <div class="text-primary-200 text-xs mt-0.5">{label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,20 1440,40 L1440,80 L0,80 Z" fill="white"/>
+    </svg>
+  </div>
+</section>

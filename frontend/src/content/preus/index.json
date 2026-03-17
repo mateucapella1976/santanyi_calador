@@ -1,0 +1,67 @@
+{
+  "plans": [
+    {
+      "nameCa": "Infantil", "nameEs": "Infantil", "nameEn": "Child", "nameDe": "Kind",
+      "price": "10", "period": "mes",
+      "descCa": "Fins a 14 anys. Piscina lliure, vestuaris i activitats infantils.",
+      "descEs": "Hasta 14 años. Piscina libre, vestuarios y actividades infantiles.",
+      "descEn": "Up to 14 years. Free swimming, changing rooms and children's activities.",
+      "descDe": "Bis 14 Jahre. Freischwimmen, Umkleiden und Kinderaktivitäten.",
+      "highlighted": false
+    },
+    {
+      "nameCa": "Jove", "nameEs": "Joven", "nameEn": "Youth", "nameDe": "Jugend",
+      "price": "20", "period": "mes",
+      "descCa": "15 a 25 anys. Piscina, gimnàs i activitats dirigides.",
+      "descEs": "15 a 25 años. Piscina, gimnasio y actividades dirigidas.",
+      "descEn": "15 to 25 years. Pool, gym and fitness classes.",
+      "descDe": "15 bis 25 Jahre. Pool, Studio und Kurse.",
+      "highlighted": false
+    },
+    {
+      "nameCa": "Adult", "nameEs": "Adulto", "nameEn": "Adult", "nameDe": "Erwachsene",
+      "price": "25", "period": "mes",
+      "descCa": "26 a 64 anys. Accés complet: piscina, gimnàs, activitats i descomptes en cursos.",
+      "descEs": "26 a 64 años. Acceso completo: piscina, gimnasio, actividades y descuentos en cursos.",
+      "descEn": "26 to 64 years. Full access: pool, gym, activities and course discounts.",
+      "descDe": "26 bis 64 Jahre. Vollzugang: Pool, Studio, Kurse und Kursrabatte.",
+      "highlighted": true
+    },
+    {
+      "nameCa": "Sènior", "nameEs": "Sénior", "nameEn": "Senior", "nameDe": "Senior",
+      "price": "20", "period": "mes",
+      "descCa": "+65 anys. Piscina, gimnàs i activitats dirigides.",
+      "descEs": "+65 años. Piscina, gimnasio y actividades dirigidas.",
+      "descEn": "+65 years. Pool, gym and fitness classes.",
+      "descDe": "+65 Jahre. Pool, Studio und Kurse.",
+      "highlighted": false
+    },
+    {
+      "nameCa": "Família", "nameEs": "Familia", "nameEn": "Family", "nameDe": "Familie",
+      "price": "55", "period": "mes",
+      "descCa": "2 adults + fills. Tota la família amb estalvi garantit.",
+      "descEs": "2 adultos + hijos. Toda la familia con ahorro garantizado.",
+      "descEn": "2 adults + children. The whole family with guaranteed savings.",
+      "descDe": "2 Erwachsene + Kinder. Die ganze Familie mit garantierter Ersparnis.",
+      "highlighted": false
+    },
+    {
+      "nameCa": "Day Pass – Piscina", "nameEs": "Day Pass – Piscina", "nameEn": "Day Pass – Pool", "nameDe": "Day Pass – Pool",
+      "price": "5", "period": "sessio",
+      "descCa": "Accés d'un dia a la piscina. Vestuaris i dutxes inclosos.",
+      "descEs": "Acceso de un día a la piscina. Vestuarios y duchas incluidos.",
+      "descEn": "One day pool access. Changing rooms and showers included.",
+      "descDe": "Ein Tag Poolzugang. Umkleiden und Duschen inklusive.",
+      "highlighted": false
+    },
+    {
+      "nameCa": "Day Pass – Piscina + Gimnàs", "nameEs": "Day Pass – Piscina + Gimnasio", "nameEn": "Day Pass – Pool + Gym", "nameDe": "Day Pass – Pool + Studio",
+      "price": "8", "period": "sessio",
+      "descCa": "Accés complet d'un dia: piscina i gimnàs.",
+      "descEs": "Acceso completo de un día: piscina y gimnasio.",
+      "descEn": "Full one day access: pool and gym.",
+      "descDe": "Vollzugang für einen Tag: Pool und Studio.",
+      "highlighted": false
+    }
+  ]
+}

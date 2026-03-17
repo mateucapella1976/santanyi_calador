@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "value": "550+", "labelCa": "Abonats satisfets", "labelEs": "Abonados satisfechos", "labelEn": "Happy members", "labelDe": "Zufriedene Mitglieder", "icon": "users" },
+    { "value": "15", "labelCa": "Anys gestionant esport municipal", "labelEs": "Años gestionando deporte municipal", "labelEn": "Years managing municipal sport", "labelDe": "Jahre kommunaler Sport", "icon": "award" },
+    { "value": "20+", "labelCa": "Activitats dirigides", "labelEs": "Actividades dirigidas", "labelEn": "Fitness activities", "labelDe": "Geführte Aktivitäten", "icon": "activity" },
+    { "value": "25", "labelCa": "Cursos de natació", "labelEs": "Cursos de natación", "labelEn": "Swimming courses", "labelDe": "Schwimmkurse", "icon": "book" },
+    { "value": "2", "labelCa": "Centres esportius", "labelEs": "Centros deportivos", "labelEn": "Sports centres", "labelDe": "Sportzentren", "icon": "map-pin" }
+  ]
+}

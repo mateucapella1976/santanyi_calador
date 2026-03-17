@@ -1,0 +1,35 @@
+---
+import Page from '../../layouts/Page.astro';
+import ScheduleTableComponent from '../../components/ScheduleTable';
+import { getLangFromUrl, useTranslations, type Lang } from '../../i18n/utils';
+import client from '../../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const horarisRes = await (client.queries as any).horaris({ relativePath: 'horaris.json' });
+---
+
+<Page
+  title={t('meta.schedule.title')}
+  description={t('meta.schedule.description')}
+  canonicalPath="/horaris"
+  schemaType="home"
+>
+  <!-- Hero simple -->
+  <section class="pool-bg text-white py-14">
+    <div class="container-site text-center">
+      <h1 class="font-display font-bold text-4xl text-white mb-2">{t('schedule.title')}</h1>
+      <p class="text-white/80 text-lg">{t('schedule.subtitle')}</p>
+    </div>
+  </section>
+
+  <!-- Full schedule table -->
+  <ScheduleTableComponent
+    client:load
+    query={horarisRes.query}
+    variables={horarisRes.variables}
+    data={horarisRes.data}
+    lang={lang}
+  />
+</Page>

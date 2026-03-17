@@ -1,0 +1,10 @@
+{
+  "fotos": [
+    { "imatge": "/images/img_1.jpg",  "alt": "Entrada principal Piscina Santanyí" },
+    { "imatge": "/images/img_2.jpg",  "alt": "Piscina coberta 25m Santanyí" },
+    { "imatge": "/images/img_3.jpg",  "alt": "Recepció Santanyí" },
+    { "imatge": "/images/img_5.jpg",  "alt": "Sala activitats Santanyí" },
+    { "imatge": "/images/img_6.jpg",  "alt": "Pistes pàdel Santanyí" },
+    { "imatge": "/images/img_12.png", "alt": "Sala fitness Santanyí" }
+  ]
+}

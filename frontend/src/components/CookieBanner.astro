@@ -1,0 +1,90 @@
+---
+import { getLangFromUrl, type Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+
+const t: Record<Lang, { message: string; accept: string; reject: string; config: string; link: string }> = {
+  ca: {
+    message: "Utilitzam galetes pròpies i de tercers per millorar la teva experiència de navegació i analitzar l'ús del web.",
+    accept: 'Acceptar tot',
+    reject: 'Rebutjar',
+    config: 'Configurar',
+    link: 'Política de galetes',
+  },
+  es: {
+    message: 'Utilizamos cookies propias y de terceros para mejorar tu experiencia de navegación y analizar el uso de la web.',
+    accept: 'Aceptar todo',
+    reject: 'Rechazar',
+    config: 'Configurar',
+    link: 'Política de cookies',
+  },
+  en: {
+    message: 'We use our own and third-party cookies to improve your browsing experience and analyse website usage.',
+    accept: 'Accept all',
+    reject: 'Reject',
+    config: 'Settings',
+    link: 'Cookie policy',
+  },
+  de: {
+    message: 'Wir verwenden eigene Cookies und Cookies von Drittanbietern, um Ihr Surferlebnis zu verbessern und die Nutzung der Website zu analysieren.',
+    accept: 'Alle akzeptieren',
+    reject: 'Ablehnen',
+    config: 'Einstellungen',
+    link: 'Cookie-Richtlinie',
+  },
+};
+
+const tr = t[lang];
+const cookieLink = lang === 'ca' ? '/politica-cookies' : `/${lang}/politica-cookies`;
+---
+
+<div id="cookie-banner" class="fixed bottom-0 inset-x-0 z-[9998] hidden">
+  <div class="bg-dark/95 backdrop-blur-md border-t border-white/10 shadow-2xl">
+    <div class="container-site py-4 sm:py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <div class="flex-1 text-sm text-gray-300 leading-relaxed">
+        <p>
+          🍪 {tr.message}
+          <a href={cookieLink} class="underline text-primary-400 hover:text-primary-300 ml-1">{tr.link}</a>
+        </p>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button
+          id="cookie-reject"
+          class="px-4 py-2 text-sm font-semibold text-gray-400 hover:text-white border border-white/20 rounded-lg hover:border-white/40 transition-colors"
+        >
+          {tr.reject}
+        </button>
+        <button
+          id="cookie-accept"
+          class="px-5 py-2 text-sm font-bold text-white bg-primary-500 rounded-lg hover:bg-primary-600 transition-colors shadow-lg"
+        >
+          {tr.accept}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const COOKIE_KEY = 'cookie_consent';
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const rejectBtn = document.getElementById('cookie-reject');
+
+  function getConsent(): string | null {
+    return localStorage.getItem(COOKIE_KEY);
+  }
+
+  function setConsent(value: string) {
+    localStorage.setItem(COOKIE_KEY, value);
+    if (banner) banner.classList.add('hidden');
+  }
+
+  // Show banner if no consent stored
+  if (!getConsent() && banner) {
+    banner.classList.remove('hidden');
+  }
+
+  acceptBtn?.addEventListener('click', () => setConsent('accepted'));
+  rejectBtn?.addEventListener('click', () => setConsent('rejected'));
+</script>

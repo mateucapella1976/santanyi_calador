@@ -1,0 +1,59 @@
+---
+import Page from '../layouts/Page.astro';
+import PageHeroSection from '../components/PageHeroSection';
+import ContactePage from '../components/ContactePage';
+import ContactForm from '../components/ContactForm';
+import { getLangFromUrl, useTranslations, type Lang } from '../i18n/utils';
+import client from '../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const t = useTranslations(lang);
+
+const contacteRes = await (client.queries as any).paginaContacte({ relativePath: 'pagina-contacte.json' });
+---
+
+<Page
+  title={t('meta.contact.title')}
+  description={t('meta.contact.description')}
+  canonicalPath="/contacte"
+  schemaType="contact"
+>
+  <PageHeroSection
+    client:load
+    query={contacteRes.query}
+    variables={contacteRes.variables}
+    data={contacteRes.data}
+    dataKey="paginaContacte"
+    lang={lang}
+    bgClass="pool-bg"
+    centerText={true}
+  />
+
+  <!-- Main content -->
+  <section class="section bg-gray-50">
+    <div class="container-site">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
+        <!-- Contact info (2 cols) – CMS editable -->
+        <div class="lg:col-span-2">
+          <ContactePage
+            client:load
+            query={contacteRes.query}
+            variables={contacteRes.variables}
+            data={contacteRes.data}
+            lang={lang}
+          />
+        </div>
+
+        <!-- Form (3 cols) -->
+        <div class="lg:col-span-3">
+          <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+            <h2 class="font-display font-semibold text-dark text-xl mb-2">{contacteRes.data.paginaContacte[`formTitle${lang === 'es' ? 'Es' : lang === 'en' ? 'En' : lang === 'de' ? 'De' : 'Ca'}`] || contacteRes.data.paginaContacte.formTitleCa || t('contact.title')}</h2>
+            <p class="text-gray-500 text-sm mb-6">{contacteRes.data.paginaContacte[`formSubtitle${lang === 'es' ? 'Es' : lang === 'en' ? 'En' : lang === 'de' ? 'De' : 'Ca'}`] || contacteRes.data.paginaContacte.formSubtitleCa || t('contact.subtitle')}</p>
+            <ContactForm lang={lang} variant="full" client:load />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Page>
