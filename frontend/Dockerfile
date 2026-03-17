@@ -24,6 +24,8 @@ RUN printf 'server {\n\
     listen 3000;\n\
     root /usr/share/nginx/html;\n\
     index index.html;\n\
+    absolute_redirect off;\n\
+    port_in_redirect off;\n\
 \n\
     location / {\n\
         try_files $uri $uri/ $uri/index.html =404;\n\
