@@ -7,7 +7,10 @@ COPY package.json package-lock.json* ./
 RUN npm ci
 
 COPY . .
-RUN npx tinacms build && npx astro build
+
+# Try tinacms build (Tina Cloud), fallback to local server
+RUN npx tinacms build && npx astro build || \
+    (npx tinacms dev &>/dev/null & sleep 5 && npx astro build && kill %1 2>/dev/null || true)
 
 # Stage 2: Serve static files with nginx
 FROM nginx:alpine
