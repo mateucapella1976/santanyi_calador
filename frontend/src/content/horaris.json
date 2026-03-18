@@ -27,7 +27,7 @@
   "footerNoteDe": "An Feiertagen können die Zeiten abweichen.",
   "rows": [
     {
-      "activitat": "Piscina lliure",
+      "activitat": "Piscina lliur",
       "dilluns": "7:00–22:00",
       "dimarts": "7:00–22:00",
       "dimecres": "7:00–22:00",
@@ -101,15 +101,95 @@
     }
   ],
   "rowsCalaDor": [
-    { "activitat": "Piscina lliure", "dilluns": "9:00–21:00", "dimarts": "9:00–21:00", "dimecres": "9:00–21:00", "dijous": "9:00–21:00", "divendres": "9:00–21:00", "dissabte": "9:00–21:00" },
-    { "activitat": "Power Ioga", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "17:15", "divendres": "", "dissabte": "" },
-    { "activitat": "Zumba", "dilluns": "", "dimarts": "", "dimecres": "17:30", "dijous": "", "divendres": "", "dissabte": "" },
-    { "activitat": "Hidrogym", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "18:30", "dissabte": "" },
-    { "activitat": "Aquafitness", "dilluns": "", "dimarts": "18:30", "dimecres": "", "dijous": "18:30", "divendres": "", "dissabte": "9:00" },
-    { "activitat": "Cross Training", "dilluns": "", "dimarts": "19:00", "dimecres": "", "dijous": "19:00", "divendres": "", "dissabte": "" },
-    { "activitat": "Core", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "18:30", "dissabte": "" },
-    { "activitat": "GAP", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "17:30", "dissabte": "" },
-    { "activitat": "Yin Ioga", "dilluns": "", "dimarts": "", "dimecres": "", "dijous": "", "divendres": "", "dissabte": "18:45" },
-    { "activitat": "Gimnàs", "dilluns": "9:00–21:00", "dimarts": "9:00–21:00", "dimecres": "9:00–21:00", "dijous": "9:00–21:00", "divendres": "9:00–21:00", "dissabte": "9:00–21:00" }
+    {
+      "activitat": "Piscina lliure",
+      "dilluns": "9:00–21:00",
+      "dimarts": "9:00–21:00",
+      "dimecres": "9:00–21:00",
+      "dijous": "9:00–21:00",
+      "divendres": "9:00–21:00",
+      "dissabte": "9:00–21:00"
+    },
+    {
+      "activitat": "Power Ioga",
+      "dilluns": "",
+      "dimarts": "",
+      "dimecres": "",
+      "dijous": "17:15",
+      "divendres": "",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Zumba",
+      "dilluns": "",
+      "dimarts": "",
+      "dimecres": "17:30",
+      "dijous": "",
+      "divendres": "",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Hidrogym",
+      "dilluns": "",
+      "dimarts": "",
+      "dimecres": "",
+      "dijous": "",
+      "divendres": "18:30",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Aquafitness",
+      "dilluns": "",
+      "dimarts": "18:30",
+      "dimecres": "",
+      "dijous": "18:30",
+      "divendres": "",
+      "dissabte": "9:00"
+    },
+    {
+      "activitat": "Cross Training",
+      "dilluns": "",
+      "dimarts": "19:00",
+      "dimecres": "",
+      "dijous": "19:00",
+      "divendres": "",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Core",
+      "dilluns": "",
+      "dimarts": "",
+      "dimecres": "",
+      "dijous": "",
+      "divendres": "18:30",
+      "dissabte": ""
+    },
+    {
+      "activitat": "GAP",
+      "dilluns": "",
+      "dimarts": "",
+      "dimecres": "",
+      "dijous": "",
+      "divendres": "17:30",
+      "dissabte": ""
+    },
+    {
+      "activitat": "Yin Ioga",
+      "dilluns": "",
+      "dimarts": "",
+      "dimecres": "",
+      "dijous": "",
+      "divendres": "",
+      "dissabte": "18:45"
+    },
+    {
+      "activitat": "Gimnàs",
+      "dilluns": "9:00–21:00",
+      "dimarts": "9:00–21:00",
+      "dimecres": "9:00–21:00",
+      "dijous": "9:00–21:00",
+      "divendres": "9:00–21:00",
+      "dissabte": "9:00–21:00"
+    }
   ]
 }
