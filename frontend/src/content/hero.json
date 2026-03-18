@@ -17,14 +17,6 @@
   "ctaPrimaryDe": "Mitglied werden",
   "stats": [
     {
-      "icon": "🏆",
-      "number": "15",
-      "labelCa": "Anys d'experiència",
-      "labelEs": "Años de experiencia",
-      "labelEn": "Years of experience",
-      "labelDe": "Jahre Erfahrung"
-    },
-    {
       "icon": "🏊",
       "number": "20+",
       "labelCa": "Activitats dirigides",
@@ -34,7 +26,7 @@
     },
     {
       "icon": "📍",
-      "number": "2",
+      "number": "3",
       "labelCa": "Instal·lacions",
       "labelEs": "Instalaciones",
       "labelEn": "Facilities",
