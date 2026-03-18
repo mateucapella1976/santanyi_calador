@@ -16,10 +16,38 @@
   "ctaPrimaryEn": "Become a member",
   "ctaPrimaryDe": "Mitglied werden",
   "stats": [
-    { "icon": "👥", "number": "550+", "labelCa": "Abonats satisfets", "labelEs": "Abonados satisfechos", "labelEn": "Satisfied members", "labelDe": "Zufriedene Mitglieder" },
-    { "icon": "🏆", "number": "15", "labelCa": "Anys d'experiència", "labelEs": "Años de experiencia", "labelEn": "Years of experience", "labelDe": "Jahre Erfahrung" },
-    { "icon": "🏊", "number": "20+", "labelCa": "Activitats dirigides", "labelEs": "Actividades dirigidas", "labelEn": "Fitness classes", "labelDe": "Fitnesskurse" },
-    { "icon": "📍", "number": "2", "labelCa": "Instal·lacions", "labelEs": "Instalaciones", "labelEn": "Facilities", "labelDe": "Anlagen" }
+    {
+      "icon": "👥",
+      "number": "550+",
+      "labelCa": "Abonats satisfets",
+      "labelEs": "Abonados satisfechos",
+      "labelEn": "Satisfied members",
+      "labelDe": "Zufriedene Mitglieder"
+    },
+    {
+      "icon": "🏆",
+      "number": "15",
+      "labelCa": "Anys d'experiència",
+      "labelEs": "Años de experiencia",
+      "labelEn": "Years of experience",
+      "labelDe": "Jahre Erfahrung"
+    },
+    {
+      "icon": "🏊",
+      "number": "20+",
+      "labelCa": "Activitats dirigides",
+      "labelEs": "Actividades dirigidas",
+      "labelEn": "Fitness classes",
+      "labelDe": "Fitnesskurse"
+    },
+    {
+      "icon": "📍",
+      "number": "2",
+      "labelCa": "Instal·lacions",
+      "labelEs": "Instalaciones",
+      "labelEn": "Facilities",
+      "labelDe": "Anlagen"
+    }
   ],
-  "heroImage": "/images/hero-fons.jpg"
+  "heroImage": "/images/public/images/imatge%206.jpeg"
 }
