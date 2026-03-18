@@ -125,7 +125,7 @@ var config_default = defineConfig({
               { type: "string", name: "labelDe", label: "Text (DE)" }
             ]
           },
-          { type: "image", name: "heroImage", label: "Foto de fons hero", uploadDir: () => "public/images" }
+          { type: "image", name: "heroImage", label: "Foto de fons hero", uploadDir: () => "images" }
         ]
       },
       // ─── PREUS ────────────────────────────────────────────────────────
@@ -272,8 +272,8 @@ var config_default = defineConfig({
           { type: "string", name: "heroSubtitleEn", label: "Subt\xEDtol hero (EN)" },
           { type: "string", name: "heroSubtitleDe", label: "Subt\xEDtol hero (DE)" },
           { type: "string", name: "temporada", label: "Temporada (ex: Hivern 2024-25)" },
-          { type: "image", name: "pdfSantanyi", label: "PDF Horari Santany\xED", uploadDir: () => "public/pdfs" },
-          { type: "image", name: "pdfCalaDor", label: "PDF Horari Cala d'Or", uploadDir: () => "public/pdfs" },
+          { type: "image", name: "pdfSantanyi", label: "PDF Horari Santany\xED", uploadDir: () => "pdfs" },
+          { type: "image", name: "pdfCalaDor", label: "PDF Horari Cala d'Or", uploadDir: () => "pdfs" },
           // ── Etiquetes capçalera ──
           { type: "string", name: "activityLabelCa", label: "Columna Activitat (CA)" },
           { type: "string", name: "activityLabelEs", label: "Columna Activitat (ES)" },
@@ -367,7 +367,7 @@ var config_default = defineConfig({
             list: true,
             ui: { itemProps: (item) => ({ label: item?.alt || "Foto" }) },
             fields: [
-              { type: "image", name: "src", label: "Imatge", uploadDir: () => "public/images" },
+              { type: "image", name: "src", label: "Imatge", uploadDir: () => "images" },
               { type: "string", name: "alt", label: "Text alternatiu" },
               { type: "string", name: "size", label: "Mida (large/small)", options: ["large", "small"] }
             ]
@@ -449,7 +449,7 @@ var config_default = defineConfig({
             list: true,
             ui: { itemProps: (item) => ({ label: item?.alt || "Foto" }) },
             fields: [
-              { type: "image", name: "src", label: "Imatge", uploadDir: () => "public/images" },
+              { type: "image", name: "src", label: "Imatge", uploadDir: () => "images" },
               { type: "string", name: "alt", label: "Text alternatiu" },
               { type: "string", name: "size", label: "Mida (large/small)", options: ["large", "small"] }
             ]
@@ -500,7 +500,7 @@ var config_default = defineConfig({
             list: true,
             ui: { itemProps: (item) => ({ label: item?.alt || "Foto" }) },
             fields: [
-              { type: "image", name: "src", label: "Imatge", uploadDir: () => "public/images" },
+              { type: "image", name: "src", label: "Imatge", uploadDir: () => "images" },
               { type: "string", name: "alt", label: "Text alternatiu" }
             ]
           }
@@ -525,7 +525,7 @@ var config_default = defineConfig({
             list: true,
             ui: { itemProps: (item) => ({ label: item?.alt || "Foto" }) },
             fields: [
-              { type: "image", name: "imatge", label: "Foto", uploadDir: () => "public/images" },
+              { type: "image", name: "imatge", label: "Foto", uploadDir: () => "images" },
               { type: "string", name: "alt", label: "Descripci\xF3 (alt text)" }
             ]
           }
@@ -550,7 +550,7 @@ var config_default = defineConfig({
             list: true,
             ui: { itemProps: (item) => ({ label: item?.alt || "Foto" }) },
             fields: [
-              { type: "image", name: "imatge", label: "Foto", uploadDir: () => "public/images" },
+              { type: "image", name: "imatge", label: "Foto", uploadDir: () => "images" },
               { type: "string", name: "alt", label: "Descripci\xF3 (alt text)" }
             ]
           }
@@ -632,7 +632,7 @@ var config_default = defineConfig({
               { type: "string", name: "descEn", label: "Descripci\xF3 (EN)", ui: { component: "textarea" } },
               { type: "string", name: "descDe", label: "Descripci\xF3 (DE)", ui: { component: "textarea" } },
               { type: "string", name: "href", label: "URL (ex: /natacio)" },
-              { type: "image", name: "img", label: "Icona/Imatge", uploadDir: () => "public/images" },
+              { type: "image", name: "img", label: "Icona/Imatge", uploadDir: () => "images" },
               {
                 type: "string",
                 name: "color",
@@ -858,7 +858,7 @@ var config_default = defineConfig({
               { type: "string", name: "textDe", label: "Text (DE)" }
             ]
           },
-          { type: "image", name: "mockupImage", label: "Imatge mockup app", uploadDir: () => "public/images" }
+          { type: "image", name: "mockupImage", label: "Imatge mockup app", uploadDir: () => "images" }
         ]
       },
       // ─── PÀGINA GIMNÀS ────────────────────────────────────────────────
@@ -899,7 +899,7 @@ var config_default = defineConfig({
           { type: "string", name: "trainingymSubtitleEs", label: "Text Trainingym (ES)", ui: { component: "textarea" } },
           { type: "string", name: "trainingymSubtitleEn", label: "Text Trainingym (EN)", ui: { component: "textarea" } },
           { type: "string", name: "trainingymSubtitleDe", label: "Text Trainingym (DE)", ui: { component: "textarea" } },
-          { type: "image", name: "trainingymImage", label: "Imatge Trainingym", uploadDir: () => "public/images" },
+          { type: "image", name: "trainingymImage", label: "Imatge Trainingym", uploadDir: () => "images" },
           {
             type: "object",
             name: "trainingymFeatures",
@@ -997,7 +997,7 @@ var config_default = defineConfig({
           { type: "string", name: "whyTitleEs", label: "T\xEDtol Per qu\xE8 (ES)" },
           { type: "string", name: "whyTitleEn", label: "T\xEDtol Per qu\xE8 (EN)" },
           { type: "string", name: "whyTitleDe", label: "T\xEDtol Per qu\xE8 (DE)" },
-          { type: "image", name: "whyImage", label: "Imatge Per qu\xE8 (principal)", uploadDir: () => "public/images" },
+          { type: "image", name: "whyImage", label: "Imatge Per qu\xE8 (principal)", uploadDir: () => "images" },
           {
             type: "object",
             name: "whyGallery",
@@ -1005,7 +1005,7 @@ var config_default = defineConfig({
             list: true,
             ui: { itemProps: (item) => ({ label: item?.alt || "Foto" }) },
             fields: [
-              { type: "image", name: "src", label: "Imatge", uploadDir: () => "public/images" },
+              { type: "image", name: "src", label: "Imatge", uploadDir: () => "images" },
               { type: "string", name: "alt", label: "Text alternatiu" }
             ]
           },

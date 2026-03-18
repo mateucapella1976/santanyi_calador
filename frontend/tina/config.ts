@@ -129,7 +129,7 @@ export default defineConfig({
               { type: 'string', name: 'labelDe', label: 'Text (DE)' },
             ],
           },
-          { type: 'image',  name: 'heroImage',    label: 'Foto de fons hero', uploadDir: () => 'public/images' },
+          { type: 'image',  name: 'heroImage',    label: 'Foto de fons hero', uploadDir: () => 'images' },
         ],
       },
 
@@ -273,8 +273,8 @@ export default defineConfig({
           { type: 'string', name: 'heroSubtitleEn', label: 'Subtítol hero (EN)' },
           { type: 'string', name: 'heroSubtitleDe', label: 'Subtítol hero (DE)' },
           { type: 'string', name: 'temporada',   label: 'Temporada (ex: Hivern 2024-25)' },
-          { type: 'image',  name: 'pdfSantanyi', label: 'PDF Horari Santanyí', uploadDir: () => 'public/pdfs' },
-          { type: 'image',  name: 'pdfCalaDor',  label: "PDF Horari Cala d'Or", uploadDir: () => 'public/pdfs' },
+          { type: 'image',  name: 'pdfSantanyi', label: 'PDF Horari Santanyí', uploadDir: () => 'pdfs' },
+          { type: 'image',  name: 'pdfCalaDor',  label: "PDF Horari Cala d'Or", uploadDir: () => 'pdfs' },
           // ── Etiquetes capçalera ──
           { type: 'string', name: 'activityLabelCa', label: 'Columna Activitat (CA)' },
           { type: 'string', name: 'activityLabelEs', label: 'Columna Activitat (ES)' },
@@ -360,7 +360,7 @@ export default defineConfig({
             type: 'object', name: 'gallery', label: 'Galeria fotos', list: true,
             ui: { itemProps: (item: any) => ({ label: item?.alt || 'Foto' }) },
             fields: [
-              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'public/images' },
+              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'images' },
               { type: 'string', name: 'alt', label: 'Text alternatiu' },
               { type: 'string', name: 'size', label: 'Mida (large/small)', options: ['large', 'small'] },
             ],
@@ -437,7 +437,7 @@ export default defineConfig({
             type: 'object', name: 'gallery', label: 'Galeria fotos', list: true,
             ui: { itemProps: (item: any) => ({ label: item?.alt || 'Foto' }) },
             fields: [
-              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'public/images' },
+              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'images' },
               { type: 'string', name: 'alt', label: 'Text alternatiu' },
               { type: 'string', name: 'size', label: 'Mida (large/small)', options: ['large', 'small'] },
             ],
@@ -482,7 +482,7 @@ export default defineConfig({
             type: 'object', name: 'contactGallery', label: 'Fotos secció contacte', list: true,
             ui: { itemProps: (item: any) => ({ label: item?.alt || 'Foto' }) },
             fields: [
-              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'public/images' },
+              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'images' },
               { type: 'string', name: 'alt', label: 'Text alternatiu' },
             ],
           },
@@ -505,7 +505,7 @@ export default defineConfig({
             type: 'object', name: 'fotos', label: 'Fotos', list: true,
             ui: { itemProps: (item: any) => ({ label: item?.alt || 'Foto' }) },
             fields: [
-              { type: 'image',  name: 'imatge', label: 'Foto', uploadDir: () => 'public/images' },
+              { type: 'image',  name: 'imatge', label: 'Foto', uploadDir: () => 'images' },
               { type: 'string', name: 'alt',    label: 'Descripció (alt text)' },
             ],
           },
@@ -528,7 +528,7 @@ export default defineConfig({
             type: 'object', name: 'fotos', label: 'Fotos', list: true,
             ui: { itemProps: (item: any) => ({ label: item?.alt || 'Foto' }) },
             fields: [
-              { type: 'image',  name: 'imatge', label: 'Foto', uploadDir: () => 'public/images' },
+              { type: 'image',  name: 'imatge', label: 'Foto', uploadDir: () => 'images' },
               { type: 'string', name: 'alt',    label: 'Descripció (alt text)' },
             ],
           },
@@ -604,7 +604,7 @@ export default defineConfig({
               { type: 'string', name: 'descEn',  label: 'Descripció (EN)', ui: { component: 'textarea' } },
               { type: 'string', name: 'descDe',  label: 'Descripció (DE)', ui: { component: 'textarea' } },
               { type: 'string', name: 'href',    label: 'URL (ex: /natacio)' },
-              { type: 'image',  name: 'img',     label: 'Icona/Imatge', uploadDir: () => 'public/images' },
+              { type: 'image',  name: 'img',     label: 'Icona/Imatge', uploadDir: () => 'images' },
               {
                 type: 'string', name: 'color', label: 'Color',
                 options: ['blue','purple','green','orange','red','teal'].map(c => ({ label: c, value: c })),
@@ -817,7 +817,7 @@ export default defineConfig({
               { type: 'string', name: 'textDe', label: 'Text (DE)' },
             ],
           },
-          { type: 'image', name: 'mockupImage', label: 'Imatge mockup app', uploadDir: () => 'public/images' },
+          { type: 'image', name: 'mockupImage', label: 'Imatge mockup app', uploadDir: () => 'images' },
         ],
       },
 
@@ -859,7 +859,7 @@ export default defineConfig({
           { type: 'string', name: 'trainingymSubtitleEs', label: 'Text Trainingym (ES)', ui: { component: 'textarea' } },
           { type: 'string', name: 'trainingymSubtitleEn', label: 'Text Trainingym (EN)', ui: { component: 'textarea' } },
           { type: 'string', name: 'trainingymSubtitleDe', label: 'Text Trainingym (DE)', ui: { component: 'textarea' } },
-          { type: 'image',  name: 'trainingymImage', label: 'Imatge Trainingym', uploadDir: () => 'public/images' },
+          { type: 'image',  name: 'trainingymImage', label: 'Imatge Trainingym', uploadDir: () => 'images' },
           {
             type: 'object', name: 'trainingymFeatures', label: 'Funcionalitats Trainingym', list: true,
             ui: { itemProps: (item: any) => ({ label: item?.textCa || 'Funcionalitat' }) },
@@ -953,12 +953,12 @@ export default defineConfig({
           { type: 'string', name: 'whyTitleEs', label: 'Títol Per què (ES)' },
           { type: 'string', name: 'whyTitleEn', label: 'Títol Per què (EN)' },
           { type: 'string', name: 'whyTitleDe', label: 'Títol Per què (DE)' },
-          { type: 'image',  name: 'whyImage',   label: 'Imatge Per què (principal)', uploadDir: () => 'public/images' },
+          { type: 'image',  name: 'whyImage',   label: 'Imatge Per què (principal)', uploadDir: () => 'images' },
           {
             type: 'object', name: 'whyGallery', label: 'Galeria fotos Per què', list: true,
             ui: { itemProps: (item: any) => ({ label: item?.alt || 'Foto' }) },
             fields: [
-              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'public/images' },
+              { type: 'image', name: 'src', label: 'Imatge', uploadDir: () => 'images' },
               { type: 'string', name: 'alt', label: 'Text alternatiu' },
             ],
           },

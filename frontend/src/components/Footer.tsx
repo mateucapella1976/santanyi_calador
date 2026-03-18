@@ -29,7 +29,7 @@ export default function Footer({ query, variables, data, lang }: Props) {
   const addr2    = s.addressCalaDor  || "Avinguda Sementer, S/N";
   const ig       = s.instagram       || 'https://www.instagram.com/piscinasantanyicalador/';
   const fb       = s.facebook        || 'https://www.facebook.com/piscinasantanyi';
-  const logoFt   = s.logoFooter      ? `/${s.logoFooter}` : '/logo-footer.png';
+  const logoFt   = s.logoFooter      ? `/${s.logoFooter.replace(/^\/+/, '').replace(/^public\//, '')}` : '/logo-footer.png';
 
   return (
     <footer className="text-white" style={{ background: '#333333' }}>

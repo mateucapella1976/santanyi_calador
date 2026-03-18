@@ -43,7 +43,7 @@ export default function Nav({ navQuery, navVariables, navData, settingsQuery, se
   const phone2  = settings.phoneCalaDor  ?? '673 008 715';
   const ig      = settings.instagram     ?? 'https://www.instagram.com/piscinasantanyicalador/';
   const fb      = settings.facebook      ?? 'https://www.facebook.com/piscinasantanyi';
-  const logo    = settings.logo          ? `/${settings.logo}` : '/logo.png';
+  const logo    = settings.logo          ? `/${settings.logo.replace(/^\/+/, '').replace(/^public\//, '')}` : '/logo.png';
 
   const dayPassLabel = nav[`ctaDayPassLabel${lk}`] || nav.ctaDayPassLabelCa || 'Day Pass';
   const dayPassUrl   = nav.ctaDayPassUrl || '/day-pass';
