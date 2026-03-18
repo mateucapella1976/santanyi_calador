@@ -15,23 +15,5 @@
   "ctaPrimaryEs": "Hazte abonado",
   "ctaPrimaryEn": "Become a member",
   "ctaPrimaryDe": "Mitglied werden",
-  "stats": [
-    {
-      "icon": "🏊",
-      "number": "20+",
-      "labelCa": "Activitats dirigides",
-      "labelEs": "Actividades dirigidas",
-      "labelEn": "Fitness classes",
-      "labelDe": "Fitnesskurse"
-    },
-    {
-      "icon": "📍",
-      "number": "3",
-      "labelCa": "Instal·lacions",
-      "labelEs": "Instalaciones",
-      "labelEn": "Facilities",
-      "labelDe": "Anlagen"
-    }
-  ],
   "heroImage": "/images/images/Fons.jpg"
 }
