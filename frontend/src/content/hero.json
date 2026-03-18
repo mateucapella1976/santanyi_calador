@@ -17,14 +17,6 @@
   "ctaPrimaryDe": "Mitglied werden",
   "stats": [
     {
-      "icon": "👥",
-      "number": "550+",
-      "labelCa": "Abonats satisfets",
-      "labelEs": "Abonados satisfechos",
-      "labelEn": "Satisfied members",
-      "labelDe": "Zufriedene Mitglieder"
-    },
-    {
       "icon": "🏆",
       "number": "15",
       "labelCa": "Anys d'experiència",
