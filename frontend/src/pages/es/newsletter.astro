@@ -1,0 +1,23 @@
+---
+import Page from '../../layouts/Page.astro';
+import NewsletterPage from '../../components/NewsletterPage';
+import { getLangFromUrl, type Lang } from '../../i18n/utils';
+import client from '../../../tina/__generated__/client';
+
+const lang = getLangFromUrl(Astro.url) as Lang;
+const res = await (client.queries as any).paginaNewsletter({ relativePath: 'pagina-newsletter.json' });
+---
+
+<Page
+  title="Newsletter — Piscinas Santanyí y Cala d'Or"
+  description="Noticias y novedades de Piscinas Santanyí y Cala d'Or"
+  canonicalPath="/newsletter"
+>
+  <NewsletterPage
+    client:load
+    query={res.query}
+    variables={res.variables}
+    data={res.data}
+    lang={lang}
+  />
+</Page>

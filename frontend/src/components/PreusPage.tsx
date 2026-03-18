@@ -20,6 +20,7 @@ export default function PreusPage({ query, variables, data, lang }: Props) {
   const badge    = g[`heroBadge${lk}`]    || g.heroBadgeCa    || 'Preus clars';
   const title    = g[`heroTitle${lk}`]    || g.heroTitleCa    || 'Preus clars, sense sorpreses';
   const subtitle = g[`heroSubtitle${lk}`] || g.heroSubtitleCa || '';
+  const heroImage = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   const membershipsTitle = g[`membershipsTitle${lk}`] || g.membershipsTitleCa || 'Abonaments mensuals';
   const membershipsSub   = g[`membershipsSub${lk}`]   || g.membershipsSubCa   || '';
@@ -41,8 +42,12 @@ export default function PreusPage({ query, variables, data, lang }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="pool-bg text-white py-16">
-        <div className="container-site text-center">
+      <section className={`${heroImage ? 'relative overflow-hidden' : 'pool-bg'} text-white py-16`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a4543]/85 via-[#2e7e7a]/70 to-[#5db7b3]/50"></div>
+        </>}
+        <div className={`container-site text-center ${heroImage ? 'relative z-10' : ''}`}>
           <span
             className="badge bg-white/20 text-white border border-white/30 mb-4"
             data-tina-field={tf(`heroBadge${lk}`)}

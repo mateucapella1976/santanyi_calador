@@ -124,6 +124,8 @@ export type Query = {
   paginesConnection: PaginesConnection;
   noticies: Noticies;
   noticiesConnection: NoticiesConnection;
+  paginaNewsletter: PaginaNewsletter;
+  paginaNewsletterConnection: PaginaNewsletterConnection;
 };
 
 
@@ -462,6 +464,21 @@ export type QueryNoticiesConnectionArgs = {
   filter?: InputMaybe<NoticiesFilter>;
 };
 
+
+export type QueryPaginaNewsletterArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryPaginaNewsletterConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PaginaNewsletterFilter>;
+};
+
 export type DocumentFilter = {
   settings?: InputMaybe<SettingsFilter>;
   navigation?: InputMaybe<NavigationFilter>;
@@ -484,6 +501,7 @@ export type DocumentFilter = {
   paginaContacte?: InputMaybe<PaginaContacteFilter>;
   pagines?: InputMaybe<PaginesFilter>;
   noticies?: InputMaybe<NoticiesFilter>;
+  paginaNewsletter?: InputMaybe<PaginaNewsletterFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -523,7 +541,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Settings | Navigation | Hero | Preus | Horaris | PaginaSantanyi | PaginaCalaDor | GaleriaSantanyi | GaleriaCalaDor | Trustbar | Serveis | PaginaDayPass | Daypass | AppPromo | PaginaGimnas | PaginaNatacio | PaginaActivitats | PaginaPadel | PaginaContacte | Pagines | Noticies | Folder;
+export type DocumentNode = Settings | Navigation | Hero | Preus | Horaris | PaginaSantanyi | PaginaCalaDor | GaleriaSantanyi | GaleriaCalaDor | Trustbar | Serveis | PaginaDayPass | Daypass | AppPromo | PaginaGimnas | PaginaNatacio | PaginaActivitats | PaginaPadel | PaginaContacte | Pagines | Noticies | PaginaNewsletter | Folder;
 
 export type Settings = Node & Document & {
   __typename?: 'Settings';
@@ -772,6 +790,7 @@ export type PreusExtraServices = {
 
 export type Preus = Node & Document & {
   __typename?: 'Preus';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroBadgeCa?: Maybe<Scalars['String']['output']>;
   heroBadgeEs?: Maybe<Scalars['String']['output']>;
   heroBadgeEn?: Maybe<Scalars['String']['output']>;
@@ -867,6 +886,7 @@ export type PreusExtraServicesFilter = {
 };
 
 export type PreusFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroBadgeCa?: InputMaybe<StringFilter>;
   heroBadgeEs?: InputMaybe<StringFilter>;
   heroBadgeEn?: InputMaybe<StringFilter>;
@@ -928,30 +948,112 @@ export type PreusConnection = Connection & {
   edges?: Maybe<Array<Maybe<PreusConnectionEdges>>>;
 };
 
-export type HorarisRows = {
-  __typename?: 'HorarisRows';
+export type HorarisRowsDilluns = {
+  __typename?: 'HorarisRowsDilluns';
   activitat?: Maybe<Scalars['String']['output']>;
   logo?: Maybe<Scalars['String']['output']>;
-  dilluns?: Maybe<Scalars['String']['output']>;
-  dimarts?: Maybe<Scalars['String']['output']>;
-  dimecres?: Maybe<Scalars['String']['output']>;
-  dijous?: Maybe<Scalars['String']['output']>;
-  divendres?: Maybe<Scalars['String']['output']>;
-  dissabte?: Maybe<Scalars['String']['output']>;
-  diumenge?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsDimarts = {
+  __typename?: 'HorarisRowsDimarts';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsDimecres = {
+  __typename?: 'HorarisRowsDimecres';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsDijous = {
+  __typename?: 'HorarisRowsDijous';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsDivendres = {
+  __typename?: 'HorarisRowsDivendres';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsDissabte = {
+  __typename?: 'HorarisRowsDissabte';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsDiumenge = {
+  __typename?: 'HorarisRowsDiumenge';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRows = {
+  __typename?: 'HorarisRows';
+  hora?: Maybe<Scalars['String']['output']>;
+  dilluns?: Maybe<HorarisRowsDilluns>;
+  dimarts?: Maybe<HorarisRowsDimarts>;
+  dimecres?: Maybe<HorarisRowsDimecres>;
+  dijous?: Maybe<HorarisRowsDijous>;
+  divendres?: Maybe<HorarisRowsDivendres>;
+  dissabte?: Maybe<HorarisRowsDissabte>;
+  diumenge?: Maybe<HorarisRowsDiumenge>;
+};
+
+export type HorarisRowsCalaDorDilluns = {
+  __typename?: 'HorarisRowsCalaDorDilluns';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsCalaDorDimarts = {
+  __typename?: 'HorarisRowsCalaDorDimarts';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsCalaDorDimecres = {
+  __typename?: 'HorarisRowsCalaDorDimecres';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsCalaDorDijous = {
+  __typename?: 'HorarisRowsCalaDorDijous';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsCalaDorDivendres = {
+  __typename?: 'HorarisRowsCalaDorDivendres';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsCalaDorDissabte = {
+  __typename?: 'HorarisRowsCalaDorDissabte';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
+};
+
+export type HorarisRowsCalaDorDiumenge = {
+  __typename?: 'HorarisRowsCalaDorDiumenge';
+  activitat?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
 };
 
 export type HorarisRowsCalaDor = {
   __typename?: 'HorarisRowsCalaDor';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-  dilluns?: Maybe<Scalars['String']['output']>;
-  dimarts?: Maybe<Scalars['String']['output']>;
-  dimecres?: Maybe<Scalars['String']['output']>;
-  dijous?: Maybe<Scalars['String']['output']>;
-  divendres?: Maybe<Scalars['String']['output']>;
-  dissabte?: Maybe<Scalars['String']['output']>;
-  diumenge?: Maybe<Scalars['String']['output']>;
+  hora?: Maybe<Scalars['String']['output']>;
+  dilluns?: Maybe<HorarisRowsCalaDorDilluns>;
+  dimarts?: Maybe<HorarisRowsCalaDorDimarts>;
+  dimecres?: Maybe<HorarisRowsCalaDorDimecres>;
+  dijous?: Maybe<HorarisRowsCalaDorDijous>;
+  divendres?: Maybe<HorarisRowsCalaDorDivendres>;
+  dissabte?: Maybe<HorarisRowsCalaDorDissabte>;
+  diumenge?: Maybe<HorarisRowsCalaDorDiumenge>;
 };
 
 export type Horaris = Node & Document & {
@@ -967,10 +1069,7 @@ export type Horaris = Node & Document & {
   temporada?: Maybe<Scalars['String']['output']>;
   pdfSantanyi?: Maybe<Scalars['String']['output']>;
   pdfCalaDor?: Maybe<Scalars['String']['output']>;
-  activityLabelCa?: Maybe<Scalars['String']['output']>;
-  activityLabelEs?: Maybe<Scalars['String']['output']>;
-  activityLabelEn?: Maybe<Scalars['String']['output']>;
-  activityLabelDe?: Maybe<Scalars['String']['output']>;
+  horaLabel?: Maybe<Scalars['String']['output']>;
   dayLabelDl?: Maybe<Scalars['String']['output']>;
   dayLabelDm?: Maybe<Scalars['String']['output']>;
   dayLabelDc?: Maybe<Scalars['String']['output']>;
@@ -989,28 +1088,96 @@ export type Horaris = Node & Document & {
   _values: Scalars['JSON']['output'];
 };
 
-export type HorarisRowsFilter = {
+export type HorarisRowsDillunsFilter = {
   activitat?: InputMaybe<StringFilter>;
   logo?: InputMaybe<ImageFilter>;
-  dilluns?: InputMaybe<StringFilter>;
-  dimarts?: InputMaybe<StringFilter>;
-  dimecres?: InputMaybe<StringFilter>;
-  dijous?: InputMaybe<StringFilter>;
-  divendres?: InputMaybe<StringFilter>;
-  dissabte?: InputMaybe<StringFilter>;
-  diumenge?: InputMaybe<StringFilter>;
+};
+
+export type HorarisRowsDimartsFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsDimecresFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsDijousFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsDivendresFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsDissabteFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsDiumengeFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsFilter = {
+  hora?: InputMaybe<StringFilter>;
+  dilluns?: InputMaybe<HorarisRowsDillunsFilter>;
+  dimarts?: InputMaybe<HorarisRowsDimartsFilter>;
+  dimecres?: InputMaybe<HorarisRowsDimecresFilter>;
+  dijous?: InputMaybe<HorarisRowsDijousFilter>;
+  divendres?: InputMaybe<HorarisRowsDivendresFilter>;
+  dissabte?: InputMaybe<HorarisRowsDissabteFilter>;
+  diumenge?: InputMaybe<HorarisRowsDiumengeFilter>;
+};
+
+export type HorarisRowsCalaDorDillunsFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsCalaDorDimartsFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsCalaDorDimecresFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsCalaDorDijousFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsCalaDorDivendresFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsCalaDorDissabteFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+};
+
+export type HorarisRowsCalaDorDiumengeFilter = {
+  activitat?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
 };
 
 export type HorarisRowsCalaDorFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-  dilluns?: InputMaybe<StringFilter>;
-  dimarts?: InputMaybe<StringFilter>;
-  dimecres?: InputMaybe<StringFilter>;
-  dijous?: InputMaybe<StringFilter>;
-  divendres?: InputMaybe<StringFilter>;
-  dissabte?: InputMaybe<StringFilter>;
-  diumenge?: InputMaybe<StringFilter>;
+  hora?: InputMaybe<StringFilter>;
+  dilluns?: InputMaybe<HorarisRowsCalaDorDillunsFilter>;
+  dimarts?: InputMaybe<HorarisRowsCalaDorDimartsFilter>;
+  dimecres?: InputMaybe<HorarisRowsCalaDorDimecresFilter>;
+  dijous?: InputMaybe<HorarisRowsCalaDorDijousFilter>;
+  divendres?: InputMaybe<HorarisRowsCalaDorDivendresFilter>;
+  dissabte?: InputMaybe<HorarisRowsCalaDorDissabteFilter>;
+  diumenge?: InputMaybe<HorarisRowsCalaDorDiumengeFilter>;
 };
 
 export type HorarisFilter = {
@@ -1025,10 +1192,7 @@ export type HorarisFilter = {
   temporada?: InputMaybe<StringFilter>;
   pdfSantanyi?: InputMaybe<ImageFilter>;
   pdfCalaDor?: InputMaybe<ImageFilter>;
-  activityLabelCa?: InputMaybe<StringFilter>;
-  activityLabelEs?: InputMaybe<StringFilter>;
-  activityLabelEn?: InputMaybe<StringFilter>;
-  activityLabelDe?: InputMaybe<StringFilter>;
+  horaLabel?: InputMaybe<StringFilter>;
   dayLabelDl?: InputMaybe<StringFilter>;
   dayLabelDm?: InputMaybe<StringFilter>;
   dayLabelDc?: InputMaybe<StringFilter>;
@@ -1079,6 +1243,7 @@ export type PaginaSantanyiServices = {
 
 export type PaginaSantanyi = Node & Document & {
   __typename?: 'PaginaSantanyi';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroBadgeCa?: Maybe<Scalars['String']['output']>;
   heroBadgeEs?: Maybe<Scalars['String']['output']>;
   heroBadgeEn?: Maybe<Scalars['String']['output']>;
@@ -1142,6 +1307,7 @@ export type PaginaSantanyiServicesFilter = {
 };
 
 export type PaginaSantanyiFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroBadgeCa?: InputMaybe<StringFilter>;
   heroBadgeEs?: InputMaybe<StringFilter>;
   heroBadgeEn?: InputMaybe<StringFilter>;
@@ -1224,6 +1390,7 @@ export type PaginaCalaDorContactGallery = {
 
 export type PaginaCalaDor = Node & Document & {
   __typename?: 'PaginaCalaDor';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroBadgeCa?: Maybe<Scalars['String']['output']>;
   heroBadgeEs?: Maybe<Scalars['String']['output']>;
   heroBadgeEn?: Maybe<Scalars['String']['output']>;
@@ -1293,6 +1460,7 @@ export type PaginaCalaDorContactGalleryFilter = {
 };
 
 export type PaginaCalaDorFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroBadgeCa?: InputMaybe<StringFilter>;
   heroBadgeEs?: InputMaybe<StringFilter>;
   heroBadgeEn?: InputMaybe<StringFilter>;
@@ -1552,6 +1720,7 @@ export type PaginaDayPassPoolGymFeatures = {
 
 export type PaginaDayPass = Node & Document & {
   __typename?: 'PaginaDayPass';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroBadgeCa?: Maybe<Scalars['String']['output']>;
   heroBadgeEs?: Maybe<Scalars['String']['output']>;
   heroBadgeEn?: Maybe<Scalars['String']['output']>;
@@ -1625,6 +1794,7 @@ export type PaginaDayPassPoolGymFeaturesFilter = {
 };
 
 export type PaginaDayPassFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroBadgeCa?: InputMaybe<StringFilter>;
   heroBadgeEs?: InputMaybe<StringFilter>;
   heroBadgeEn?: InputMaybe<StringFilter>;
@@ -2096,6 +2266,7 @@ export type PaginaNatacioCourses = {
 
 export type PaginaNatacio = Node & Document & {
   __typename?: 'PaginaNatacio';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroBadgeCa?: Maybe<Scalars['String']['output']>;
   heroBadgeEs?: Maybe<Scalars['String']['output']>;
   heroBadgeEn?: Maybe<Scalars['String']['output']>;
@@ -2179,6 +2350,7 @@ export type PaginaNatacioCoursesFilter = {
 };
 
 export type PaginaNatacioFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroBadgeCa?: InputMaybe<StringFilter>;
   heroBadgeEs?: InputMaybe<StringFilter>;
   heroBadgeEn?: InputMaybe<StringFilter>;
@@ -2265,6 +2437,7 @@ export type PaginaActivitatsActivities = {
 
 export type PaginaActivitats = Node & Document & {
   __typename?: 'PaginaActivitats';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroBadgeCa?: Maybe<Scalars['String']['output']>;
   heroBadgeEs?: Maybe<Scalars['String']['output']>;
   heroBadgeEn?: Maybe<Scalars['String']['output']>;
@@ -2332,6 +2505,7 @@ export type PaginaActivitatsActivitiesFilter = {
 };
 
 export type PaginaActivitatsFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroBadgeCa?: InputMaybe<StringFilter>;
   heroBadgeEs?: InputMaybe<StringFilter>;
   heroBadgeEn?: InputMaybe<StringFilter>;
@@ -2421,6 +2595,7 @@ export type PaginaPadelPricingSlots = {
 
 export type PaginaPadel = Node & Document & {
   __typename?: 'PaginaPadel';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroBadgeCa?: Maybe<Scalars['String']['output']>;
   heroBadgeEs?: Maybe<Scalars['String']['output']>;
   heroBadgeEn?: Maybe<Scalars['String']['output']>;
@@ -2488,6 +2663,7 @@ export type PaginaPadelPricingSlotsFilter = {
 };
 
 export type PaginaPadelFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroBadgeCa?: InputMaybe<StringFilter>;
   heroBadgeEs?: InputMaybe<StringFilter>;
   heroBadgeEn?: InputMaybe<StringFilter>;
@@ -2545,6 +2721,7 @@ export type PaginaPadelConnection = Connection & {
 
 export type PaginaContacte = Node & Document & {
   __typename?: 'PaginaContacte';
+  heroImage?: Maybe<Scalars['String']['output']>;
   heroTitleCa?: Maybe<Scalars['String']['output']>;
   heroTitleEs?: Maybe<Scalars['String']['output']>;
   heroTitleEn?: Maybe<Scalars['String']['output']>;
@@ -2613,6 +2790,7 @@ export type PaginaContacte = Node & Document & {
 };
 
 export type PaginaContacteFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
   heroTitleCa?: InputMaybe<StringFilter>;
   heroTitleEs?: InputMaybe<StringFilter>;
   heroTitleEn?: InputMaybe<StringFilter>;
@@ -2856,6 +3034,59 @@ export type NoticiesConnection = Connection & {
   edges?: Maybe<Array<Maybe<NoticiesConnectionEdges>>>;
 };
 
+export type PaginaNewsletter = Node & Document & {
+  __typename?: 'PaginaNewsletter';
+  heroImage?: Maybe<Scalars['String']['output']>;
+  heroTitleCa?: Maybe<Scalars['String']['output']>;
+  heroTitleEs?: Maybe<Scalars['String']['output']>;
+  heroTitleEn?: Maybe<Scalars['String']['output']>;
+  heroTitleDe?: Maybe<Scalars['String']['output']>;
+  heroSubtitleCa?: Maybe<Scalars['String']['output']>;
+  heroSubtitleEs?: Maybe<Scalars['String']['output']>;
+  heroSubtitleEn?: Maybe<Scalars['String']['output']>;
+  heroSubtitleDe?: Maybe<Scalars['String']['output']>;
+  edicio?: Maybe<Scalars['String']['output']>;
+  imatgeDestacada?: Maybe<Scalars['String']['output']>;
+  contingutCa?: Maybe<Scalars['JSON']['output']>;
+  contingutEs?: Maybe<Scalars['JSON']['output']>;
+  contingutEn?: Maybe<Scalars['JSON']['output']>;
+  contingutDe?: Maybe<Scalars['JSON']['output']>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type PaginaNewsletterFilter = {
+  heroImage?: InputMaybe<ImageFilter>;
+  heroTitleCa?: InputMaybe<StringFilter>;
+  heroTitleEs?: InputMaybe<StringFilter>;
+  heroTitleEn?: InputMaybe<StringFilter>;
+  heroTitleDe?: InputMaybe<StringFilter>;
+  heroSubtitleCa?: InputMaybe<StringFilter>;
+  heroSubtitleEs?: InputMaybe<StringFilter>;
+  heroSubtitleEn?: InputMaybe<StringFilter>;
+  heroSubtitleDe?: InputMaybe<StringFilter>;
+  edicio?: InputMaybe<StringFilter>;
+  imatgeDestacada?: InputMaybe<ImageFilter>;
+  contingutCa?: InputMaybe<RichTextFilter>;
+  contingutEs?: InputMaybe<RichTextFilter>;
+  contingutEn?: InputMaybe<RichTextFilter>;
+  contingutDe?: InputMaybe<RichTextFilter>;
+};
+
+export type PaginaNewsletterConnectionEdges = {
+  __typename?: 'PaginaNewsletterConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<PaginaNewsletter>;
+};
+
+export type PaginaNewsletterConnection = Connection & {
+  __typename?: 'PaginaNewsletterConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<PaginaNewsletterConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -2905,6 +3136,8 @@ export type Mutation = {
   createPagines: Pagines;
   updateNoticies: Noticies;
   createNoticies: Noticies;
+  updatePaginaNewsletter: PaginaNewsletter;
+  createPaginaNewsletter: PaginaNewsletter;
 };
 
 
@@ -3192,6 +3425,18 @@ export type MutationCreateNoticiesArgs = {
   params: NoticiesMutation;
 };
 
+
+export type MutationUpdatePaginaNewsletterArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PaginaNewsletterMutation;
+};
+
+
+export type MutationCreatePaginaNewsletterArgs = {
+  relativePath: Scalars['String']['input'];
+  params: PaginaNewsletterMutation;
+};
+
 export type DocumentUpdateMutation = {
   settings?: InputMaybe<SettingsMutation>;
   navigation?: InputMaybe<NavigationMutation>;
@@ -3214,6 +3459,7 @@ export type DocumentUpdateMutation = {
   paginaContacte?: InputMaybe<PaginaContacteMutation>;
   pagines?: InputMaybe<PaginesMutation>;
   noticies?: InputMaybe<NoticiesMutation>;
+  paginaNewsletter?: InputMaybe<PaginaNewsletterMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -3239,6 +3485,7 @@ export type DocumentMutation = {
   paginaContacte?: InputMaybe<PaginaContacteMutation>;
   pagines?: InputMaybe<PaginesMutation>;
   noticies?: InputMaybe<NoticiesMutation>;
+  paginaNewsletter?: InputMaybe<PaginaNewsletterMutation>;
 };
 
 export type SettingsMutation = {
@@ -3349,6 +3596,7 @@ export type PreusExtraServicesMutation = {
 };
 
 export type PreusMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroBadgeCa?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEs?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEn?: InputMaybe<Scalars['String']['input']>;
@@ -3397,28 +3645,96 @@ export type PreusMutation = {
   referralCtaDe?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type HorarisRowsMutation = {
+export type HorarisRowsDillunsMutation = {
   activitat?: InputMaybe<Scalars['String']['input']>;
   logo?: InputMaybe<Scalars['String']['input']>;
-  dilluns?: InputMaybe<Scalars['String']['input']>;
-  dimarts?: InputMaybe<Scalars['String']['input']>;
-  dimecres?: InputMaybe<Scalars['String']['input']>;
-  dijous?: InputMaybe<Scalars['String']['input']>;
-  divendres?: InputMaybe<Scalars['String']['input']>;
-  dissabte?: InputMaybe<Scalars['String']['input']>;
-  diumenge?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsDimartsMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsDimecresMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsDijousMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsDivendresMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsDissabteMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsDiumengeMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsMutation = {
+  hora?: InputMaybe<Scalars['String']['input']>;
+  dilluns?: InputMaybe<HorarisRowsDillunsMutation>;
+  dimarts?: InputMaybe<HorarisRowsDimartsMutation>;
+  dimecres?: InputMaybe<HorarisRowsDimecresMutation>;
+  dijous?: InputMaybe<HorarisRowsDijousMutation>;
+  divendres?: InputMaybe<HorarisRowsDivendresMutation>;
+  dissabte?: InputMaybe<HorarisRowsDissabteMutation>;
+  diumenge?: InputMaybe<HorarisRowsDiumengeMutation>;
+};
+
+export type HorarisRowsCalaDorDillunsMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsCalaDorDimartsMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsCalaDorDimecresMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsCalaDorDijousMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsCalaDorDivendresMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsCalaDorDissabteMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HorarisRowsCalaDorDiumengeMutation = {
+  activitat?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HorarisRowsCalaDorMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-  dilluns?: InputMaybe<Scalars['String']['input']>;
-  dimarts?: InputMaybe<Scalars['String']['input']>;
-  dimecres?: InputMaybe<Scalars['String']['input']>;
-  dijous?: InputMaybe<Scalars['String']['input']>;
-  divendres?: InputMaybe<Scalars['String']['input']>;
-  dissabte?: InputMaybe<Scalars['String']['input']>;
-  diumenge?: InputMaybe<Scalars['String']['input']>;
+  hora?: InputMaybe<Scalars['String']['input']>;
+  dilluns?: InputMaybe<HorarisRowsCalaDorDillunsMutation>;
+  dimarts?: InputMaybe<HorarisRowsCalaDorDimartsMutation>;
+  dimecres?: InputMaybe<HorarisRowsCalaDorDimecresMutation>;
+  dijous?: InputMaybe<HorarisRowsCalaDorDijousMutation>;
+  divendres?: InputMaybe<HorarisRowsCalaDorDivendresMutation>;
+  dissabte?: InputMaybe<HorarisRowsCalaDorDissabteMutation>;
+  diumenge?: InputMaybe<HorarisRowsCalaDorDiumengeMutation>;
 };
 
 export type HorarisMutation = {
@@ -3433,10 +3749,7 @@ export type HorarisMutation = {
   temporada?: InputMaybe<Scalars['String']['input']>;
   pdfSantanyi?: InputMaybe<Scalars['String']['input']>;
   pdfCalaDor?: InputMaybe<Scalars['String']['input']>;
-  activityLabelCa?: InputMaybe<Scalars['String']['input']>;
-  activityLabelEs?: InputMaybe<Scalars['String']['input']>;
-  activityLabelEn?: InputMaybe<Scalars['String']['input']>;
-  activityLabelDe?: InputMaybe<Scalars['String']['input']>;
+  horaLabel?: InputMaybe<Scalars['String']['input']>;
   dayLabelDl?: InputMaybe<Scalars['String']['input']>;
   dayLabelDm?: InputMaybe<Scalars['String']['input']>;
   dayLabelDc?: InputMaybe<Scalars['String']['input']>;
@@ -3471,6 +3784,7 @@ export type PaginaSantanyiServicesMutation = {
 };
 
 export type PaginaSantanyiMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroBadgeCa?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEs?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEn?: InputMaybe<Scalars['String']['input']>;
@@ -3536,6 +3850,7 @@ export type PaginaCalaDorContactGalleryMutation = {
 };
 
 export type PaginaCalaDorMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroBadgeCa?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEs?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEn?: InputMaybe<Scalars['String']['input']>;
@@ -3650,6 +3965,7 @@ export type PaginaDayPassPoolGymFeaturesMutation = {
 };
 
 export type PaginaDayPassMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroBadgeCa?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEs?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEn?: InputMaybe<Scalars['String']['input']>;
@@ -3888,6 +4204,7 @@ export type PaginaNatacioCoursesMutation = {
 };
 
 export type PaginaNatacioMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroBadgeCa?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEs?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEn?: InputMaybe<Scalars['String']['input']>;
@@ -3959,6 +4276,7 @@ export type PaginaActivitatsActivitiesMutation = {
 };
 
 export type PaginaActivitatsMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroBadgeCa?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEs?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEn?: InputMaybe<Scalars['String']['input']>;
@@ -4032,6 +4350,7 @@ export type PaginaPadelPricingSlotsMutation = {
 };
 
 export type PaginaPadelMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroBadgeCa?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEs?: InputMaybe<Scalars['String']['input']>;
   heroBadgeEn?: InputMaybe<Scalars['String']['input']>;
@@ -4075,6 +4394,7 @@ export type PaginaPadelMutation = {
 };
 
 export type PaginaContacteMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
   heroTitleCa?: InputMaybe<Scalars['String']['input']>;
   heroTitleEs?: InputMaybe<Scalars['String']['input']>;
   heroTitleEn?: InputMaybe<Scalars['String']['input']>;
@@ -4198,19 +4518,37 @@ export type NoticiesMutation = {
   publicada?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type PaginaNewsletterMutation = {
+  heroImage?: InputMaybe<Scalars['String']['input']>;
+  heroTitleCa?: InputMaybe<Scalars['String']['input']>;
+  heroTitleEs?: InputMaybe<Scalars['String']['input']>;
+  heroTitleEn?: InputMaybe<Scalars['String']['input']>;
+  heroTitleDe?: InputMaybe<Scalars['String']['input']>;
+  heroSubtitleCa?: InputMaybe<Scalars['String']['input']>;
+  heroSubtitleEs?: InputMaybe<Scalars['String']['input']>;
+  heroSubtitleEn?: InputMaybe<Scalars['String']['input']>;
+  heroSubtitleDe?: InputMaybe<Scalars['String']['input']>;
+  edicio?: InputMaybe<Scalars['String']['input']>;
+  imatgeDestacada?: InputMaybe<Scalars['String']['input']>;
+  contingutCa?: InputMaybe<Scalars['JSON']['input']>;
+  contingutEs?: InputMaybe<Scalars['JSON']['input']>;
+  contingutEn?: InputMaybe<Scalars['JSON']['input']>;
+  contingutDe?: InputMaybe<Scalars['JSON']['input']>;
+};
+
 export type SettingsPartsFragment = { __typename: 'Settings', siteName?: string | null, logo?: string | null, logoFooter?: string | null, phoneSantanyi?: string | null, phoneCalaDor?: string | null, emailSantanyi?: string | null, emailCalaDor?: string | null, instagram?: string | null, facebook?: string | null, whatsapp?: string | null, addressSantanyi?: string | null, addressCalaDor?: string | null, googleMapsSantanyi?: string | null, googleMapsCalaDor?: string | null };
 
 export type NavigationPartsFragment = { __typename: 'Navigation', ctaDayPassLabelCa?: string | null, ctaDayPassLabelEs?: string | null, ctaDayPassLabelEn?: string | null, ctaDayPassLabelDe?: string | null, ctaDayPassUrl?: string | null, ctaBookLabelCa?: string | null, ctaBookLabelEs?: string | null, ctaBookLabelEn?: string | null, ctaBookLabelDe?: string | null, ctaBookUrl?: string | null, items?: Array<{ __typename: 'NavigationItems', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, href?: string | null } | null> | null };
 
 export type HeroPartsFragment = { __typename: 'Hero', badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, subtitleCa?: string | null, subtitleEs?: string | null, subtitleEn?: string | null, subtitleDe?: string | null, ctaPrimaryCa?: string | null, ctaPrimaryEs?: string | null, ctaPrimaryEn?: string | null, ctaPrimaryDe?: string | null, heroImage?: string | null, stats?: Array<{ __typename: 'HeroStats', icon?: string | null, number?: string | null, labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null } | null> | null };
 
-export type PreusPartsFragment = { __typename: 'Preus', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, membershipsTitleCa?: string | null, membershipsTitleEs?: string | null, membershipsTitleEn?: string | null, membershipsTitleDe?: string | null, membershipsSubCa?: string | null, membershipsSubEs?: string | null, membershipsSubEn?: string | null, membershipsSubDe?: string | null, membershipsNoteCa?: string | null, membershipsNoteEs?: string | null, membershipsNoteEn?: string | null, membershipsNoteDe?: string | null, membershipsCtaCa?: string | null, membershipsCtaEs?: string | null, membershipsCtaEn?: string | null, membershipsCtaDe?: string | null, extraTitleCa?: string | null, extraTitleEs?: string | null, extraTitleEn?: string | null, extraTitleDe?: string | null, referralTitleCa?: string | null, referralTitleEs?: string | null, referralTitleEn?: string | null, referralTitleDe?: string | null, referralDescCa?: string | null, referralDescEs?: string | null, referralDescEn?: string | null, referralDescDe?: string | null, referralCtaCa?: string | null, referralCtaEs?: string | null, referralCtaEn?: string | null, referralCtaDe?: string | null, plans?: Array<{ __typename: 'PreusPlans', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, period?: string | null, ageCa?: string | null, ageEs?: string | null, ageEn?: string | null, ageDe?: string | null, badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, featuresCa?: Array<string | null> | null, featuresEs?: Array<string | null> | null, featuresEn?: Array<string | null> | null, featuresDe?: Array<string | null> | null, highlighted?: boolean | null } | null> | null, extraServices?: Array<{ __typename: 'PreusExtraServices', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, noteCa?: string | null, noteEs?: string | null, noteEn?: string | null, noteDe?: string | null } | null> | null };
+export type PreusPartsFragment = { __typename: 'Preus', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, membershipsTitleCa?: string | null, membershipsTitleEs?: string | null, membershipsTitleEn?: string | null, membershipsTitleDe?: string | null, membershipsSubCa?: string | null, membershipsSubEs?: string | null, membershipsSubEn?: string | null, membershipsSubDe?: string | null, membershipsNoteCa?: string | null, membershipsNoteEs?: string | null, membershipsNoteEn?: string | null, membershipsNoteDe?: string | null, membershipsCtaCa?: string | null, membershipsCtaEs?: string | null, membershipsCtaEn?: string | null, membershipsCtaDe?: string | null, extraTitleCa?: string | null, extraTitleEs?: string | null, extraTitleEn?: string | null, extraTitleDe?: string | null, referralTitleCa?: string | null, referralTitleEs?: string | null, referralTitleEn?: string | null, referralTitleDe?: string | null, referralDescCa?: string | null, referralDescEs?: string | null, referralDescEn?: string | null, referralDescDe?: string | null, referralCtaCa?: string | null, referralCtaEs?: string | null, referralCtaEn?: string | null, referralCtaDe?: string | null, plans?: Array<{ __typename: 'PreusPlans', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, period?: string | null, ageCa?: string | null, ageEs?: string | null, ageEn?: string | null, ageDe?: string | null, badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, featuresCa?: Array<string | null> | null, featuresEs?: Array<string | null> | null, featuresEn?: Array<string | null> | null, featuresDe?: Array<string | null> | null, highlighted?: boolean | null } | null> | null, extraServices?: Array<{ __typename: 'PreusExtraServices', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, noteCa?: string | null, noteEs?: string | null, noteEn?: string | null, noteDe?: string | null } | null> | null };
 
-export type HorarisPartsFragment = { __typename: 'Horaris', heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, activityLabelCa?: string | null, activityLabelEs?: string | null, activityLabelEn?: string | null, activityLabelDe?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, rows?: Array<{ __typename: 'HorarisRows', activitat?: string | null, logo?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', activitat?: string | null, logo?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null };
+export type HorarisPartsFragment = { __typename: 'Horaris', heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: { __typename: 'HorarisRowsDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: { __typename: 'HorarisRowsCalaDorDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsCalaDorDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsCalaDorDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsCalaDorDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsCalaDorDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsCalaDorDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsCalaDorDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null };
 
-export type PaginaSantanyiPartsFragment = { __typename: 'PaginaSantanyi', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, gallery?: Array<{ __typename: 'PaginaSantanyiGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaSantanyiServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null };
+export type PaginaSantanyiPartsFragment = { __typename: 'PaginaSantanyi', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, gallery?: Array<{ __typename: 'PaginaSantanyiGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaSantanyiServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null };
 
-export type PaginaCalaDorPartsFragment = { __typename: 'PaginaCalaDor', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, gallery?: Array<{ __typename: 'PaginaCalaDorGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaCalaDorServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, contactGallery?: Array<{ __typename: 'PaginaCalaDorContactGallery', src?: string | null, alt?: string | null } | null> | null };
+export type PaginaCalaDorPartsFragment = { __typename: 'PaginaCalaDor', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, gallery?: Array<{ __typename: 'PaginaCalaDorGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaCalaDorServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, contactGallery?: Array<{ __typename: 'PaginaCalaDorContactGallery', src?: string | null, alt?: string | null } | null> | null };
 
 export type GaleriaSantanyiPartsFragment = { __typename: 'GaleriaSantanyi', fotos?: Array<{ __typename: 'GaleriaSantanyiFotos', imatge?: string | null, alt?: string | null } | null> | null };
 
@@ -4220,7 +4558,7 @@ export type TrustbarPartsFragment = { __typename: 'Trustbar', items?: Array<{ __
 
 export type ServeisPartsFragment = { __typename: 'Serveis', titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, subtitleCa?: string | null, subtitleEs?: string | null, subtitleEn?: string | null, subtitleDe?: string | null, items?: Array<{ __typename: 'ServeisItems', titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, href?: string | null, img?: string | null, color?: string | null } | null> | null };
 
-export type PaginaDayPassPartsFragment = { __typename: 'PaginaDayPass', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitle?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, pricePool?: string | null, pricePoolGym?: string | null, poolLabelCa?: string | null, poolLabelEs?: string | null, poolLabelEn?: string | null, poolLabelDe?: string | null, poolGymLabelCa?: string | null, poolGymLabelEs?: string | null, poolGymLabelEn?: string | null, poolGymLabelDe?: string | null, perDayCa?: string | null, perDayEs?: string | null, perDayEn?: string | null, perDayDe?: string | null, includesCa?: string | null, includesEs?: string | null, includesEn?: string | null, includesDe?: string | null, sectionTitleCa?: string | null, sectionTitleEs?: string | null, sectionTitleEn?: string | null, sectionTitleDe?: string | null, poolBtnCa?: string | null, poolBtnEs?: string | null, poolBtnEn?: string | null, poolBtnDe?: string | null, facilitiesTitleCa?: string | null, facilitiesTitleEs?: string | null, facilitiesTitleEn?: string | null, facilitiesTitleDe?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, poolFeatures?: Array<{ __typename: 'PaginaDayPassPoolFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, poolGymFeatures?: Array<{ __typename: 'PaginaDayPassPoolGymFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null };
+export type PaginaDayPassPartsFragment = { __typename: 'PaginaDayPass', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitle?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, pricePool?: string | null, pricePoolGym?: string | null, poolLabelCa?: string | null, poolLabelEs?: string | null, poolLabelEn?: string | null, poolLabelDe?: string | null, poolGymLabelCa?: string | null, poolGymLabelEs?: string | null, poolGymLabelEn?: string | null, poolGymLabelDe?: string | null, perDayCa?: string | null, perDayEs?: string | null, perDayEn?: string | null, perDayDe?: string | null, includesCa?: string | null, includesEs?: string | null, includesEn?: string | null, includesDe?: string | null, sectionTitleCa?: string | null, sectionTitleEs?: string | null, sectionTitleEn?: string | null, sectionTitleDe?: string | null, poolBtnCa?: string | null, poolBtnEs?: string | null, poolBtnEn?: string | null, poolBtnDe?: string | null, facilitiesTitleCa?: string | null, facilitiesTitleEs?: string | null, facilitiesTitleEn?: string | null, facilitiesTitleDe?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, poolFeatures?: Array<{ __typename: 'PaginaDayPassPoolFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, poolGymFeatures?: Array<{ __typename: 'PaginaDayPassPoolGymFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null };
 
 export type DaypassPartsFragment = { __typename: 'Daypass', badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, subtitleCa?: string | null, subtitleEs?: string | null, subtitleEn?: string | null, subtitleDe?: string | null, pricePool?: string | null, pricePoolGym?: string | null, poolLabelCa?: string | null, poolLabelEs?: string | null, poolLabelEn?: string | null, poolLabelDe?: string | null, poolGymLabelCa?: string | null, poolGymLabelEs?: string | null, poolGymLabelEn?: string | null, poolGymLabelDe?: string | null, perDayCa?: string | null, perDayEs?: string | null, perDayEn?: string | null, perDayDe?: string | null, includesCa?: string | null, includesEs?: string | null, includesEn?: string | null, includesDe?: string | null, ctaCa?: string | null, ctaEs?: string | null, ctaEn?: string | null, ctaDe?: string | null, bannerCtaCa?: string | null, bannerCtaEs?: string | null, bannerCtaEn?: string | null, bannerCtaDe?: string | null, orCa?: string | null, orEs?: string | null, orEn?: string | null, orDe?: string | null, buttons?: Array<{ __typename: 'DaypassButtons', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, url?: string | null, style?: string | null, external?: boolean | null } | null> | null };
 
@@ -4228,17 +4566,19 @@ export type AppPromoPartsFragment = { __typename: 'AppPromo', badgeCa?: string |
 
 export type PaginaGimnasPartsFragment = { __typename: 'PaginaGimnas', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, trainingymTitleCa?: string | null, trainingymTitleEs?: string | null, trainingymTitleEn?: string | null, trainingymTitleDe?: string | null, trainingymSubtitleCa?: string | null, trainingymSubtitleEs?: string | null, trainingymSubtitleEn?: string | null, trainingymSubtitleDe?: string | null, trainingymImage?: string | null, equipmentTitleCa?: string | null, equipmentTitleEs?: string | null, equipmentTitleEn?: string | null, equipmentTitleDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubtitleCa?: string | null, ctaSubtitleEs?: string | null, ctaSubtitleEn?: string | null, ctaSubtitleDe?: string | null, ctaBtn1Ca?: string | null, ctaBtn1Es?: string | null, ctaBtn1En?: string | null, ctaBtn1De?: string | null, ctaBtn1Url?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, scheduleNoteCa?: string | null, scheduleNoteEs?: string | null, scheduleNoteEn?: string | null, scheduleNoteDe?: string | null, scheduleLinkCa?: string | null, scheduleLinkEs?: string | null, scheduleLinkEn?: string | null, scheduleLinkDe?: string | null, trainingymFeatures?: Array<{ __typename: 'PaginaGimnasTrainingymFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, equipment?: Array<{ __typename: 'PaginaGimnasEquipment', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, count?: string | null, icon?: string | null } | null> | null };
 
-export type PaginaNatacioPartsFragment = { __typename: 'PaginaNatacio', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, whyTitleCa?: string | null, whyTitleEs?: string | null, whyTitleEn?: string | null, whyTitleDe?: string | null, whyImage?: string | null, coursesTitleCa?: string | null, coursesTitleEs?: string | null, coursesTitleEn?: string | null, coursesTitleDe?: string | null, coursesSubCa?: string | null, coursesSubEs?: string | null, coursesSubEn?: string | null, coursesSubDe?: string | null, coursesCtaCa?: string | null, coursesCtaEs?: string | null, coursesCtaEn?: string | null, coursesCtaDe?: string | null, coursesCtaUrl?: string | null, freeTitleCa?: string | null, freeTitleEs?: string | null, freeTitleEn?: string | null, freeTitleDe?: string | null, freeDescCa?: string | null, freeDescEs?: string | null, freeDescEn?: string | null, freeDescDe?: string | null, freeCtaCa?: string | null, freeCtaEs?: string | null, freeCtaEn?: string | null, freeCtaDe?: string | null, freeCtaUrl?: string | null, whyGallery?: Array<{ __typename: 'PaginaNatacioWhyGallery', src?: string | null, alt?: string | null } | null> | null, whyItems?: Array<{ __typename: 'PaginaNatacioWhyItems', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, courses?: Array<{ __typename: 'PaginaNatacioCourses', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, age?: string | null, max?: string | null } | null> | null };
+export type PaginaNatacioPartsFragment = { __typename: 'PaginaNatacio', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, whyTitleCa?: string | null, whyTitleEs?: string | null, whyTitleEn?: string | null, whyTitleDe?: string | null, whyImage?: string | null, coursesTitleCa?: string | null, coursesTitleEs?: string | null, coursesTitleEn?: string | null, coursesTitleDe?: string | null, coursesSubCa?: string | null, coursesSubEs?: string | null, coursesSubEn?: string | null, coursesSubDe?: string | null, coursesCtaCa?: string | null, coursesCtaEs?: string | null, coursesCtaEn?: string | null, coursesCtaDe?: string | null, coursesCtaUrl?: string | null, freeTitleCa?: string | null, freeTitleEs?: string | null, freeTitleEn?: string | null, freeTitleDe?: string | null, freeDescCa?: string | null, freeDescEs?: string | null, freeDescEn?: string | null, freeDescDe?: string | null, freeCtaCa?: string | null, freeCtaEs?: string | null, freeCtaEn?: string | null, freeCtaDe?: string | null, freeCtaUrl?: string | null, whyGallery?: Array<{ __typename: 'PaginaNatacioWhyGallery', src?: string | null, alt?: string | null } | null> | null, whyItems?: Array<{ __typename: 'PaginaNatacioWhyItems', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, courses?: Array<{ __typename: 'PaginaNatacioCourses', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, age?: string | null, max?: string | null } | null> | null };
 
-export type PaginaActivitatsPartsFragment = { __typename: 'PaginaActivitats', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null };
+export type PaginaActivitatsPartsFragment = { __typename: 'PaginaActivitats', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null };
 
-export type PaginaPadelPartsFragment = { __typename: 'PaginaPadel', heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, featuresTitleCa?: string | null, featuresTitleEs?: string | null, featuresTitleEn?: string | null, featuresTitleDe?: string | null, courtLabel?: string | null, courtSublabel?: string | null, playtomicLabel?: string | null, playtomicUrl?: string | null, pricingTitleCa?: string | null, pricingTitleEs?: string | null, pricingTitleEn?: string | null, pricingTitleDe?: string | null, pricingNoteCa?: string | null, pricingNoteEs?: string | null, pricingNoteEn?: string | null, pricingNoteDe?: string | null, features?: Array<{ __typename: 'PaginaPadelFeatures', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, pricingSlots?: Array<{ __typename: 'PaginaPadelPricingSlots', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, hours?: string | null, price?: string | null } | null> | null };
+export type PaginaPadelPartsFragment = { __typename: 'PaginaPadel', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, featuresTitleCa?: string | null, featuresTitleEs?: string | null, featuresTitleEn?: string | null, featuresTitleDe?: string | null, courtLabel?: string | null, courtSublabel?: string | null, playtomicLabel?: string | null, playtomicUrl?: string | null, pricingTitleCa?: string | null, pricingTitleEs?: string | null, pricingTitleEn?: string | null, pricingTitleDe?: string | null, pricingNoteCa?: string | null, pricingNoteEs?: string | null, pricingNoteEn?: string | null, pricingNoteDe?: string | null, features?: Array<{ __typename: 'PaginaPadelFeatures', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, pricingSlots?: Array<{ __typename: 'PaginaPadelPricingSlots', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, hours?: string | null, price?: string | null } | null> | null };
 
-export type PaginaContactePartsFragment = { __typename: 'PaginaContacte', heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, loc1Name?: string | null, loc1Address?: string | null, loc1Phone?: string | null, loc1Email?: string | null, loc2Name?: string | null, loc2Address?: string | null, loc2Phone?: string | null, loc2Email?: string | null, followUsCa?: string | null, followUsEs?: string | null, followUsEn?: string | null, followUsDe?: string | null, instagramHandle?: string | null, instagramUrl?: string | null, instagramFollowers?: string | null, followersCa?: string | null, followersEs?: string | null, followersEn?: string | null, followersDe?: string | null, scheduleTitleCa?: string | null, scheduleTitleEs?: string | null, scheduleTitleEn?: string | null, scheduleTitleDe?: string | null, weekdaysLabelCa?: string | null, weekdaysLabelEs?: string | null, weekdaysLabelEn?: string | null, weekdaysLabelDe?: string | null, weekdaysHours?: string | null, saturdayLabelCa?: string | null, saturdayLabelEs?: string | null, saturdayLabelEn?: string | null, saturdayLabelDe?: string | null, saturdayHours?: string | null, sundayLabelCa?: string | null, sundayLabelEs?: string | null, sundayLabelEn?: string | null, sundayLabelDe?: string | null, sundayHours?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, waLabelCa?: string | null, waLabelEs?: string | null, waLabelEn?: string | null, waLabelDe?: string | null, waMessageCa?: string | null, waMessageEs?: string | null, waMessageEn?: string | null, waMessageDe?: string | null };
+export type PaginaContactePartsFragment = { __typename: 'PaginaContacte', heroImage?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, loc1Name?: string | null, loc1Address?: string | null, loc1Phone?: string | null, loc1Email?: string | null, loc2Name?: string | null, loc2Address?: string | null, loc2Phone?: string | null, loc2Email?: string | null, followUsCa?: string | null, followUsEs?: string | null, followUsEn?: string | null, followUsDe?: string | null, instagramHandle?: string | null, instagramUrl?: string | null, instagramFollowers?: string | null, followersCa?: string | null, followersEs?: string | null, followersEn?: string | null, followersDe?: string | null, scheduleTitleCa?: string | null, scheduleTitleEs?: string | null, scheduleTitleEn?: string | null, scheduleTitleDe?: string | null, weekdaysLabelCa?: string | null, weekdaysLabelEs?: string | null, weekdaysLabelEn?: string | null, weekdaysLabelDe?: string | null, weekdaysHours?: string | null, saturdayLabelCa?: string | null, saturdayLabelEs?: string | null, saturdayLabelEn?: string | null, saturdayLabelDe?: string | null, saturdayHours?: string | null, sundayLabelCa?: string | null, sundayLabelEs?: string | null, sundayLabelEn?: string | null, sundayLabelDe?: string | null, sundayHours?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, waLabelCa?: string | null, waLabelEs?: string | null, waLabelEn?: string | null, waLabelDe?: string | null, waMessageCa?: string | null, waMessageEs?: string | null, waMessageEn?: string | null, waMessageDe?: string | null };
 
 export type PaginesPartsFragment = { __typename: 'Pagines', seoTitleCa?: string | null, seoTitleEs?: string | null, seoTitleEn?: string | null, seoTitleDe?: string | null, seoDescCa?: string | null, seoDescEs?: string | null, seoDescEn?: string | null, seoDescDe?: string | null, heroBg?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, contingutCa?: any | null, contingutEs?: any | null, contingutEn?: any | null, contingutDe?: any | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaBtn1Ca?: string | null, ctaBtn1Es?: string | null, ctaBtn1En?: string | null, ctaBtn1De?: string | null, ctaBtn1Url?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null };
 
 export type NoticiesPartsFragment = { __typename: 'Noticies', titolCa?: string | null, titolEs?: string | null, titolEn?: string | null, titolDe?: string | null, data?: string | null, imatge?: string | null, contingutCa?: any | null, contingutEs?: any | null, publicada?: boolean | null };
+
+export type PaginaNewsletterPartsFragment = { __typename: 'PaginaNewsletter', heroImage?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, edicio?: string | null, imatgeDestacada?: string | null, contingutCa?: any | null, contingutEs?: any | null, contingutEn?: any | null, contingutDe?: any | null };
 
 export type SettingsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -4302,7 +4642,7 @@ export type PreusQueryVariables = Exact<{
 }>;
 
 
-export type PreusQuery = { __typename?: 'Query', preus: { __typename: 'Preus', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, membershipsTitleCa?: string | null, membershipsTitleEs?: string | null, membershipsTitleEn?: string | null, membershipsTitleDe?: string | null, membershipsSubCa?: string | null, membershipsSubEs?: string | null, membershipsSubEn?: string | null, membershipsSubDe?: string | null, membershipsNoteCa?: string | null, membershipsNoteEs?: string | null, membershipsNoteEn?: string | null, membershipsNoteDe?: string | null, membershipsCtaCa?: string | null, membershipsCtaEs?: string | null, membershipsCtaEn?: string | null, membershipsCtaDe?: string | null, extraTitleCa?: string | null, extraTitleEs?: string | null, extraTitleEn?: string | null, extraTitleDe?: string | null, referralTitleCa?: string | null, referralTitleEs?: string | null, referralTitleEn?: string | null, referralTitleDe?: string | null, referralDescCa?: string | null, referralDescEs?: string | null, referralDescEn?: string | null, referralDescDe?: string | null, referralCtaCa?: string | null, referralCtaEs?: string | null, referralCtaEn?: string | null, referralCtaDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, plans?: Array<{ __typename: 'PreusPlans', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, period?: string | null, ageCa?: string | null, ageEs?: string | null, ageEn?: string | null, ageDe?: string | null, badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, featuresCa?: Array<string | null> | null, featuresEs?: Array<string | null> | null, featuresEn?: Array<string | null> | null, featuresDe?: Array<string | null> | null, highlighted?: boolean | null } | null> | null, extraServices?: Array<{ __typename: 'PreusExtraServices', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, noteCa?: string | null, noteEs?: string | null, noteEn?: string | null, noteDe?: string | null } | null> | null } };
+export type PreusQuery = { __typename?: 'Query', preus: { __typename: 'Preus', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, membershipsTitleCa?: string | null, membershipsTitleEs?: string | null, membershipsTitleEn?: string | null, membershipsTitleDe?: string | null, membershipsSubCa?: string | null, membershipsSubEs?: string | null, membershipsSubEn?: string | null, membershipsSubDe?: string | null, membershipsNoteCa?: string | null, membershipsNoteEs?: string | null, membershipsNoteEn?: string | null, membershipsNoteDe?: string | null, membershipsCtaCa?: string | null, membershipsCtaEs?: string | null, membershipsCtaEn?: string | null, membershipsCtaDe?: string | null, extraTitleCa?: string | null, extraTitleEs?: string | null, extraTitleEn?: string | null, extraTitleDe?: string | null, referralTitleCa?: string | null, referralTitleEs?: string | null, referralTitleEn?: string | null, referralTitleDe?: string | null, referralDescCa?: string | null, referralDescEs?: string | null, referralDescEn?: string | null, referralDescDe?: string | null, referralCtaCa?: string | null, referralCtaEs?: string | null, referralCtaEn?: string | null, referralCtaDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, plans?: Array<{ __typename: 'PreusPlans', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, period?: string | null, ageCa?: string | null, ageEs?: string | null, ageEn?: string | null, ageDe?: string | null, badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, featuresCa?: Array<string | null> | null, featuresEs?: Array<string | null> | null, featuresEn?: Array<string | null> | null, featuresDe?: Array<string | null> | null, highlighted?: boolean | null } | null> | null, extraServices?: Array<{ __typename: 'PreusExtraServices', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, noteCa?: string | null, noteEs?: string | null, noteEn?: string | null, noteDe?: string | null } | null> | null } };
 
 export type PreusConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4314,14 +4654,14 @@ export type PreusConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PreusConnectionQuery = { __typename?: 'Query', preusConnection: { __typename?: 'PreusConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PreusConnectionEdges', cursor: string, node?: { __typename: 'Preus', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, membershipsTitleCa?: string | null, membershipsTitleEs?: string | null, membershipsTitleEn?: string | null, membershipsTitleDe?: string | null, membershipsSubCa?: string | null, membershipsSubEs?: string | null, membershipsSubEn?: string | null, membershipsSubDe?: string | null, membershipsNoteCa?: string | null, membershipsNoteEs?: string | null, membershipsNoteEn?: string | null, membershipsNoteDe?: string | null, membershipsCtaCa?: string | null, membershipsCtaEs?: string | null, membershipsCtaEn?: string | null, membershipsCtaDe?: string | null, extraTitleCa?: string | null, extraTitleEs?: string | null, extraTitleEn?: string | null, extraTitleDe?: string | null, referralTitleCa?: string | null, referralTitleEs?: string | null, referralTitleEn?: string | null, referralTitleDe?: string | null, referralDescCa?: string | null, referralDescEs?: string | null, referralDescEn?: string | null, referralDescDe?: string | null, referralCtaCa?: string | null, referralCtaEs?: string | null, referralCtaEn?: string | null, referralCtaDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, plans?: Array<{ __typename: 'PreusPlans', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, period?: string | null, ageCa?: string | null, ageEs?: string | null, ageEn?: string | null, ageDe?: string | null, badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, featuresCa?: Array<string | null> | null, featuresEs?: Array<string | null> | null, featuresEn?: Array<string | null> | null, featuresDe?: Array<string | null> | null, highlighted?: boolean | null } | null> | null, extraServices?: Array<{ __typename: 'PreusExtraServices', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, noteCa?: string | null, noteEs?: string | null, noteEn?: string | null, noteDe?: string | null } | null> | null } | null } | null> | null } };
+export type PreusConnectionQuery = { __typename?: 'Query', preusConnection: { __typename?: 'PreusConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PreusConnectionEdges', cursor: string, node?: { __typename: 'Preus', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, membershipsTitleCa?: string | null, membershipsTitleEs?: string | null, membershipsTitleEn?: string | null, membershipsTitleDe?: string | null, membershipsSubCa?: string | null, membershipsSubEs?: string | null, membershipsSubEn?: string | null, membershipsSubDe?: string | null, membershipsNoteCa?: string | null, membershipsNoteEs?: string | null, membershipsNoteEn?: string | null, membershipsNoteDe?: string | null, membershipsCtaCa?: string | null, membershipsCtaEs?: string | null, membershipsCtaEn?: string | null, membershipsCtaDe?: string | null, extraTitleCa?: string | null, extraTitleEs?: string | null, extraTitleEn?: string | null, extraTitleDe?: string | null, referralTitleCa?: string | null, referralTitleEs?: string | null, referralTitleEn?: string | null, referralTitleDe?: string | null, referralDescCa?: string | null, referralDescEs?: string | null, referralDescEn?: string | null, referralDescDe?: string | null, referralCtaCa?: string | null, referralCtaEs?: string | null, referralCtaEn?: string | null, referralCtaDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, plans?: Array<{ __typename: 'PreusPlans', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, period?: string | null, ageCa?: string | null, ageEs?: string | null, ageEn?: string | null, ageDe?: string | null, badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, featuresCa?: Array<string | null> | null, featuresEs?: Array<string | null> | null, featuresEn?: Array<string | null> | null, featuresDe?: Array<string | null> | null, highlighted?: boolean | null } | null> | null, extraServices?: Array<{ __typename: 'PreusExtraServices', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, noteCa?: string | null, noteEs?: string | null, noteEn?: string | null, noteDe?: string | null } | null> | null } | null } | null> | null } };
 
 export type HorarisQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type HorarisQuery = { __typename?: 'Query', horaris: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, activityLabelCa?: string | null, activityLabelEs?: string | null, activityLabelEn?: string | null, activityLabelDe?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, rows?: Array<{ __typename: 'HorarisRows', activitat?: string | null, logo?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', activitat?: string | null, logo?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null } };
+export type HorarisQuery = { __typename?: 'Query', horaris: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: { __typename: 'HorarisRowsDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: { __typename: 'HorarisRowsCalaDorDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsCalaDorDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsCalaDorDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsCalaDorDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsCalaDorDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsCalaDorDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsCalaDorDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null } };
 
 export type HorarisConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4333,14 +4673,14 @@ export type HorarisConnectionQueryVariables = Exact<{
 }>;
 
 
-export type HorarisConnectionQuery = { __typename?: 'Query', horarisConnection: { __typename?: 'HorarisConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HorarisConnectionEdges', cursor: string, node?: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, activityLabelCa?: string | null, activityLabelEs?: string | null, activityLabelEn?: string | null, activityLabelDe?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, rows?: Array<{ __typename: 'HorarisRows', activitat?: string | null, logo?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', activitat?: string | null, logo?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null } | null } | null> | null } };
+export type HorarisConnectionQuery = { __typename?: 'Query', horarisConnection: { __typename?: 'HorarisConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HorarisConnectionEdges', cursor: string, node?: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: { __typename: 'HorarisRowsDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: { __typename: 'HorarisRowsCalaDorDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsCalaDorDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsCalaDorDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsCalaDorDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsCalaDorDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsCalaDorDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsCalaDorDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null } | null } | null> | null } };
 
 export type PaginaSantanyiQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PaginaSantanyiQuery = { __typename?: 'Query', paginaSantanyi: { __typename: 'PaginaSantanyi', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaSantanyiGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaSantanyiServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null } };
+export type PaginaSantanyiQuery = { __typename?: 'Query', paginaSantanyi: { __typename: 'PaginaSantanyi', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaSantanyiGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaSantanyiServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null } };
 
 export type PaginaSantanyiConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4352,14 +4692,14 @@ export type PaginaSantanyiConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaSantanyiConnectionQuery = { __typename?: 'Query', paginaSantanyiConnection: { __typename?: 'PaginaSantanyiConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaSantanyiConnectionEdges', cursor: string, node?: { __typename: 'PaginaSantanyi', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaSantanyiGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaSantanyiServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null } | null } | null> | null } };
+export type PaginaSantanyiConnectionQuery = { __typename?: 'Query', paginaSantanyiConnection: { __typename?: 'PaginaSantanyiConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaSantanyiConnectionEdges', cursor: string, node?: { __typename: 'PaginaSantanyi', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaSantanyiGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaSantanyiServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null } | null } | null> | null } };
 
 export type PaginaCalaDorQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PaginaCalaDorQuery = { __typename?: 'Query', paginaCalaDor: { __typename: 'PaginaCalaDor', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaCalaDorGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaCalaDorServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, contactGallery?: Array<{ __typename: 'PaginaCalaDorContactGallery', src?: string | null, alt?: string | null } | null> | null } };
+export type PaginaCalaDorQuery = { __typename?: 'Query', paginaCalaDor: { __typename: 'PaginaCalaDor', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaCalaDorGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaCalaDorServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, contactGallery?: Array<{ __typename: 'PaginaCalaDorContactGallery', src?: string | null, alt?: string | null } | null> | null } };
 
 export type PaginaCalaDorConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4371,7 +4711,7 @@ export type PaginaCalaDorConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaCalaDorConnectionQuery = { __typename?: 'Query', paginaCalaDorConnection: { __typename?: 'PaginaCalaDorConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaCalaDorConnectionEdges', cursor: string, node?: { __typename: 'PaginaCalaDor', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaCalaDorGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaCalaDorServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, contactGallery?: Array<{ __typename: 'PaginaCalaDorContactGallery', src?: string | null, alt?: string | null } | null> | null } | null } | null> | null } };
+export type PaginaCalaDorConnectionQuery = { __typename?: 'Query', paginaCalaDorConnection: { __typename?: 'PaginaCalaDorConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaCalaDorConnectionEdges', cursor: string, node?: { __typename: 'PaginaCalaDor', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, gallery?: Array<{ __typename: 'PaginaCalaDorGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaCalaDorServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, contactGallery?: Array<{ __typename: 'PaginaCalaDorContactGallery', src?: string | null, alt?: string | null } | null> | null } | null } | null> | null } };
 
 export type GaleriaSantanyiQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -4454,7 +4794,7 @@ export type PaginaDayPassQueryVariables = Exact<{
 }>;
 
 
-export type PaginaDayPassQuery = { __typename?: 'Query', paginaDayPass: { __typename: 'PaginaDayPass', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitle?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, pricePool?: string | null, pricePoolGym?: string | null, poolLabelCa?: string | null, poolLabelEs?: string | null, poolLabelEn?: string | null, poolLabelDe?: string | null, poolGymLabelCa?: string | null, poolGymLabelEs?: string | null, poolGymLabelEn?: string | null, poolGymLabelDe?: string | null, perDayCa?: string | null, perDayEs?: string | null, perDayEn?: string | null, perDayDe?: string | null, includesCa?: string | null, includesEs?: string | null, includesEn?: string | null, includesDe?: string | null, sectionTitleCa?: string | null, sectionTitleEs?: string | null, sectionTitleEn?: string | null, sectionTitleDe?: string | null, poolBtnCa?: string | null, poolBtnEs?: string | null, poolBtnEn?: string | null, poolBtnDe?: string | null, facilitiesTitleCa?: string | null, facilitiesTitleEs?: string | null, facilitiesTitleEn?: string | null, facilitiesTitleDe?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, poolFeatures?: Array<{ __typename: 'PaginaDayPassPoolFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, poolGymFeatures?: Array<{ __typename: 'PaginaDayPassPoolGymFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null } };
+export type PaginaDayPassQuery = { __typename?: 'Query', paginaDayPass: { __typename: 'PaginaDayPass', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitle?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, pricePool?: string | null, pricePoolGym?: string | null, poolLabelCa?: string | null, poolLabelEs?: string | null, poolLabelEn?: string | null, poolLabelDe?: string | null, poolGymLabelCa?: string | null, poolGymLabelEs?: string | null, poolGymLabelEn?: string | null, poolGymLabelDe?: string | null, perDayCa?: string | null, perDayEs?: string | null, perDayEn?: string | null, perDayDe?: string | null, includesCa?: string | null, includesEs?: string | null, includesEn?: string | null, includesDe?: string | null, sectionTitleCa?: string | null, sectionTitleEs?: string | null, sectionTitleEn?: string | null, sectionTitleDe?: string | null, poolBtnCa?: string | null, poolBtnEs?: string | null, poolBtnEn?: string | null, poolBtnDe?: string | null, facilitiesTitleCa?: string | null, facilitiesTitleEs?: string | null, facilitiesTitleEn?: string | null, facilitiesTitleDe?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, poolFeatures?: Array<{ __typename: 'PaginaDayPassPoolFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, poolGymFeatures?: Array<{ __typename: 'PaginaDayPassPoolGymFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null } };
 
 export type PaginaDayPassConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4466,7 +4806,7 @@ export type PaginaDayPassConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaDayPassConnectionQuery = { __typename?: 'Query', paginaDayPassConnection: { __typename?: 'PaginaDayPassConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaDayPassConnectionEdges', cursor: string, node?: { __typename: 'PaginaDayPass', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitle?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, pricePool?: string | null, pricePoolGym?: string | null, poolLabelCa?: string | null, poolLabelEs?: string | null, poolLabelEn?: string | null, poolLabelDe?: string | null, poolGymLabelCa?: string | null, poolGymLabelEs?: string | null, poolGymLabelEn?: string | null, poolGymLabelDe?: string | null, perDayCa?: string | null, perDayEs?: string | null, perDayEn?: string | null, perDayDe?: string | null, includesCa?: string | null, includesEs?: string | null, includesEn?: string | null, includesDe?: string | null, sectionTitleCa?: string | null, sectionTitleEs?: string | null, sectionTitleEn?: string | null, sectionTitleDe?: string | null, poolBtnCa?: string | null, poolBtnEs?: string | null, poolBtnEn?: string | null, poolBtnDe?: string | null, facilitiesTitleCa?: string | null, facilitiesTitleEs?: string | null, facilitiesTitleEn?: string | null, facilitiesTitleDe?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, poolFeatures?: Array<{ __typename: 'PaginaDayPassPoolFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, poolGymFeatures?: Array<{ __typename: 'PaginaDayPassPoolGymFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null } | null } | null> | null } };
+export type PaginaDayPassConnectionQuery = { __typename?: 'Query', paginaDayPassConnection: { __typename?: 'PaginaDayPassConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaDayPassConnectionEdges', cursor: string, node?: { __typename: 'PaginaDayPass', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitle?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, pricePool?: string | null, pricePoolGym?: string | null, poolLabelCa?: string | null, poolLabelEs?: string | null, poolLabelEn?: string | null, poolLabelDe?: string | null, poolGymLabelCa?: string | null, poolGymLabelEs?: string | null, poolGymLabelEn?: string | null, poolGymLabelDe?: string | null, perDayCa?: string | null, perDayEs?: string | null, perDayEn?: string | null, perDayDe?: string | null, includesCa?: string | null, includesEs?: string | null, includesEn?: string | null, includesDe?: string | null, sectionTitleCa?: string | null, sectionTitleEs?: string | null, sectionTitleEn?: string | null, sectionTitleDe?: string | null, poolBtnCa?: string | null, poolBtnEs?: string | null, poolBtnEn?: string | null, poolBtnDe?: string | null, facilitiesTitleCa?: string | null, facilitiesTitleEs?: string | null, facilitiesTitleEn?: string | null, facilitiesTitleDe?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, poolFeatures?: Array<{ __typename: 'PaginaDayPassPoolFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, poolGymFeatures?: Array<{ __typename: 'PaginaDayPassPoolGymFeatures', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null } | null } | null> | null } };
 
 export type DaypassQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -4530,7 +4870,7 @@ export type PaginaNatacioQueryVariables = Exact<{
 }>;
 
 
-export type PaginaNatacioQuery = { __typename?: 'Query', paginaNatacio: { __typename: 'PaginaNatacio', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, whyTitleCa?: string | null, whyTitleEs?: string | null, whyTitleEn?: string | null, whyTitleDe?: string | null, whyImage?: string | null, coursesTitleCa?: string | null, coursesTitleEs?: string | null, coursesTitleEn?: string | null, coursesTitleDe?: string | null, coursesSubCa?: string | null, coursesSubEs?: string | null, coursesSubEn?: string | null, coursesSubDe?: string | null, coursesCtaCa?: string | null, coursesCtaEs?: string | null, coursesCtaEn?: string | null, coursesCtaDe?: string | null, coursesCtaUrl?: string | null, freeTitleCa?: string | null, freeTitleEs?: string | null, freeTitleEn?: string | null, freeTitleDe?: string | null, freeDescCa?: string | null, freeDescEs?: string | null, freeDescEn?: string | null, freeDescDe?: string | null, freeCtaCa?: string | null, freeCtaEs?: string | null, freeCtaEn?: string | null, freeCtaDe?: string | null, freeCtaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, whyGallery?: Array<{ __typename: 'PaginaNatacioWhyGallery', src?: string | null, alt?: string | null } | null> | null, whyItems?: Array<{ __typename: 'PaginaNatacioWhyItems', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, courses?: Array<{ __typename: 'PaginaNatacioCourses', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, age?: string | null, max?: string | null } | null> | null } };
+export type PaginaNatacioQuery = { __typename?: 'Query', paginaNatacio: { __typename: 'PaginaNatacio', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, whyTitleCa?: string | null, whyTitleEs?: string | null, whyTitleEn?: string | null, whyTitleDe?: string | null, whyImage?: string | null, coursesTitleCa?: string | null, coursesTitleEs?: string | null, coursesTitleEn?: string | null, coursesTitleDe?: string | null, coursesSubCa?: string | null, coursesSubEs?: string | null, coursesSubEn?: string | null, coursesSubDe?: string | null, coursesCtaCa?: string | null, coursesCtaEs?: string | null, coursesCtaEn?: string | null, coursesCtaDe?: string | null, coursesCtaUrl?: string | null, freeTitleCa?: string | null, freeTitleEs?: string | null, freeTitleEn?: string | null, freeTitleDe?: string | null, freeDescCa?: string | null, freeDescEs?: string | null, freeDescEn?: string | null, freeDescDe?: string | null, freeCtaCa?: string | null, freeCtaEs?: string | null, freeCtaEn?: string | null, freeCtaDe?: string | null, freeCtaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, whyGallery?: Array<{ __typename: 'PaginaNatacioWhyGallery', src?: string | null, alt?: string | null } | null> | null, whyItems?: Array<{ __typename: 'PaginaNatacioWhyItems', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, courses?: Array<{ __typename: 'PaginaNatacioCourses', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, age?: string | null, max?: string | null } | null> | null } };
 
 export type PaginaNatacioConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4542,14 +4882,14 @@ export type PaginaNatacioConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaNatacioConnectionQuery = { __typename?: 'Query', paginaNatacioConnection: { __typename?: 'PaginaNatacioConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaNatacioConnectionEdges', cursor: string, node?: { __typename: 'PaginaNatacio', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, whyTitleCa?: string | null, whyTitleEs?: string | null, whyTitleEn?: string | null, whyTitleDe?: string | null, whyImage?: string | null, coursesTitleCa?: string | null, coursesTitleEs?: string | null, coursesTitleEn?: string | null, coursesTitleDe?: string | null, coursesSubCa?: string | null, coursesSubEs?: string | null, coursesSubEn?: string | null, coursesSubDe?: string | null, coursesCtaCa?: string | null, coursesCtaEs?: string | null, coursesCtaEn?: string | null, coursesCtaDe?: string | null, coursesCtaUrl?: string | null, freeTitleCa?: string | null, freeTitleEs?: string | null, freeTitleEn?: string | null, freeTitleDe?: string | null, freeDescCa?: string | null, freeDescEs?: string | null, freeDescEn?: string | null, freeDescDe?: string | null, freeCtaCa?: string | null, freeCtaEs?: string | null, freeCtaEn?: string | null, freeCtaDe?: string | null, freeCtaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, whyGallery?: Array<{ __typename: 'PaginaNatacioWhyGallery', src?: string | null, alt?: string | null } | null> | null, whyItems?: Array<{ __typename: 'PaginaNatacioWhyItems', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, courses?: Array<{ __typename: 'PaginaNatacioCourses', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, age?: string | null, max?: string | null } | null> | null } | null } | null> | null } };
+export type PaginaNatacioConnectionQuery = { __typename?: 'Query', paginaNatacioConnection: { __typename?: 'PaginaNatacioConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaNatacioConnectionEdges', cursor: string, node?: { __typename: 'PaginaNatacio', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, whyTitleCa?: string | null, whyTitleEs?: string | null, whyTitleEn?: string | null, whyTitleDe?: string | null, whyImage?: string | null, coursesTitleCa?: string | null, coursesTitleEs?: string | null, coursesTitleEn?: string | null, coursesTitleDe?: string | null, coursesSubCa?: string | null, coursesSubEs?: string | null, coursesSubEn?: string | null, coursesSubDe?: string | null, coursesCtaCa?: string | null, coursesCtaEs?: string | null, coursesCtaEn?: string | null, coursesCtaDe?: string | null, coursesCtaUrl?: string | null, freeTitleCa?: string | null, freeTitleEs?: string | null, freeTitleEn?: string | null, freeTitleDe?: string | null, freeDescCa?: string | null, freeDescEs?: string | null, freeDescEn?: string | null, freeDescDe?: string | null, freeCtaCa?: string | null, freeCtaEs?: string | null, freeCtaEn?: string | null, freeCtaDe?: string | null, freeCtaUrl?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, whyGallery?: Array<{ __typename: 'PaginaNatacioWhyGallery', src?: string | null, alt?: string | null } | null> | null, whyItems?: Array<{ __typename: 'PaginaNatacioWhyItems', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, courses?: Array<{ __typename: 'PaginaNatacioCourses', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, age?: string | null, max?: string | null } | null> | null } | null } | null> | null } };
 
 export type PaginaActivitatsQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PaginaActivitatsQuery = { __typename?: 'Query', paginaActivitats: { __typename: 'PaginaActivitats', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } };
+export type PaginaActivitatsQuery = { __typename?: 'Query', paginaActivitats: { __typename: 'PaginaActivitats', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } };
 
 export type PaginaActivitatsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4561,14 +4901,14 @@ export type PaginaActivitatsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaActivitatsConnectionQuery = { __typename?: 'Query', paginaActivitatsConnection: { __typename?: 'PaginaActivitatsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaActivitatsConnectionEdges', cursor: string, node?: { __typename: 'PaginaActivitats', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } | null } | null> | null } };
+export type PaginaActivitatsConnectionQuery = { __typename?: 'Query', paginaActivitatsConnection: { __typename?: 'PaginaActivitatsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaActivitatsConnectionEdges', cursor: string, node?: { __typename: 'PaginaActivitats', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } | null } | null> | null } };
 
 export type PaginaPadelQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PaginaPadelQuery = { __typename?: 'Query', paginaPadel: { __typename: 'PaginaPadel', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, featuresTitleCa?: string | null, featuresTitleEs?: string | null, featuresTitleEn?: string | null, featuresTitleDe?: string | null, courtLabel?: string | null, courtSublabel?: string | null, playtomicLabel?: string | null, playtomicUrl?: string | null, pricingTitleCa?: string | null, pricingTitleEs?: string | null, pricingTitleEn?: string | null, pricingTitleDe?: string | null, pricingNoteCa?: string | null, pricingNoteEs?: string | null, pricingNoteEn?: string | null, pricingNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'PaginaPadelFeatures', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, pricingSlots?: Array<{ __typename: 'PaginaPadelPricingSlots', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, hours?: string | null, price?: string | null } | null> | null } };
+export type PaginaPadelQuery = { __typename?: 'Query', paginaPadel: { __typename: 'PaginaPadel', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, featuresTitleCa?: string | null, featuresTitleEs?: string | null, featuresTitleEn?: string | null, featuresTitleDe?: string | null, courtLabel?: string | null, courtSublabel?: string | null, playtomicLabel?: string | null, playtomicUrl?: string | null, pricingTitleCa?: string | null, pricingTitleEs?: string | null, pricingTitleEn?: string | null, pricingTitleDe?: string | null, pricingNoteCa?: string | null, pricingNoteEs?: string | null, pricingNoteEn?: string | null, pricingNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'PaginaPadelFeatures', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, pricingSlots?: Array<{ __typename: 'PaginaPadelPricingSlots', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, hours?: string | null, price?: string | null } | null> | null } };
 
 export type PaginaPadelConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4580,14 +4920,14 @@ export type PaginaPadelConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaPadelConnectionQuery = { __typename?: 'Query', paginaPadelConnection: { __typename?: 'PaginaPadelConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaPadelConnectionEdges', cursor: string, node?: { __typename: 'PaginaPadel', id: string, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, featuresTitleCa?: string | null, featuresTitleEs?: string | null, featuresTitleEn?: string | null, featuresTitleDe?: string | null, courtLabel?: string | null, courtSublabel?: string | null, playtomicLabel?: string | null, playtomicUrl?: string | null, pricingTitleCa?: string | null, pricingTitleEs?: string | null, pricingTitleEn?: string | null, pricingTitleDe?: string | null, pricingNoteCa?: string | null, pricingNoteEs?: string | null, pricingNoteEn?: string | null, pricingNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'PaginaPadelFeatures', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, pricingSlots?: Array<{ __typename: 'PaginaPadelPricingSlots', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, hours?: string | null, price?: string | null } | null> | null } | null } | null> | null } };
+export type PaginaPadelConnectionQuery = { __typename?: 'Query', paginaPadelConnection: { __typename?: 'PaginaPadelConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaPadelConnectionEdges', cursor: string, node?: { __typename: 'PaginaPadel', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, featuresTitleCa?: string | null, featuresTitleEs?: string | null, featuresTitleEn?: string | null, featuresTitleDe?: string | null, courtLabel?: string | null, courtSublabel?: string | null, playtomicLabel?: string | null, playtomicUrl?: string | null, pricingTitleCa?: string | null, pricingTitleEs?: string | null, pricingTitleEn?: string | null, pricingTitleDe?: string | null, pricingNoteCa?: string | null, pricingNoteEs?: string | null, pricingNoteEn?: string | null, pricingNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'PaginaPadelFeatures', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, pricingSlots?: Array<{ __typename: 'PaginaPadelPricingSlots', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, hours?: string | null, price?: string | null } | null> | null } | null } | null> | null } };
 
 export type PaginaContacteQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PaginaContacteQuery = { __typename?: 'Query', paginaContacte: { __typename: 'PaginaContacte', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, loc1Name?: string | null, loc1Address?: string | null, loc1Phone?: string | null, loc1Email?: string | null, loc2Name?: string | null, loc2Address?: string | null, loc2Phone?: string | null, loc2Email?: string | null, followUsCa?: string | null, followUsEs?: string | null, followUsEn?: string | null, followUsDe?: string | null, instagramHandle?: string | null, instagramUrl?: string | null, instagramFollowers?: string | null, followersCa?: string | null, followersEs?: string | null, followersEn?: string | null, followersDe?: string | null, scheduleTitleCa?: string | null, scheduleTitleEs?: string | null, scheduleTitleEn?: string | null, scheduleTitleDe?: string | null, weekdaysLabelCa?: string | null, weekdaysLabelEs?: string | null, weekdaysLabelEn?: string | null, weekdaysLabelDe?: string | null, weekdaysHours?: string | null, saturdayLabelCa?: string | null, saturdayLabelEs?: string | null, saturdayLabelEn?: string | null, saturdayLabelDe?: string | null, saturdayHours?: string | null, sundayLabelCa?: string | null, sundayLabelEs?: string | null, sundayLabelEn?: string | null, sundayLabelDe?: string | null, sundayHours?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, waLabelCa?: string | null, waLabelEs?: string | null, waLabelEn?: string | null, waLabelDe?: string | null, waMessageCa?: string | null, waMessageEs?: string | null, waMessageEn?: string | null, waMessageDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PaginaContacteQuery = { __typename?: 'Query', paginaContacte: { __typename: 'PaginaContacte', id: string, heroImage?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, loc1Name?: string | null, loc1Address?: string | null, loc1Phone?: string | null, loc1Email?: string | null, loc2Name?: string | null, loc2Address?: string | null, loc2Phone?: string | null, loc2Email?: string | null, followUsCa?: string | null, followUsEs?: string | null, followUsEn?: string | null, followUsDe?: string | null, instagramHandle?: string | null, instagramUrl?: string | null, instagramFollowers?: string | null, followersCa?: string | null, followersEs?: string | null, followersEn?: string | null, followersDe?: string | null, scheduleTitleCa?: string | null, scheduleTitleEs?: string | null, scheduleTitleEn?: string | null, scheduleTitleDe?: string | null, weekdaysLabelCa?: string | null, weekdaysLabelEs?: string | null, weekdaysLabelEn?: string | null, weekdaysLabelDe?: string | null, weekdaysHours?: string | null, saturdayLabelCa?: string | null, saturdayLabelEs?: string | null, saturdayLabelEn?: string | null, saturdayLabelDe?: string | null, saturdayHours?: string | null, sundayLabelCa?: string | null, sundayLabelEs?: string | null, sundayLabelEn?: string | null, sundayLabelDe?: string | null, sundayHours?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, waLabelCa?: string | null, waLabelEs?: string | null, waLabelEn?: string | null, waLabelDe?: string | null, waMessageCa?: string | null, waMessageEs?: string | null, waMessageEn?: string | null, waMessageDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PaginaContacteConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4599,7 +4939,7 @@ export type PaginaContacteConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaContacteConnectionQuery = { __typename?: 'Query', paginaContacteConnection: { __typename?: 'PaginaContacteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaContacteConnectionEdges', cursor: string, node?: { __typename: 'PaginaContacte', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, loc1Name?: string | null, loc1Address?: string | null, loc1Phone?: string | null, loc1Email?: string | null, loc2Name?: string | null, loc2Address?: string | null, loc2Phone?: string | null, loc2Email?: string | null, followUsCa?: string | null, followUsEs?: string | null, followUsEn?: string | null, followUsDe?: string | null, instagramHandle?: string | null, instagramUrl?: string | null, instagramFollowers?: string | null, followersCa?: string | null, followersEs?: string | null, followersEn?: string | null, followersDe?: string | null, scheduleTitleCa?: string | null, scheduleTitleEs?: string | null, scheduleTitleEn?: string | null, scheduleTitleDe?: string | null, weekdaysLabelCa?: string | null, weekdaysLabelEs?: string | null, weekdaysLabelEn?: string | null, weekdaysLabelDe?: string | null, weekdaysHours?: string | null, saturdayLabelCa?: string | null, saturdayLabelEs?: string | null, saturdayLabelEn?: string | null, saturdayLabelDe?: string | null, saturdayHours?: string | null, sundayLabelCa?: string | null, sundayLabelEs?: string | null, sundayLabelEn?: string | null, sundayLabelDe?: string | null, sundayHours?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, waLabelCa?: string | null, waLabelEs?: string | null, waLabelEn?: string | null, waLabelDe?: string | null, waMessageCa?: string | null, waMessageEs?: string | null, waMessageEn?: string | null, waMessageDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PaginaContacteConnectionQuery = { __typename?: 'Query', paginaContacteConnection: { __typename?: 'PaginaContacteConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaContacteConnectionEdges', cursor: string, node?: { __typename: 'PaginaContacte', id: string, heroImage?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, loc1Name?: string | null, loc1Address?: string | null, loc1Phone?: string | null, loc1Email?: string | null, loc2Name?: string | null, loc2Address?: string | null, loc2Phone?: string | null, loc2Email?: string | null, followUsCa?: string | null, followUsEs?: string | null, followUsEn?: string | null, followUsDe?: string | null, instagramHandle?: string | null, instagramUrl?: string | null, instagramFollowers?: string | null, followersCa?: string | null, followersEs?: string | null, followersEn?: string | null, followersDe?: string | null, scheduleTitleCa?: string | null, scheduleTitleEs?: string | null, scheduleTitleEn?: string | null, scheduleTitleDe?: string | null, weekdaysLabelCa?: string | null, weekdaysLabelEs?: string | null, weekdaysLabelEn?: string | null, weekdaysLabelDe?: string | null, weekdaysHours?: string | null, saturdayLabelCa?: string | null, saturdayLabelEs?: string | null, saturdayLabelEn?: string | null, saturdayLabelDe?: string | null, saturdayHours?: string | null, sundayLabelCa?: string | null, sundayLabelEs?: string | null, sundayLabelEn?: string | null, sundayLabelDe?: string | null, sundayHours?: string | null, formTitleCa?: string | null, formTitleEs?: string | null, formTitleEn?: string | null, formTitleDe?: string | null, formSubtitleCa?: string | null, formSubtitleEs?: string | null, formSubtitleEn?: string | null, formSubtitleDe?: string | null, waLabelCa?: string | null, waLabelEs?: string | null, waLabelEn?: string | null, waLabelDe?: string | null, waMessageCa?: string | null, waMessageEs?: string | null, waMessageEn?: string | null, waMessageDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export type PaginesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -4638,6 +4978,25 @@ export type NoticiesConnectionQueryVariables = Exact<{
 
 
 export type NoticiesConnectionQuery = { __typename?: 'Query', noticiesConnection: { __typename?: 'NoticiesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'NoticiesConnectionEdges', cursor: string, node?: { __typename: 'Noticies', id: string, titolCa?: string | null, titolEs?: string | null, titolEn?: string | null, titolDe?: string | null, data?: string | null, imatge?: string | null, contingutCa?: any | null, contingutEs?: any | null, publicada?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+
+export type PaginaNewsletterQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type PaginaNewsletterQuery = { __typename?: 'Query', paginaNewsletter: { __typename: 'PaginaNewsletter', id: string, heroImage?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, edicio?: string | null, imatgeDestacada?: string | null, contingutCa?: any | null, contingutEs?: any | null, contingutEn?: any | null, contingutDe?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+
+export type PaginaNewsletterConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<PaginaNewsletterFilter>;
+}>;
+
+
+export type PaginaNewsletterConnectionQuery = { __typename?: 'Query', paginaNewsletterConnection: { __typename?: 'PaginaNewsletterConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaNewsletterConnectionEdges', cursor: string, node?: { __typename: 'PaginaNewsletter', id: string, heroImage?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, edicio?: string | null, imatgeDestacada?: string | null, contingutCa?: any | null, contingutEs?: any | null, contingutEn?: any | null, contingutDe?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const SettingsPartsFragmentDoc = gql`
     fragment SettingsParts on Settings {
@@ -4715,6 +5074,7 @@ export const HeroPartsFragmentDoc = gql`
 export const PreusPartsFragmentDoc = gql`
     fragment PreusParts on Preus {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -4813,10 +5173,7 @@ export const HorarisPartsFragmentDoc = gql`
   temporada
   pdfSantanyi
   pdfCalaDor
-  activityLabelCa
-  activityLabelEs
-  activityLabelEn
-  activityLabelDe
+  horaLabel
   dayLabelDl
   dayLabelDm
   dayLabelDc
@@ -4830,33 +5187,88 @@ export const HorarisPartsFragmentDoc = gql`
   footerNoteDe
   rows {
     __typename
-    activitat
-    logo
-    dilluns
-    dimarts
-    dimecres
-    dijous
-    divendres
-    dissabte
-    diumenge
+    hora
+    dilluns {
+      __typename
+      activitat
+      logo
+    }
+    dimarts {
+      __typename
+      activitat
+      logo
+    }
+    dimecres {
+      __typename
+      activitat
+      logo
+    }
+    dijous {
+      __typename
+      activitat
+      logo
+    }
+    divendres {
+      __typename
+      activitat
+      logo
+    }
+    dissabte {
+      __typename
+      activitat
+      logo
+    }
+    diumenge {
+      __typename
+      activitat
+      logo
+    }
   }
   rowsCalaDor {
     __typename
-    activitat
-    logo
-    dilluns
-    dimarts
-    dimecres
-    dijous
-    divendres
-    dissabte
-    diumenge
+    hora
+    dilluns {
+      __typename
+      activitat
+      logo
+    }
+    dimarts {
+      __typename
+      activitat
+      logo
+    }
+    dimecres {
+      __typename
+      activitat
+      logo
+    }
+    dijous {
+      __typename
+      activitat
+      logo
+    }
+    divendres {
+      __typename
+      activitat
+      logo
+    }
+    dissabte {
+      __typename
+      activitat
+      logo
+    }
+    diumenge {
+      __typename
+      activitat
+      logo
+    }
   }
 }
     `;
 export const PaginaSantanyiPartsFragmentDoc = gql`
     fragment PaginaSantanyiParts on PaginaSantanyi {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -4917,6 +5329,7 @@ export const PaginaSantanyiPartsFragmentDoc = gql`
 export const PaginaCalaDorPartsFragmentDoc = gql`
     fragment PaginaCalaDorParts on PaginaCalaDor {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -5043,6 +5456,7 @@ export const ServeisPartsFragmentDoc = gql`
 export const PaginaDayPassPartsFragmentDoc = gql`
     fragment PaginaDayPassParts on PaginaDayPass {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -5276,6 +5690,7 @@ export const PaginaGimnasPartsFragmentDoc = gql`
 export const PaginaNatacioPartsFragmentDoc = gql`
     fragment PaginaNatacioParts on PaginaNatacio {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -5355,6 +5770,7 @@ export const PaginaNatacioPartsFragmentDoc = gql`
 export const PaginaActivitatsPartsFragmentDoc = gql`
     fragment PaginaActivitatsParts on PaginaActivitats {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -5420,6 +5836,7 @@ export const PaginaActivitatsPartsFragmentDoc = gql`
 export const PaginaPadelPartsFragmentDoc = gql`
     fragment PaginaPadelParts on PaginaPadel {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -5484,6 +5901,7 @@ export const PaginaPadelPartsFragmentDoc = gql`
 export const PaginaContactePartsFragmentDoc = gql`
     fragment PaginaContacteParts on PaginaContacte {
   __typename
+  heroImage
   heroTitleCa
   heroTitleEs
   heroTitleEn
@@ -5609,6 +6027,26 @@ export const NoticiesPartsFragmentDoc = gql`
   contingutCa
   contingutEs
   publicada
+}
+    `;
+export const PaginaNewsletterPartsFragmentDoc = gql`
+    fragment PaginaNewsletterParts on PaginaNewsletter {
+  __typename
+  heroImage
+  heroTitleCa
+  heroTitleEs
+  heroTitleEn
+  heroTitleDe
+  heroSubtitleCa
+  heroSubtitleEs
+  heroSubtitleEn
+  heroSubtitleDe
+  edicio
+  imatgeDestacada
+  contingutCa
+  contingutEs
+  contingutEn
+  contingutDe
 }
     `;
 export const SettingsDocument = gql`
@@ -6808,6 +7246,63 @@ export const NoticiesConnectionDocument = gql`
   }
 }
     ${NoticiesPartsFragmentDoc}`;
+export const PaginaNewsletterDocument = gql`
+    query paginaNewsletter($relativePath: String!) {
+  paginaNewsletter(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...PaginaNewsletterParts
+  }
+}
+    ${PaginaNewsletterPartsFragmentDoc}`;
+export const PaginaNewsletterConnectionDocument = gql`
+    query paginaNewsletterConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: PaginaNewsletterFilter) {
+  paginaNewsletterConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...PaginaNewsletterParts
+      }
+    }
+  }
+}
+    ${PaginaNewsletterPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -6936,6 +7431,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     noticiesConnection(variables?: NoticiesConnectionQueryVariables, options?: C): Promise<{data: NoticiesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NoticiesConnectionQueryVariables, query: string}> {
         return requester<{data: NoticiesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: NoticiesConnectionQueryVariables, query: string}, NoticiesConnectionQueryVariables>(NoticiesConnectionDocument, variables, options);
+      },
+    paginaNewsletter(variables: PaginaNewsletterQueryVariables, options?: C): Promise<{data: PaginaNewsletterQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PaginaNewsletterQueryVariables, query: string}> {
+        return requester<{data: PaginaNewsletterQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PaginaNewsletterQueryVariables, query: string}, PaginaNewsletterQueryVariables>(PaginaNewsletterDocument, variables, options);
+      },
+    paginaNewsletterConnection(variables?: PaginaNewsletterConnectionQueryVariables, options?: C): Promise<{data: PaginaNewsletterConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PaginaNewsletterConnectionQueryVariables, query: string}> {
+        return requester<{data: PaginaNewsletterConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PaginaNewsletterConnectionQueryVariables, query: string}, PaginaNewsletterConnectionQueryVariables>(PaginaNewsletterConnectionDocument, variables, options);
       }
     };
   }

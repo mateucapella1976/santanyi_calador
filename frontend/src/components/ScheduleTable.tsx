@@ -10,6 +10,12 @@ interface Props {
   showHero?: boolean;
 }
 
+function fixImg(src: string) {
+  if (!src) return '';
+  if (src.startsWith('http')) return src;
+  return src.startsWith('/') ? src : `/images/${src}`;
+}
+
 export default function ScheduleTable({ query, variables, data, lang, compact = false, showHero = false }: Props) {
   const { data: d } = useTina({ query, variables, data });
   const horaris = d?.horaris ?? {};
@@ -23,17 +29,17 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
   const lk = lang === 'es' ? 'Es' : lang === 'en' ? 'En' : lang === 'de' ? 'De' : 'Ca';
   const tf = (field: string) => d?.horaris ? tinaField(d.horaris, field) : undefined;
 
+  const horaLabel = horaris.horaLabel || 'HORA';
   const allDays = [
-    { key: 'dilluns',   label: horaris.dayLabelDl || 'Dl' },
-    { key: 'dimarts',   label: horaris.dayLabelDm || 'Dm' },
-    { key: 'dimecres',  label: horaris.dayLabelDc || 'Dc' },
-    { key: 'dijous',    label: horaris.dayLabelDj || 'Dj' },
-    { key: 'divendres', label: horaris.dayLabelDv || 'Dv' },
-    { key: 'dissabte',  label: horaris.dayLabelDs || 'Ds' },
-    { key: 'diumenge',  label: horaris.dayLabelDg || 'Dg' },
+    { key: 'dilluns',   label: horaris.dayLabelDl || 'DILLUNS' },
+    { key: 'dimarts',   label: horaris.dayLabelDm || 'DIMARTS' },
+    { key: 'dimecres',  label: horaris.dayLabelDc || 'DIMECRES' },
+    { key: 'dijous',    label: horaris.dayLabelDj || 'DIJOUS' },
+    { key: 'divendres', label: horaris.dayLabelDv || 'DIVENDRES' },
+    { key: 'dissabte',  label: horaris.dayLabelDs || 'DISSABTE' },
+    { key: 'diumenge',  label: horaris.dayLabelDg || 'DIUMENGE' },
   ];
 
-  const actLabel = horaris[`activityLabel${lk}`] || horaris.activityLabelCa || 'Activitat';
   const schTitle = lang === 'es' ? 'Horarios' : lang === 'en' ? 'Schedule' : lang === 'de' ? 'Öffnungszeiten' : 'Horaris';
   const schSub   = lang === 'es' ? 'Consulta todas las actividades y horarios disponibles.' : lang === 'en' ? 'Check all available activities and schedules.' : lang === 'de' ? 'Alle verfügbaren Aktivitäten und Zeiten.' : 'Consulta totes les activitats i horaris disponibles.';
   const noteText = horaris[`footerNote${lk}`] || horaris.footerNoteCa || 'Els horaris poden variar en festius.';
@@ -41,32 +47,43 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
   const heroSub   = horaris[`heroSubtitle${lk}`] || horaris.heroSubtitleCa || '';
 
   const currentRows = activeTab === 'calador' ? rowsCalaDor : rowsSantanyi;
-  const hasSunday = currentRows.some((r: any) => r.diumenge && r.diumenge.trim() !== '');
+  const hasSunday = currentRows.some((r: any) => r.diumenge?.activitat?.trim());
   const days = hasSunday ? allDays : allDays.slice(0, 6);
 
-  function renderTable(rows: any[], rowsKey: string) {
+  function renderCell(cell: any) {
+    if (!cell || !cell.activitat) return <span className="text-gray-300">&ndash;</span>;
+    const name = cell.activitat;
+    const logo = fixImg(cell.logo || '');
+    return (
+      <div className="flex flex-col items-center gap-1">
+        {logo && <img src={logo} alt="" className="h-7 w-auto" loading="lazy" />}
+        <span className="font-semibold text-dark text-xs leading-tight text-center">{name}</span>
+      </div>
+    );
+  }
+
+  function renderTable(rows: any[]) {
     return (
       <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
         <table className="w-full text-sm">
-          <thead className="bg-primary-500 text-white">
-            <tr>
-              <th className="text-left px-4 py-3 font-semibold rounded-tl-2xl">{actLabel}</th>
+          <thead>
+            <tr className="bg-primary-500 text-white">
+              <th className="text-center px-3 py-3 font-bold rounded-tl-2xl whitespace-nowrap">{horaLabel}</th>
               {days.map((day, i) => (
-                <th key={day.key} className={`text-center px-3 py-3 font-semibold ${i === days.length - 1 ? 'rounded-tr-2xl' : ''}`}>{day.label}</th>
+                <th key={day.key} className={`text-center px-3 py-3 font-bold whitespace-nowrap ${i === days.length - 1 ? 'rounded-tr-2xl' : ''}`}>{day.label}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {rows.map((row: any, i: number) => (
               <tr key={i} className={`border-t border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
-                <td className="px-4 py-3 font-semibold text-dark">
-                  <span className="flex items-center gap-2">
-                    {row.logo && <img src={row.logo.startsWith('http') ? row.logo : `/${row.logo.replace(/^\/+/, '').replace(/^public\//, '')}`} alt="" className="h-6 w-auto" loading="lazy" data-tina-field={tinaField(row, 'logo')} />}
-                    <span data-tina-field={tinaField(row, 'activitat')}>{row.activitat}</span>
-                  </span>
+                <td className="px-3 py-3 font-bold text-dark text-center whitespace-nowrap" data-tina-field={tinaField(row, 'hora')}>
+                  {row.hora}
                 </td>
                 {days.map(day => (
-                  <td key={day.key} className="text-center px-3 py-3 text-gray-600" data-tina-field={tinaField(row, day.key)}>{row[day.key] || '–'}</td>
+                  <td key={day.key} className="text-center px-2 py-3 min-w-[100px]" data-tina-field={row[day.key] ? tinaField(row[day.key], 'activitat') : undefined}>
+                    {renderCell(row[day.key])}
+                  </td>
                 ))}
               </tr>
             ))}
@@ -81,29 +98,7 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
       <div className="bg-primary-50 rounded-2xl p-6 border border-primary-100">
         <h3 className="font-display font-semibold text-dark mb-4">{schTitle}</h3>
         {temporada && <p className="text-xs text-primary-600 font-medium mb-3" data-tina-field={tf('temporada')}>{temporada}</p>}
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr>
-                <th className="text-left py-1 pr-3 text-gray-500 font-medium">{actLabel}</th>
-                {days.map(day => <th key={day.key} className="text-center py-1 px-1 text-gray-500 font-medium">{day.label}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              {rowsSantanyi.map((row: any, i: number) => (
-                <tr key={i} className="border-t border-primary-100">
-                  <td className="py-1.5 pr-3 font-semibold text-dark">
-                    <span className="flex items-center gap-2">
-                      {row.logo && <img src={row.logo.startsWith('http') ? row.logo : `/${row.logo.replace(/^\/+/, '').replace(/^public\//, '')}`} alt="" className="h-5 w-auto" loading="lazy" />}
-                      <span data-tina-field={tinaField(row, 'activitat')}>{row.activitat}</span>
-                    </span>
-                  </td>
-                  {days.map(day => <td key={day.key} className="text-center py-1.5 px-1 text-gray-600 text-xs">{row[day.key] || '–'}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {renderTable(rowsSantanyi)}
       </div>
     );
   }
@@ -131,7 +126,6 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
           {temporada && <p className="text-sm text-primary-600 font-semibold mt-2" data-tina-field={tf('temporada')}>{temporada}</p>}
         </div>
 
-        {/* Tabs Santanyí / Cala d'Or */}
         {hasCalaDor && (
           <div className="flex justify-center gap-2 mb-8">
             <button
@@ -149,7 +143,7 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
           </div>
         )}
 
-        {renderTable(currentRows, activeTab === 'calador' ? 'rowsCalaDor' : 'rows')}
+        {renderTable(currentRows)}
 
         <div className="mt-6 p-4 bg-gray-50 rounded-xl text-sm text-gray-500 flex items-start gap-2">
           <svg className="w-4 h-4 text-primary-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>

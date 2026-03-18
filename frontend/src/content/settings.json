@@ -1,7 +1,7 @@
 {
   "siteName": "Piscines Santanyí i Cala d'Or",
-  "logo": "",
-  "logoFooter": "",
+  "logo": "/images/logos/logo.png",
+  "logoFooter": "/images/logos/logo-footer.png",
   "phoneSantanyi": "673 003 828",
   "phoneCalaDor": "673 008 715",
   "emailSantanyi": "piscinasantanyi@algaliasport.net",

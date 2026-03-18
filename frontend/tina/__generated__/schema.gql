@@ -96,6 +96,8 @@ type Query {
   paginesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PaginesFilter): PaginesConnection!
   noticies(relativePath: String): Noticies!
   noticiesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: NoticiesFilter): NoticiesConnection!
+  paginaNewsletter(relativePath: String): PaginaNewsletter!
+  paginaNewsletterConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PaginaNewsletterFilter): PaginaNewsletterConnection!
 }
 
 input DocumentFilter {
@@ -120,6 +122,7 @@ input DocumentFilter {
   paginaContacte: PaginaContacteFilter
   pagines: PaginesFilter
   noticies: NoticiesFilter
+  paginaNewsletter: PaginaNewsletterFilter
 }
 
 type DocumentConnectionEdges {
@@ -145,7 +148,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Settings | Navigation | Hero | Preus | Horaris | PaginaSantanyi | PaginaCalaDor | GaleriaSantanyi | GaleriaCalaDor | Trustbar | Serveis | PaginaDayPass | Daypass | AppPromo | PaginaGimnas | PaginaNatacio | PaginaActivitats | PaginaPadel | PaginaContacte | Pagines | Noticies | Folder
+union DocumentNode = Settings | Navigation | Hero | Preus | Horaris | PaginaSantanyi | PaginaCalaDor | GaleriaSantanyi | GaleriaCalaDor | Trustbar | Serveis | PaginaDayPass | Daypass | AppPromo | PaginaGimnas | PaginaNatacio | PaginaActivitats | PaginaPadel | PaginaContacte | Pagines | Noticies | PaginaNewsletter | Folder
 
 type Settings implements Node & Document {
   siteName: String
@@ -380,6 +383,7 @@ type PreusExtraServices {
 }
 
 type Preus implements Node & Document {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -475,6 +479,7 @@ input PreusExtraServicesFilter {
 }
 
 input PreusFilter {
+  heroImage: ImageFilter
   heroBadgeCa: StringFilter
   heroBadgeEs: StringFilter
   heroBadgeEn: StringFilter
@@ -534,28 +539,96 @@ type PreusConnection implements Connection {
   edges: [PreusConnectionEdges]
 }
 
-type HorarisRows {
+type HorarisRowsDilluns {
   activitat: String
   logo: String
-  dilluns: String
-  dimarts: String
-  dimecres: String
-  dijous: String
-  divendres: String
-  dissabte: String
-  diumenge: String
+}
+
+type HorarisRowsDimarts {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsDimecres {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsDijous {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsDivendres {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsDissabte {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsDiumenge {
+  activitat: String
+  logo: String
+}
+
+type HorarisRows {
+  hora: String
+  dilluns: HorarisRowsDilluns
+  dimarts: HorarisRowsDimarts
+  dimecres: HorarisRowsDimecres
+  dijous: HorarisRowsDijous
+  divendres: HorarisRowsDivendres
+  dissabte: HorarisRowsDissabte
+  diumenge: HorarisRowsDiumenge
+}
+
+type HorarisRowsCalaDorDilluns {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsCalaDorDimarts {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsCalaDorDimecres {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsCalaDorDijous {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsCalaDorDivendres {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsCalaDorDissabte {
+  activitat: String
+  logo: String
+}
+
+type HorarisRowsCalaDorDiumenge {
+  activitat: String
+  logo: String
 }
 
 type HorarisRowsCalaDor {
-  activitat: String
-  logo: String
-  dilluns: String
-  dimarts: String
-  dimecres: String
-  dijous: String
-  divendres: String
-  dissabte: String
-  diumenge: String
+  hora: String
+  dilluns: HorarisRowsCalaDorDilluns
+  dimarts: HorarisRowsCalaDorDimarts
+  dimecres: HorarisRowsCalaDorDimecres
+  dijous: HorarisRowsCalaDorDijous
+  divendres: HorarisRowsCalaDorDivendres
+  dissabte: HorarisRowsCalaDorDissabte
+  diumenge: HorarisRowsCalaDorDiumenge
 }
 
 type Horaris implements Node & Document {
@@ -570,10 +643,7 @@ type Horaris implements Node & Document {
   temporada: String
   pdfSantanyi: String
   pdfCalaDor: String
-  activityLabelCa: String
-  activityLabelEs: String
-  activityLabelEn: String
-  activityLabelDe: String
+  horaLabel: String
   dayLabelDl: String
   dayLabelDm: String
   dayLabelDc: String
@@ -592,28 +662,96 @@ type Horaris implements Node & Document {
   _values: JSON!
 }
 
-input HorarisRowsFilter {
+input HorarisRowsDillunsFilter {
   activitat: StringFilter
   logo: ImageFilter
-  dilluns: StringFilter
-  dimarts: StringFilter
-  dimecres: StringFilter
-  dijous: StringFilter
-  divendres: StringFilter
-  dissabte: StringFilter
-  diumenge: StringFilter
+}
+
+input HorarisRowsDimartsFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsDimecresFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsDijousFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsDivendresFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsDissabteFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsDiumengeFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsFilter {
+  hora: StringFilter
+  dilluns: HorarisRowsDillunsFilter
+  dimarts: HorarisRowsDimartsFilter
+  dimecres: HorarisRowsDimecresFilter
+  dijous: HorarisRowsDijousFilter
+  divendres: HorarisRowsDivendresFilter
+  dissabte: HorarisRowsDissabteFilter
+  diumenge: HorarisRowsDiumengeFilter
+}
+
+input HorarisRowsCalaDorDillunsFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsCalaDorDimartsFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsCalaDorDimecresFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsCalaDorDijousFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsCalaDorDivendresFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsCalaDorDissabteFilter {
+  activitat: StringFilter
+  logo: ImageFilter
+}
+
+input HorarisRowsCalaDorDiumengeFilter {
+  activitat: StringFilter
+  logo: ImageFilter
 }
 
 input HorarisRowsCalaDorFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-  dilluns: StringFilter
-  dimarts: StringFilter
-  dimecres: StringFilter
-  dijous: StringFilter
-  divendres: StringFilter
-  dissabte: StringFilter
-  diumenge: StringFilter
+  hora: StringFilter
+  dilluns: HorarisRowsCalaDorDillunsFilter
+  dimarts: HorarisRowsCalaDorDimartsFilter
+  dimecres: HorarisRowsCalaDorDimecresFilter
+  dijous: HorarisRowsCalaDorDijousFilter
+  divendres: HorarisRowsCalaDorDivendresFilter
+  dissabte: HorarisRowsCalaDorDissabteFilter
+  diumenge: HorarisRowsCalaDorDiumengeFilter
 }
 
 input HorarisFilter {
@@ -628,10 +766,7 @@ input HorarisFilter {
   temporada: StringFilter
   pdfSantanyi: ImageFilter
   pdfCalaDor: ImageFilter
-  activityLabelCa: StringFilter
-  activityLabelEs: StringFilter
-  activityLabelEn: StringFilter
-  activityLabelDe: StringFilter
+  horaLabel: StringFilter
   dayLabelDl: StringFilter
   dayLabelDm: StringFilter
   dayLabelDc: StringFilter
@@ -677,6 +812,7 @@ type PaginaSantanyiServices {
 }
 
 type PaginaSantanyi implements Node & Document {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -740,6 +876,7 @@ input PaginaSantanyiServicesFilter {
 }
 
 input PaginaSantanyiFilter {
+  heroImage: ImageFilter
   heroBadgeCa: StringFilter
   heroBadgeEs: StringFilter
   heroBadgeEn: StringFilter
@@ -816,6 +953,7 @@ type PaginaCalaDorContactGallery {
 }
 
 type PaginaCalaDor implements Node & Document {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -885,6 +1023,7 @@ input PaginaCalaDorContactGalleryFilter {
 }
 
 input PaginaCalaDorFilter {
+  heroImage: ImageFilter
   heroBadgeCa: StringFilter
   heroBadgeEs: StringFilter
   heroBadgeEn: StringFilter
@@ -1123,6 +1262,7 @@ type PaginaDayPassPoolGymFeatures {
 }
 
 type PaginaDayPass implements Node & Document {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -1196,6 +1336,7 @@ input PaginaDayPassPoolGymFeaturesFilter {
 }
 
 input PaginaDayPassFilter {
+  heroImage: ImageFilter
   heroBadgeCa: StringFilter
   heroBadgeEs: StringFilter
   heroBadgeEn: StringFilter
@@ -1648,6 +1789,7 @@ type PaginaNatacioCourses {
 }
 
 type PaginaNatacio implements Node & Document {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -1731,6 +1873,7 @@ input PaginaNatacioCoursesFilter {
 }
 
 input PaginaNatacioFilter {
+  heroImage: ImageFilter
   heroBadgeCa: StringFilter
   heroBadgeEs: StringFilter
   heroBadgeEn: StringFilter
@@ -1813,6 +1956,7 @@ type PaginaActivitatsActivities {
 }
 
 type PaginaActivitats implements Node & Document {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -1880,6 +2024,7 @@ input PaginaActivitatsActivitiesFilter {
 }
 
 input PaginaActivitatsFilter {
+  heroImage: ImageFilter
   heroBadgeCa: StringFilter
   heroBadgeEs: StringFilter
   heroBadgeEn: StringFilter
@@ -1964,6 +2109,7 @@ type PaginaPadelPricingSlots {
 }
 
 type PaginaPadel implements Node & Document {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -2031,6 +2177,7 @@ input PaginaPadelPricingSlotsFilter {
 }
 
 input PaginaPadelFilter {
+  heroImage: ImageFilter
   heroBadgeCa: StringFilter
   heroBadgeEs: StringFilter
   heroBadgeEn: StringFilter
@@ -2085,6 +2232,7 @@ type PaginaPadelConnection implements Connection {
 }
 
 type PaginaContacte implements Node & Document {
+  heroImage: String
   heroTitleCa: String
   heroTitleEs: String
   heroTitleEn: String
@@ -2153,6 +2301,7 @@ type PaginaContacte implements Node & Document {
 }
 
 input PaginaContacteFilter {
+  heroImage: ImageFilter
   heroTitleCa: StringFilter
   heroTitleEs: StringFilter
   heroTitleEn: StringFilter
@@ -2388,6 +2537,56 @@ type NoticiesConnection implements Connection {
   edges: [NoticiesConnectionEdges]
 }
 
+type PaginaNewsletter implements Node & Document {
+  heroImage: String
+  heroTitleCa: String
+  heroTitleEs: String
+  heroTitleEn: String
+  heroTitleDe: String
+  heroSubtitleCa: String
+  heroSubtitleEs: String
+  heroSubtitleEn: String
+  heroSubtitleDe: String
+  edicio: String
+  imatgeDestacada: String
+  contingutCa: JSON
+  contingutEs: JSON
+  contingutEn: JSON
+  contingutDe: JSON
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input PaginaNewsletterFilter {
+  heroImage: ImageFilter
+  heroTitleCa: StringFilter
+  heroTitleEs: StringFilter
+  heroTitleEn: StringFilter
+  heroTitleDe: StringFilter
+  heroSubtitleCa: StringFilter
+  heroSubtitleEs: StringFilter
+  heroSubtitleEn: StringFilter
+  heroSubtitleDe: StringFilter
+  edicio: StringFilter
+  imatgeDestacada: ImageFilter
+  contingutCa: RichTextFilter
+  contingutEs: RichTextFilter
+  contingutEn: RichTextFilter
+  contingutDe: RichTextFilter
+}
+
+type PaginaNewsletterConnectionEdges {
+  cursor: String!
+  node: PaginaNewsletter
+}
+
+type PaginaNewsletterConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [PaginaNewsletterConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -2436,6 +2635,8 @@ type Mutation {
   createPagines(relativePath: String!, params: PaginesMutation!): Pagines!
   updateNoticies(relativePath: String!, params: NoticiesMutation!): Noticies!
   createNoticies(relativePath: String!, params: NoticiesMutation!): Noticies!
+  updatePaginaNewsletter(relativePath: String!, params: PaginaNewsletterMutation!): PaginaNewsletter!
+  createPaginaNewsletter(relativePath: String!, params: PaginaNewsletterMutation!): PaginaNewsletter!
 }
 
 input DocumentUpdateMutation {
@@ -2460,6 +2661,7 @@ input DocumentUpdateMutation {
   paginaContacte: PaginaContacteMutation
   pagines: PaginesMutation
   noticies: NoticiesMutation
+  paginaNewsletter: PaginaNewsletterMutation
   relativePath: String
 }
 
@@ -2485,6 +2687,7 @@ input DocumentMutation {
   paginaContacte: PaginaContacteMutation
   pagines: PaginesMutation
   noticies: NoticiesMutation
+  paginaNewsletter: PaginaNewsletterMutation
 }
 
 input SettingsMutation {
@@ -2595,6 +2798,7 @@ input PreusExtraServicesMutation {
 }
 
 input PreusMutation {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -2643,28 +2847,96 @@ input PreusMutation {
   referralCtaDe: String
 }
 
-input HorarisRowsMutation {
+input HorarisRowsDillunsMutation {
   activitat: String
   logo: String
-  dilluns: String
-  dimarts: String
-  dimecres: String
-  dijous: String
-  divendres: String
-  dissabte: String
-  diumenge: String
+}
+
+input HorarisRowsDimartsMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsDimecresMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsDijousMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsDivendresMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsDissabteMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsDiumengeMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsMutation {
+  hora: String
+  dilluns: HorarisRowsDillunsMutation
+  dimarts: HorarisRowsDimartsMutation
+  dimecres: HorarisRowsDimecresMutation
+  dijous: HorarisRowsDijousMutation
+  divendres: HorarisRowsDivendresMutation
+  dissabte: HorarisRowsDissabteMutation
+  diumenge: HorarisRowsDiumengeMutation
+}
+
+input HorarisRowsCalaDorDillunsMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsCalaDorDimartsMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsCalaDorDimecresMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsCalaDorDijousMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsCalaDorDivendresMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsCalaDorDissabteMutation {
+  activitat: String
+  logo: String
+}
+
+input HorarisRowsCalaDorDiumengeMutation {
+  activitat: String
+  logo: String
 }
 
 input HorarisRowsCalaDorMutation {
-  activitat: String
-  logo: String
-  dilluns: String
-  dimarts: String
-  dimecres: String
-  dijous: String
-  divendres: String
-  dissabte: String
-  diumenge: String
+  hora: String
+  dilluns: HorarisRowsCalaDorDillunsMutation
+  dimarts: HorarisRowsCalaDorDimartsMutation
+  dimecres: HorarisRowsCalaDorDimecresMutation
+  dijous: HorarisRowsCalaDorDijousMutation
+  divendres: HorarisRowsCalaDorDivendresMutation
+  dissabte: HorarisRowsCalaDorDissabteMutation
+  diumenge: HorarisRowsCalaDorDiumengeMutation
 }
 
 input HorarisMutation {
@@ -2679,10 +2951,7 @@ input HorarisMutation {
   temporada: String
   pdfSantanyi: String
   pdfCalaDor: String
-  activityLabelCa: String
-  activityLabelEs: String
-  activityLabelEn: String
-  activityLabelDe: String
+  horaLabel: String
   dayLabelDl: String
   dayLabelDm: String
   dayLabelDc: String
@@ -2717,6 +2986,7 @@ input PaginaSantanyiServicesMutation {
 }
 
 input PaginaSantanyiMutation {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -2782,6 +3052,7 @@ input PaginaCalaDorContactGalleryMutation {
 }
 
 input PaginaCalaDorMutation {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -2896,6 +3167,7 @@ input PaginaDayPassPoolGymFeaturesMutation {
 }
 
 input PaginaDayPassMutation {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -3134,6 +3406,7 @@ input PaginaNatacioCoursesMutation {
 }
 
 input PaginaNatacioMutation {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -3205,6 +3478,7 @@ input PaginaActivitatsActivitiesMutation {
 }
 
 input PaginaActivitatsMutation {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -3278,6 +3552,7 @@ input PaginaPadelPricingSlotsMutation {
 }
 
 input PaginaPadelMutation {
+  heroImage: String
   heroBadgeCa: String
   heroBadgeEs: String
   heroBadgeEn: String
@@ -3321,6 +3596,7 @@ input PaginaPadelMutation {
 }
 
 input PaginaContacteMutation {
+  heroImage: String
   heroTitleCa: String
   heroTitleEs: String
   heroTitleEn: String
@@ -3442,6 +3718,24 @@ input NoticiesMutation {
   contingutCa: JSON
   contingutEs: JSON
   publicada: Boolean
+}
+
+input PaginaNewsletterMutation {
+  heroImage: String
+  heroTitleCa: String
+  heroTitleEs: String
+  heroTitleEn: String
+  heroTitleDe: String
+  heroSubtitleCa: String
+  heroSubtitleEs: String
+  heroSubtitleEn: String
+  heroSubtitleDe: String
+  edicio: String
+  imatgeDestacada: String
+  contingutCa: JSON
+  contingutEs: JSON
+  contingutEn: JSON
+  contingutDe: JSON
 }
 
 schema {

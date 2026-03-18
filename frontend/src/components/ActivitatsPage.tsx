@@ -33,6 +33,7 @@ export default function ActivitatsPage({ query, variables, data, lang }: Props) 
   const ctaUrl   = g.heroCtaUrl           || '/contacte';
   const cta2     = g[`heroCta2${lk}`]     || g.heroCta2Ca     || '';
   const cta2Url  = g.heroCta2Url          || '/horaris';
+  const heroImage = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
   const activities: any[] = g.activities ?? [];
 
   const intensityKey = lang === 'es' ? 'intensityEs' : lang === 'en' ? 'intensityEn' : lang === 'de' ? 'intensityDe' : 'intensityCa';
@@ -50,8 +51,12 @@ export default function ActivitatsPage({ query, variables, data, lang }: Props) 
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-emerald-800 via-emerald-600 to-teal-500 text-white py-20">
-        <div className="container-site">
+      <section className={`${heroImage ? 'relative overflow-hidden' : 'bg-gradient-to-br from-emerald-800 via-emerald-600 to-teal-500'} text-white py-20`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/85 via-emerald-600/70 to-transparent"></div>
+        </>}
+        <div className={`container-site ${heroImage ? 'relative z-10' : ''}`}>
           <div className="max-w-3xl">
             <span
               className="badge bg-white/20 text-white border border-white/30 mb-4"

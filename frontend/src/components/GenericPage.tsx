@@ -39,12 +39,17 @@ export default function GenericPage({ query, variables, data, lang }: Props) {
   const ctaBtn1Url  = g.ctaBtn1Url           || '/contacte';
   const ctaBtn2     = g[`ctaBtn2${lk}`]      || g.ctaBtn2Ca      || '';
   const ctaBtn2Url  = g.ctaBtn2Url           || '/preus';
+  const heroImage   = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   return (
     <>
       {/* Hero */}
-      <section className={`${heroBg} text-white py-20`}>
-        <div className="container-site">
+      <section className={`${heroImage ? 'relative overflow-hidden' : heroBg} text-white py-20`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a4543]/85 via-[#2e7e7a]/70 to-transparent"></div>
+        </>}
+        <div className={`container-site ${heroImage ? 'relative z-10' : ''}`}>
           <div className="max-w-3xl">
             {badge && (
               <span

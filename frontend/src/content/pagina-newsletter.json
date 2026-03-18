@@ -1,0 +1,64 @@
+{
+  "heroTitleCa": "Newsletter",
+  "heroTitleEs": "Newsletter",
+  "heroTitleEn": "Newsletter",
+  "heroTitleDe": "Newsletter",
+  "heroSubtitleCa": "Notícies i novetats de Piscines Santanyí i Cala d'Or",
+  "heroSubtitleEs": "Noticias y novedades de Piscinas Santanyí y Cala d'Or",
+  "heroSubtitleEn": "News and updates from Piscines Santanyí and Cala d'Or",
+  "heroSubtitleDe": "Neuigkeiten von Piscines Santanyí und Cala d'Or",
+  "edicio": "Vol. 7 Edició Gener 2026",
+  "imatgeDestacada": "",
+  "contingutCa": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Benvinguts a la nostra Newsletter" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Aquí trobaràs les últimes notícies i novetats de Piscines Santanyí i Cala d'Or." }]
+      }
+    ]
+  },
+  "contingutEs": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Bienvenidos a nuestra Newsletter" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Aquí encontrarás las últimas noticias y novedades de Piscinas Santanyí y Cala d'Or." }]
+      }
+    ]
+  },
+  "contingutEn": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Welcome to our Newsletter" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Here you'll find the latest news and updates from Piscines Santanyí and Cala d'Or." }]
+      }
+    ]
+  },
+  "contingutDe": {
+    "type": "root",
+    "children": [
+      {
+        "type": "h2",
+        "children": [{ "type": "text", "text": "Willkommen zu unserem Newsletter" }]
+      },
+      {
+        "type": "p",
+        "children": [{ "type": "text", "text": "Hier finden Sie die neuesten Nachrichten von Piscines Santanyí und Cala d'Or." }]
+      }
+    ]
+  }
+}

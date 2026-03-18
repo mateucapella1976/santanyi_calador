@@ -17,15 +17,28 @@ const title    = data[titleKey]    || 'El teu gimnàs i piscina a Santanyí i Ca
 const subtitle = data[subtitleKey] || 'Natació, fitness, pàdel i activitats dirigides';
 const ctaLabel = data[ctaKey]      || 'Inscriu-te ara';
 
-const stats = [
-  { number: data.stat1Number || '2.000+', label: data.stat1LabelCa || 'Socis actius',         icon: '👥' },
-  { number: data.stat2Number || '20+',    label: data.stat2LabelCa || 'Anys d\'experiència',  icon: '🏆' },
-  { number: data.stat3Number || '30+',    label: data.stat3LabelCa || 'Activitats setmanals', icon: '🏊' },
-  { number: data.stat4Number || '2',      label: data.stat4LabelCa || 'Instal·lacions',       icon: '📍' },
-];
+const stats = Array.isArray(data.stats)
+  ? data.stats.map((s: any) => ({
+      number: s.number,
+      label: lang === 'es' ? s.labelEs : lang === 'en' ? s.labelEn : lang === 'de' ? s.labelDe : s.labelCa,
+      icon: s.icon,
+    }))
+  : [
+      { number: data.stat1Number || '2.000+', label: data.stat1LabelCa || 'Socis actius',         icon: '👥' },
+      { number: data.stat2Number || '20+',    label: data.stat2LabelCa || 'Anys d\'experiència',  icon: '🏆' },
+      { number: data.stat3Number || '30+',    label: data.stat3LabelCa || 'Activitats setmanals', icon: '🏊' },
+      { number: data.stat4Number || '2',      label: data.stat4LabelCa || 'Instal·lacions',       icon: '📍' },
+    ];
+
+const rawHeroImage = data.heroImage || '';
+const heroImage = rawHeroImage.startsWith('/') ? rawHeroImage : rawHeroImage ? `/images/${rawHeroImage}` : '';
 ---
 
-<section class="relative min-h-[90vh] flex items-center overflow-hidden" style="background: linear-gradient(135deg, #1a4543 0%, #2e7e7a 40%, #5db7b3 100%);" aria-labelledby="hero-heading">
+<section class="relative min-h-[90vh] flex items-center overflow-hidden" aria-labelledby="hero-heading">
+  {heroImage && <img src={heroImage} alt="" class="absolute inset-0 w-full h-full object-cover" loading="eager" />}
+  <div class="absolute inset-0" style={heroImage ? '' : 'background: linear-gradient(135deg, #1a4543 0%, #2e7e7a 40%, #5db7b3 100%);'}>
+    {heroImage && <div class="absolute inset-0 bg-gradient-to-r from-[#1a4543]/85 via-[#2e7e7a]/70 to-[#5db7b3]/50"></div>}
+  </div>
   <div class="absolute inset-0 opacity-10">
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
       <defs>

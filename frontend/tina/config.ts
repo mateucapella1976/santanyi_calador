@@ -34,8 +34,8 @@ export default defineConfig({
         match: { include: 'settings' },
         fields: [
           { type: 'string', name: 'siteName',           label: 'Nom del site' },
-          { type: 'image',  name: 'logo',               label: 'Logo nav',         uploadDir: () => 'public' },
-          { type: 'image',  name: 'logoFooter',         label: 'Logo footer',      uploadDir: () => 'public' },
+          { type: 'image',  name: 'logo',               label: 'Logo nav',         uploadDir: () => 'logos' },
+          { type: 'image',  name: 'logoFooter',         label: 'Logo footer',      uploadDir: () => 'logos' },
           { type: 'string', name: 'phoneSantanyi',      label: 'Telèfon Santanyí' },
           { type: 'string', name: 'phoneCalaDor',       label: "Telèfon Cala d'Or" },
           { type: 'string', name: 'emailSantanyi',      label: 'Email Santanyí' },
@@ -146,6 +146,7 @@ export default defineConfig({
         match: { include: 'preus' },
         fields: [
           // ── Hero ──
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',        uploadDir: () => 'hero' },
           { type: 'string', name: 'heroBadgeCa', label: 'Badge hero (CA)' },
           { type: 'string', name: 'heroBadgeEs', label: 'Badge hero (ES)' },
           { type: 'string', name: 'heroBadgeEn', label: 'Badge hero (EN)' },
@@ -276,10 +277,7 @@ export default defineConfig({
           { type: 'image',  name: 'pdfSantanyi', label: 'PDF Horari Santanyí', uploadDir: () => 'pdfs' },
           { type: 'image',  name: 'pdfCalaDor',  label: "PDF Horari Cala d'Or", uploadDir: () => 'pdfs' },
           // ── Etiquetes capçalera ──
-          { type: 'string', name: 'activityLabelCa', label: 'Columna Activitat (CA)' },
-          { type: 'string', name: 'activityLabelEs', label: 'Columna Activitat (ES)' },
-          { type: 'string', name: 'activityLabelEn', label: 'Columna Activitat (EN)' },
-          { type: 'string', name: 'activityLabelDe', label: 'Columna Activitat (DE)' },
+          { type: 'string', name: 'horaLabel', label: 'Columna Hora (CA)', ui: { description: 'Ex: HORA' } },
           { type: 'string', name: 'dayLabelDl', label: 'Dilluns etiqueta' },
           { type: 'string', name: 'dayLabelDm', label: 'Dimarts etiqueta' },
           { type: 'string', name: 'dayLabelDc', label: 'Dimecres etiqueta' },
@@ -292,35 +290,76 @@ export default defineConfig({
           { type: 'string', name: 'footerNoteEs', label: 'Nota peu (ES)' },
           { type: 'string', name: 'footerNoteEn', label: 'Nota peu (EN)' },
           { type: 'string', name: 'footerNoteDe', label: 'Nota peu (DE)' },
-          // ── Files horari ──
+          // ── Files horari Santanyí ──
           {
             type: 'object', name: 'rows', label: "📍 Horari Santanyí", list: true,
-            ui: { itemProps: (item: any) => ({ label: item?.activitat || 'Activitat' }) },
+            ui: { itemProps: (item: any) => ({ label: item?.hora || 'Hora' }) },
             fields: [
-              { type: 'string', name: 'activitat',  label: 'Activitat' },
-              { type: 'image',  name: 'logo',       label: 'Logo activitat', uploadDir: () => 'public/images/logos' },
-              { type: 'string', name: 'dilluns',    label: 'Dilluns' },
-              { type: 'string', name: 'dimarts',    label: 'Dimarts' },
-              { type: 'string', name: 'dimecres',   label: 'Dimecres' },
-              { type: 'string', name: 'dijous',     label: 'Dijous' },
-              { type: 'string', name: 'divendres',  label: 'Divendres' },
-              { type: 'string', name: 'dissabte',   label: 'Dissabte' },
-              { type: 'string', name: 'diumenge',   label: 'Diumenge' },
+              { type: 'string', name: 'hora', label: 'Hora' },
+              { type: 'object', name: 'dilluns',   label: 'Dilluns',   fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dimarts',   label: 'Dimarts',   fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dimecres',  label: 'Dimecres',  fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dijous',    label: 'Dijous',    fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'divendres', label: 'Divendres', fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dissabte',  label: 'Dissabte',  fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'diumenge',  label: 'Diumenge',  fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
             ],
           },
+          // ── Files horari Cala d'Or ──
           {
             type: 'object', name: 'rowsCalaDor', label: "📍 Horari Cala d'Or", list: true,
-            ui: { itemProps: (item: any) => ({ label: item?.activitat || 'Activitat' }) },
+            ui: { itemProps: (item: any) => ({ label: item?.hora || 'Hora' }) },
             fields: [
-              { type: 'string', name: 'activitat',  label: 'Activitat' },
-              { type: 'image',  name: 'logo',       label: 'Logo activitat', uploadDir: () => 'public/images/logos' },
-              { type: 'string', name: 'dilluns',    label: 'Dilluns' },
-              { type: 'string', name: 'dimarts',    label: 'Dimarts' },
-              { type: 'string', name: 'dimecres',   label: 'Dimecres' },
-              { type: 'string', name: 'dijous',     label: 'Dijous' },
-              { type: 'string', name: 'divendres',  label: 'Divendres' },
-              { type: 'string', name: 'dissabte',   label: 'Dissabte' },
-              { type: 'string', name: 'diumenge',   label: 'Diumenge' },
+              { type: 'string', name: 'hora', label: 'Hora' },
+              { type: 'object', name: 'dilluns',   label: 'Dilluns',   fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dimarts',   label: 'Dimarts',   fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dimecres',  label: 'Dimecres',  fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dijous',    label: 'Dijous',    fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'divendres', label: 'Divendres', fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'dissabte',  label: 'Dissabte',  fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
+              { type: 'object', name: 'diumenge',  label: 'Diumenge',  fields: [
+                { type: 'string', name: 'activitat', label: 'Activitat' },
+                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
+              ]},
             ],
           },
         ],
@@ -336,6 +375,7 @@ export default defineConfig({
         match: { include: 'pagina-santanyi' },
         fields: [
           // ── Hero ──
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',        uploadDir: () => 'hero' },
           { type: 'string', name: 'heroBadgeCa', label: 'Badge hero (CA)' },
           { type: 'string', name: 'heroBadgeEs', label: 'Badge hero (ES)' },
           { type: 'string', name: 'heroBadgeEn', label: 'Badge hero (EN)' },
@@ -413,6 +453,7 @@ export default defineConfig({
         match: { include: 'pagina-cala-dor' },
         fields: [
           // ── Hero ──
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',        uploadDir: () => 'hero' },
           { type: 'string', name: 'heroBadgeCa', label: 'Badge hero (CA)' },
           { type: 'string', name: 'heroBadgeEs', label: 'Badge hero (ES)' },
           { type: 'string', name: 'heroBadgeEn', label: 'Badge hero (EN)' },
@@ -624,6 +665,7 @@ export default defineConfig({
         match: { include: 'pagina-daypass' },
         fields: [
           // ── Hero ──
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',   uploadDir: () => 'hero' },
           { type: 'string', name: 'heroBadgeCa', label: 'Badge (CA)' },
           { type: 'string', name: 'heroBadgeEs', label: 'Badge (ES)' },
           { type: 'string', name: 'heroBadgeEn', label: 'Badge (EN)' },
@@ -925,6 +967,7 @@ export default defineConfig({
         ui: { allowedActions: { create: false, delete: false }, global: true, router: () => '/natacio' },
         match: { include: 'pagina-natacio' },
         fields: [
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',        uploadDir: () => 'hero' },
           { type: 'string', name: 'heroBadgeCa', label: 'Badge hero (CA)' },
           { type: 'string', name: 'heroBadgeEs', label: 'Badge hero (ES)' },
           { type: 'string', name: 'heroBadgeEn', label: 'Badge hero (EN)' },
@@ -1026,6 +1069,7 @@ export default defineConfig({
         ui: { allowedActions: { create: false, delete: false }, global: true, router: () => '/activitats' },
         match: { include: 'pagina-activitats' },
         fields: [
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',        uploadDir: () => 'hero' },
           { type: 'string', name: 'heroBadgeCa', label: 'Badge hero (CA)' },
           { type: 'string', name: 'heroBadgeEs', label: 'Badge hero (ES)' },
           { type: 'string', name: 'heroBadgeEn', label: 'Badge hero (EN)' },
@@ -1103,6 +1147,7 @@ export default defineConfig({
         ui: { allowedActions: { create: false, delete: false }, global: true, router: () => '/padel' },
         match: { include: 'pagina-padel' },
         fields: [
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',        uploadDir: () => 'hero' },
           { type: 'string', name: 'heroBadgeCa', label: 'Badge hero (CA)' },
           { type: 'string', name: 'heroBadgeEs', label: 'Badge hero (ES)' },
           { type: 'string', name: 'heroBadgeEn', label: 'Badge hero (EN)' },
@@ -1183,6 +1228,7 @@ export default defineConfig({
         ui: { allowedActions: { create: false, delete: false }, global: true, router: () => '/contacte' },
         match: { include: 'pagina-contacte' },
         fields: [
+          { type: 'image',  name: 'heroImage',   label: 'Foto hero',  uploadDir: () => 'hero' },
           { type: 'string', name: 'heroTitleCa', label: 'Títol (CA)' },
           { type: 'string', name: 'heroTitleEs', label: 'Títol (ES)' },
           { type: 'string', name: 'heroTitleEn', label: 'Títol (EN)' },
@@ -1355,6 +1401,37 @@ export default defineConfig({
           { type: 'rich-text', name: 'contingutCa', label: 'Contingut (CA)' },
           { type: 'rich-text', name: 'contingutEs', label: 'Contingut (ES)' },
           { type: 'boolean',   name: 'publicada',   label: 'Publicada' },
+        ],
+      },
+
+      // ─── PÀGINA NEWSLETTER ────────────────────────────────────────────
+      {
+        name: 'paginaNewsletter',
+        label: '📰 Newsletter',
+        path: 'src/content',
+        format: 'json',
+        ui: {
+          allowedActions: { create: false, delete: false },
+          global: true,
+          router: () => '/newsletter',
+        },
+        match: { include: 'pagina-newsletter' },
+        fields: [
+          { type: 'image',  name: 'heroImage',       label: 'Foto hero',        uploadDir: () => 'hero' },
+          { type: 'string', name: 'heroTitleCa',     label: 'Títol hero (CA)' },
+          { type: 'string', name: 'heroTitleEs',     label: 'Títol hero (ES)' },
+          { type: 'string', name: 'heroTitleEn',     label: 'Títol hero (EN)' },
+          { type: 'string', name: 'heroTitleDe',     label: 'Títol hero (DE)' },
+          { type: 'string', name: 'heroSubtitleCa',  label: 'Subtítol hero (CA)' },
+          { type: 'string', name: 'heroSubtitleEs',  label: 'Subtítol hero (ES)' },
+          { type: 'string', name: 'heroSubtitleEn',  label: 'Subtítol hero (EN)' },
+          { type: 'string', name: 'heroSubtitleDe',  label: 'Subtítol hero (DE)' },
+          { type: 'string', name: 'edicio',          label: 'Edició (ex: Vol. 7 Edició Gener 2026)' },
+          { type: 'image',  name: 'imatgeDestacada', label: 'Imatge destacada',  uploadDir: () => 'newsletter' },
+          { type: 'rich-text', name: 'contingutCa',  label: 'Contingut (CA)' },
+          { type: 'rich-text', name: 'contingutEs',  label: 'Contingut (ES)' },
+          { type: 'rich-text', name: 'contingutEn',  label: 'Contingut (EN)' },
+          { type: 'rich-text', name: 'contingutDe',  label: 'Contingut (DE)' },
         ],
       },
 

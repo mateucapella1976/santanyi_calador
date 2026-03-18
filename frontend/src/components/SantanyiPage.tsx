@@ -24,6 +24,7 @@ export default function SantanyiPage({ query, variables, data, lang }: Props) {
   const phone    = g.heroPhone            || '673 003 828';
   const mapsUrl  = g.heroMapsUrl          || 'https://maps.google.com/?q=Carrer+Bernat+Vidal+Santanyi';
   const mapsLabel = g[`heroMapsLabel${lk}`] || g.heroMapsLabelCa || 'Google Maps';
+  const heroImage = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   const gallery: any[] = g.gallery ?? [];
   const services: any[] = g.services ?? [];
@@ -38,8 +39,12 @@ export default function SantanyiPage({ query, variables, data, lang }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="pool-bg text-white py-20">
-        <div className="container-site">
+      <section className={`${heroImage ? 'relative overflow-hidden' : 'pool-bg'} text-white py-20`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a4543]/85 via-[#2e7e7a]/70 to-transparent"></div>
+        </>}
+        <div className={`container-site ${heroImage ? 'relative z-10' : ''}`}>
           <div className="max-w-3xl">
             <span className="badge bg-white/20 text-white border border-white/30 mb-4" data-tina-field={tf(`heroBadge${lk}`)}>{badge}</span>
             <h1 className="font-display font-bold text-4xl sm:text-5xl text-white mb-4" data-tina-field={tf(`heroTitle${lk}`)}>{title}</h1>

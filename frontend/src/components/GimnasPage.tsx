@@ -23,6 +23,7 @@ export default function GimnasPage({ query, variables, data, horarisQuery, horar
   const heroSubtitle = g[`heroSubtitle${lk}`]  || g.heroSubtitleCa || '';
   const heroCta      = g[`heroCta${lk}`]       || g.heroCtaCa      || "Fes-te abonat";
   const heroCtaUrl   = g.heroCtaUrl            || '/contacte';
+  const heroImage    = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   const trainingymTitle    = g[`trainingymTitle${lk}`]    || g.trainingymTitleCa    || "El teu entrenament personalitzat, al palmell de la mà";
   const trainingymSubtitle = g[`trainingymSubtitle${lk}`] || g.trainingymSubtitleCa || '';
@@ -42,8 +43,12 @@ export default function GimnasPage({ query, variables, data, horarisQuery, horar
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-purple-900 via-purple-700 to-primary-600 text-white py-20">
-        <div className="container-site">
+      <section className={`${heroImage ? 'relative overflow-hidden' : 'bg-gradient-to-br from-purple-900 via-purple-700 to-primary-600'} text-white py-20`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/85 via-purple-700/70 to-transparent"></div>
+        </>}
+        <div className={`container-site ${heroImage ? 'relative z-10' : ''}`}>
           <div className="max-w-3xl">
             <span
               className="badge bg-white/20 text-white border border-white/30 mb-4"

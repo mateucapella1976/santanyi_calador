@@ -24,6 +24,7 @@ export default function PadelPage({ query, variables, data, lang }: Props) {
   const ctaUrl   = g.heroCtaUrl           || 'https://playtomic.io';
   const cta2     = g[`heroCta2${lk}`]     || g.heroCta2Ca     || '';
   const cta2Url  = g.heroCta2Url          || '/contacte';
+  const heroImage = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   const featuresTitle = g[`featuresTitle${lk}`] || g.featuresTitleCa || 'Tot per als amants del pàdel';
   const features: any[] = g.features ?? [];
@@ -35,8 +36,12 @@ export default function PadelPage({ query, variables, data, lang }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-orange-800 via-orange-600 to-amber-500 text-white py-20">
-        <div className="container-site">
+      <section className={`${heroImage ? 'relative overflow-hidden' : 'bg-gradient-to-br from-orange-800 via-orange-600 to-amber-500'} text-white py-20`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-800/85 via-orange-600/70 to-transparent"></div>
+        </>}
+        <div className={`container-site ${heroImage ? 'relative z-10' : ''}`}>
           <div className="max-w-3xl">
             <span
               className="badge bg-white/20 text-white border border-white/30 mb-4"

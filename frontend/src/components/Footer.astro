@@ -18,7 +18,8 @@ const instagram       = s.instagram       || 'https://www.instagram.com/piscinas
 const facebook        = s.facebook        || 'https://www.facebook.com/piscinasantanyi';
 const addressSantanyi = s.addressSantanyi || 'Carrer Bernat Vidal i Tomàs, 83, 07650 Santanyí';
 const addressCalaDor  = s.addressCalaDor  || "Avinguda Sementer, S/N, 07691 Cala d'Or";
-const logoFooter      = s.logoFooter      ? `/${s.logoFooter}` : '/logo-footer.png';
+const rawLogoFooter = s.logoFooter || '';
+const logoFooter = rawLogoFooter.startsWith('/') ? rawLogoFooter : rawLogoFooter ? `/images/${rawLogoFooter}` : '/logo-footer.png';
 ---
 
 <footer class="text-white" style="background: #333333;">

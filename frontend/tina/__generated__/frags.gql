@@ -70,6 +70,7 @@ fragment HeroParts on Hero {
 
 fragment PreusParts on Preus {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -167,10 +168,7 @@ fragment HorarisParts on Horaris {
   temporada
   pdfSantanyi
   pdfCalaDor
-  activityLabelCa
-  activityLabelEs
-  activityLabelEn
-  activityLabelDe
+  horaLabel
   dayLabelDl
   dayLabelDm
   dayLabelDc
@@ -184,32 +182,87 @@ fragment HorarisParts on Horaris {
   footerNoteDe
   rows {
     __typename
-    activitat
-    logo
-    dilluns
-    dimarts
-    dimecres
-    dijous
-    divendres
-    dissabte
-    diumenge
+    hora
+    dilluns {
+      __typename
+      activitat
+      logo
+    }
+    dimarts {
+      __typename
+      activitat
+      logo
+    }
+    dimecres {
+      __typename
+      activitat
+      logo
+    }
+    dijous {
+      __typename
+      activitat
+      logo
+    }
+    divendres {
+      __typename
+      activitat
+      logo
+    }
+    dissabte {
+      __typename
+      activitat
+      logo
+    }
+    diumenge {
+      __typename
+      activitat
+      logo
+    }
   }
   rowsCalaDor {
     __typename
-    activitat
-    logo
-    dilluns
-    dimarts
-    dimecres
-    dijous
-    divendres
-    dissabte
-    diumenge
+    hora
+    dilluns {
+      __typename
+      activitat
+      logo
+    }
+    dimarts {
+      __typename
+      activitat
+      logo
+    }
+    dimecres {
+      __typename
+      activitat
+      logo
+    }
+    dijous {
+      __typename
+      activitat
+      logo
+    }
+    divendres {
+      __typename
+      activitat
+      logo
+    }
+    dissabte {
+      __typename
+      activitat
+      logo
+    }
+    diumenge {
+      __typename
+      activitat
+      logo
+    }
   }
 }
 
 fragment PaginaSantanyiParts on PaginaSantanyi {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -269,6 +322,7 @@ fragment PaginaSantanyiParts on PaginaSantanyi {
 
 fragment PaginaCalaDorParts on PaginaCalaDor {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -390,6 +444,7 @@ fragment ServeisParts on Serveis {
 
 fragment PaginaDayPassParts on PaginaDayPass {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -619,6 +674,7 @@ fragment PaginaGimnasParts on PaginaGimnas {
 
 fragment PaginaNatacioParts on PaginaNatacio {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -697,6 +753,7 @@ fragment PaginaNatacioParts on PaginaNatacio {
 
 fragment PaginaActivitatsParts on PaginaActivitats {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -761,6 +818,7 @@ fragment PaginaActivitatsParts on PaginaActivitats {
 
 fragment PaginaPadelParts on PaginaPadel {
   __typename
+  heroImage
   heroBadgeCa
   heroBadgeEs
   heroBadgeEn
@@ -824,6 +882,7 @@ fragment PaginaPadelParts on PaginaPadel {
 
 fragment PaginaContacteParts on PaginaContacte {
   __typename
+  heroImage
   heroTitleCa
   heroTitleEs
   heroTitleEn
@@ -947,4 +1006,23 @@ fragment NoticiesParts on Noticies {
   contingutCa
   contingutEs
   publicada
+}
+
+fragment PaginaNewsletterParts on PaginaNewsletter {
+  __typename
+  heroImage
+  heroTitleCa
+  heroTitleEs
+  heroTitleEn
+  heroTitleDe
+  heroSubtitleCa
+  heroSubtitleEs
+  heroSubtitleEn
+  heroSubtitleDe
+  edicio
+  imatgeDestacada
+  contingutCa
+  contingutEs
+  contingutEn
+  contingutDe
 }

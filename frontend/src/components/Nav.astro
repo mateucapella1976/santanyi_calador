@@ -21,7 +21,8 @@ const phoneSantanyi = settings.phoneSantanyi ?? '673 003 828';
 const phoneCalaDor  = settings.phoneCalaDor  ?? '673 008 715';
 const instagram     = settings.instagram     ?? 'https://www.instagram.com/piscinasantanyicalador/';
 const facebook      = settings.facebook      ?? 'https://www.facebook.com/piscinasantanyi';
-const logo          = settings.logo          ? `/${settings.logo}` : '/logo.png';
+const rawLogo = settings.logo || '';
+const logo = rawLogo.startsWith('/') ? rawLogo : rawLogo ? `/images/${rawLogo}` : '/logo.png';
 
 const currentPath = Astro.url.pathname;
 ---

@@ -20,6 +20,7 @@ export default function CalaDorPage({ query, variables, data, lang }: Props) {
   const phone    = g.heroPhone            || '673 008 715';
   const mapsUrl  = g.heroMapsUrl          || 'https://maps.google.com/?q=Avinguda+Sementer+Cala+d+Or';
   const mapsLabel = g[`heroMapsLabel${lk}`] || g.heroMapsLabelCa || 'Google Maps';
+  const heroImage = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   const gallery: any[] = g.gallery ?? [];
   const services: any[] = g.services ?? [];
@@ -34,8 +35,12 @@ export default function CalaDorPage({ query, variables, data, lang }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-600 text-white py-20">
-        <div className="container-site">
+      <section className={`${heroImage ? 'relative overflow-hidden' : 'bg-gradient-to-br from-teal-900 via-teal-700 to-emerald-600'} text-white py-20`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-teal-900/85 via-teal-700/70 to-transparent"></div>
+        </>}
+        <div className={`container-site ${heroImage ? 'relative z-10' : ''}`}>
           <div className="max-w-3xl">
             <span className="badge bg-white/20 text-white border border-white/30 mb-4" data-tina-field={tf(`heroBadge${lk}`)}>{badge}</span>
             <h1 className="font-display font-bold text-4xl sm:text-5xl text-white mb-4" data-tina-field={tf(`heroTitle${lk}`)}>{title}</h1>

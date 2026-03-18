@@ -14,13 +14,23 @@ const data = horarisData as any;
 const temporada = data.temporada ?? '';
 const rows = data.rows ?? [];
 
+const activitats: any[] = data.activitats ?? [];
+const logoMap: Record<string, string> = {};
+activitats.forEach((a: any) => {
+  if (a?.nom) {
+    const logo = a.logo || '';
+    logoMap[a.nom.toLowerCase()] = logo.startsWith('/') ? logo : logo ? `/images/${logo}` : '';
+  }
+});
+
+const horaLabel = data.horaLabel || 'HORA';
 const days = [
-  { key: 'dilluns',   label: lang === 'es' ? 'Lun' : lang === 'en' ? 'Mon' : lang === 'de' ? 'Mo' : 'Dl' },
-  { key: 'dimarts',   label: lang === 'es' ? 'Mar' : lang === 'en' ? 'Tue' : lang === 'de' ? 'Di' : 'Dm' },
-  { key: 'dimecres',  label: lang === 'es' ? 'Mié' : lang === 'en' ? 'Wed' : lang === 'de' ? 'Mi' : 'Dc' },
-  { key: 'dijous',    label: lang === 'es' ? 'Jue' : lang === 'en' ? 'Thu' : lang === 'de' ? 'Do' : 'Dj' },
-  { key: 'divendres', label: lang === 'es' ? 'Vie' : lang === 'en' ? 'Fri' : lang === 'de' ? 'Fr' : 'Dv' },
-  { key: 'dissabte',  label: lang === 'es' ? 'Sáb' : lang === 'en' ? 'Sat' : lang === 'de' ? 'Sa' : 'Ds' },
+  { key: 'dilluns',   label: data.dayLabelDl || (lang === 'es' ? 'LUNES' : lang === 'en' ? 'MONDAY' : lang === 'de' ? 'MONTAG' : 'DILLUNS') },
+  { key: 'dimarts',   label: data.dayLabelDm || (lang === 'es' ? 'MARTES' : lang === 'en' ? 'TUESDAY' : lang === 'de' ? 'DIENSTAG' : 'DIMARTS') },
+  { key: 'dimecres',  label: data.dayLabelDc || (lang === 'es' ? 'MIÉRCOLES' : lang === 'en' ? 'WEDNESDAY' : lang === 'de' ? 'MITTWOCH' : 'DIMECRES') },
+  { key: 'dijous',    label: data.dayLabelDj || (lang === 'es' ? 'JUEVES' : lang === 'en' ? 'THURSDAY' : lang === 'de' ? 'DONNERSTAG' : 'DIJOUS') },
+  { key: 'divendres', label: data.dayLabelDv || (lang === 'es' ? 'VIERNES' : lang === 'en' ? 'FRIDAY' : lang === 'de' ? 'FREITAG' : 'DIVENDRES') },
+  { key: 'dissabte',  label: data.dayLabelDs || (lang === 'es' ? 'SÁBADO' : lang === 'en' ? 'SATURDAY' : lang === 'de' ? 'SAMSTAG' : 'DISSABTE') },
 ];
 ---
 
@@ -28,21 +38,33 @@ const days = [
   <div class="bg-primary-50 rounded-2xl p-6 border border-primary-100">
     <h3 class="font-display font-semibold text-dark mb-4">{t('schedule.title')}</h3>
     {temporada && <p class="text-xs text-primary-600 font-medium mb-3">{temporada}</p>}
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
       <table class="w-full text-sm">
         <thead>
-          <tr>
-            <th class="text-left py-1 pr-3 text-gray-500 font-medium">
-              {lang === 'es' ? 'Actividad' : lang === 'en' ? 'Activity' : lang === 'de' ? 'Aktivität' : 'Activitat'}
-            </th>
-            {days.map(d => <th class="text-center py-1 px-1 text-gray-500 font-medium">{d.label}</th>)}
+          <tr class="bg-primary-500 text-white">
+            <th class="text-center px-3 py-2 font-bold">{horaLabel}</th>
+            {days.map(d => <th class="text-center px-2 py-2 font-bold">{d.label}</th>)}
           </tr>
         </thead>
         <tbody>
-          {rows.map((row: any) => (
-            <tr class="border-t border-primary-100">
-              <td class="py-1.5 pr-3 font-semibold text-dark">{row.activitat}</td>
-              {days.map(d => <td class="text-center py-1.5 px-1 text-gray-600 text-xs">{row[d.key] || '–'}</td>)}
+          {rows.map((row: any, i: number) => (
+            <tr class:list={['border-t border-gray-100', i % 2 === 0 ? 'bg-white' : 'bg-gray-50']}>
+              <td class="px-3 py-2 font-bold text-dark text-center whitespace-nowrap">{row.hora}</td>
+              {days.map(d => {
+                const val = row[d.key] || '';
+                const name = val.split('\n')[0]?.trim() || '';
+                const logo = name ? logoMap[name.toLowerCase()] || '' : '';
+                return (
+                  <td class="text-center px-2 py-2 min-w-[80px]">
+                    {name ? (
+                      <div class="flex flex-col items-center gap-1">
+                        {logo && <img src={logo} alt="" class="h-5 w-auto" loading="lazy" />}
+                        <span class="font-semibold text-dark text-xs">{name}</span>
+                      </div>
+                    ) : <span class="text-gray-300">–</span>}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
@@ -63,19 +85,31 @@ const days = [
         <table class="w-full text-sm">
           <thead class="bg-primary-500 text-white">
             <tr>
-              <th class="text-left px-4 py-3 font-semibold rounded-tl-2xl">
-                {lang === 'es' ? 'Actividad' : lang === 'en' ? 'Activity' : lang === 'de' ? 'Aktivität' : 'Activitat'}
-              </th>
+              <th class="text-center px-3 py-3 font-bold rounded-tl-2xl whitespace-nowrap">{horaLabel}</th>
               {days.map((d, i) => (
-                <th class:list={['text-center px-3 py-3 font-semibold', i === days.length - 1 ? 'rounded-tr-2xl' : '']}>{d.label}</th>
+                <th class:list={['text-center px-3 py-3 font-bold whitespace-nowrap', i === days.length - 1 ? 'rounded-tr-2xl' : '']}>{d.label}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {rows.map((row: any, i: number) => (
               <tr class:list={['border-t border-gray-100', i % 2 === 0 ? 'bg-white' : 'bg-gray-50']}>
-                <td class="px-4 py-3 font-semibold text-dark">{row.activitat}</td>
-                {days.map(d => <td class="text-center px-3 py-3 text-gray-600">{row[d.key] || '–'}</td>)}
+                <td class="px-3 py-3 font-bold text-dark text-center whitespace-nowrap">{row.hora}</td>
+                {days.map(d => {
+                  const val = row[d.key] || '';
+                  const name = val.split('\n')[0]?.trim() || '';
+                  const logo = name ? logoMap[name.toLowerCase()] || '' : '';
+                  return (
+                    <td class="text-center px-2 py-3 min-w-[100px]">
+                      {name ? (
+                        <div class="flex flex-col items-center gap-1">
+                          {logo && <img src={logo} alt="" class="h-7 w-auto" loading="lazy" />}
+                          <span class="font-semibold text-dark text-xs">{name}</span>
+                        </div>
+                      ) : <span class="text-gray-300">–</span>}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>

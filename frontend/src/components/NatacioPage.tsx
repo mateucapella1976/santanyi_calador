@@ -25,6 +25,7 @@ export default function NatacioPage({ query, variables, data, lang }: Props) {
   const ctaUrl     = g.heroCtaUrl           || '/contacte';
   const cta2       = g[`heroCta2${lk}`]     || g.heroCta2Ca     || '';
   const cta2Url    = g.heroCta2Url          || '/preus';
+  const heroImage  = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   const whyTitle   = g[`whyTitle${lk}`]     || g.whyTitleCa     || 'Per què aprendre a nedar amb nosaltres?';
   const fixPath = (p: string) => p ? (p.startsWith('http') ? p : '/' + p.replace(/^\/+/, '').replace(/^public\//, '').replace(/^images\//, 'images/')) : '';
@@ -53,8 +54,12 @@ export default function NatacioPage({ query, variables, data, lang }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="pool-bg text-white py-20">
-        <div className="container-site">
+      <section className={`${heroImage ? 'relative overflow-hidden' : 'pool-bg'} text-white py-20`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a4543]/85 via-[#2e7e7a]/70 to-transparent"></div>
+        </>}
+        <div className={`container-site ${heroImage ? 'relative z-10' : ''}`}>
           <div className="max-w-3xl">
             <span
               className="badge bg-white/20 text-white border border-white/30 mb-4"

@@ -30,11 +30,16 @@ export default function DayPassPage({ query, variables, data, lang }: Props) {
   const facTitle    = g[`facilitiesTitle${lk}`]|| g.facilitiesTitleCa || 'Disponible a les dues instal·lacions';
   const formTitle   = g[`formTitle${lk}`]     || g.formTitleCa     || 'Consultar sobre Day Pass';
   const formSub     = g[`formSubtitle${lk}`]  || g.formSubtitleCa  || 'Et responem en 24 hores';
+  const heroImage   = g.heroImage ? (g.heroImage.startsWith('/') ? g.heroImage : `/images/${g.heroImage}`) : '';
 
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 text-white py-20 relative overflow-hidden">
+      <section className={`${heroImage ? '' : 'bg-gradient-to-br from-amber-500 via-orange-500 to-red-500'} text-white py-20 relative overflow-hidden`}>
+        {heroImage && <>
+          <img src={heroImage} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-600/85 via-orange-500/70 to-transparent"></div>
+        </>}
         <div className="absolute inset-0 opacity-10">
           <svg width="100%" height="100%">
             <defs>
