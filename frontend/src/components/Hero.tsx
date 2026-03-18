@@ -34,7 +34,7 @@ export default function Hero({ query, variables, data, lang }: Props) {
 
   const heroImageRaw = hero.heroImage || '';
   const heroImageSrc = heroImageRaw
-    ? heroImageRaw.startsWith('http') ? heroImageRaw : `/${heroImageRaw.replace(/^\/+/, '').replace(/^public\//, '')}`
+    ? heroImageRaw.startsWith('http') ? heroImageRaw : `/${heroImageRaw.replace(/^\/+/, '').replace(/^public\//, '').replace(/^images\/images\//, 'images/')}`
     : '';
 
   return (
