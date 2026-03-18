@@ -27,7 +27,7 @@ export default function NatacioPage({ query, variables, data, lang }: Props) {
   const cta2Url    = g.heroCta2Url          || '/preus';
 
   const whyTitle   = g[`whyTitle${lk}`]     || g.whyTitleCa     || 'Per què aprendre a nedar amb nosaltres?';
-  const fixPath = (p: string) => p ? '/' + p.replace(/^\/+/, '').replace(/^public\//, '').replace(/^images\//, 'images/') : '';
+  const fixPath = (p: string) => p ? (p.startsWith('http') ? p : '/' + p.replace(/^\/+/, '').replace(/^public\//, '').replace(/^images\//, 'images/')) : '';
   const whyImage   = g.whyImage ? fixPath(g.whyImage) : '/images/img_2.jpg';
   const whyGallery: any[] = (g.whyGallery ?? []).filter((img: any) => img?.src);
   const allImages = whyGallery.length > 0

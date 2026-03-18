@@ -33,7 +33,9 @@ export default function Hero({ query, variables, data, lang }: Props) {
   const ctaSec = lang === 'es' ? 'Ver precios' : lang === 'en' ? 'See prices' : lang === 'de' ? 'Preise ansehen' : 'Veure preus';
 
   const heroImageRaw = hero.heroImage || '';
-  const heroImageSrc = heroImageRaw ? `/${heroImageRaw.replace(/^\/+/, '').replace(/^public\//, '')}` : '';
+  const heroImageSrc = heroImageRaw
+    ? heroImageRaw.startsWith('http') ? heroImageRaw : `/${heroImageRaw.replace(/^\/+/, '').replace(/^public\//, '')}`
+    : '';
 
   return (
     <section

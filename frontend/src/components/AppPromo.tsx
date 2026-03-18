@@ -18,7 +18,7 @@ export default function AppPromo({ query, variables, data, lang }: Props) {
   const subtitle = ap[`subtitle${lk}`] || ap.subtitleCa || '';
   const features: any[] = ap.features ?? [];
   const mockupRaw = ap.mockupImage || '';
-  const mockupSrc = mockupRaw ? `/${mockupRaw.replace(/^\/+/, '').replace(/^public\//, '')}` : '';
+  const mockupSrc = mockupRaw ? (mockupRaw.startsWith('http') ? mockupRaw : `/${mockupRaw.replace(/^\/+/, '').replace(/^public\//, '')}`) : '';
 
   return (
     <section className="section pool-bg text-white relative overflow-hidden" aria-labelledby="app-heading">

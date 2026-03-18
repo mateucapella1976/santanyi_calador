@@ -66,7 +66,7 @@ export default function CalaDorPage({ query, variables, data, lang }: Props) {
         <div className="container-site">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {gallery.map((photo: any, i: number) => {
-              const src = photo.src ? `/${photo.src.replace(/^\/+/, '').replace(/^public\//, '')}` : `/images/img_${i + 7}.jpg`;
+              const src = photo.src ? (photo.src.startsWith('http') ? photo.src : `/${photo.src.replace(/^\/+/, '').replace(/^public\//, '')}`) : `/images/img_${i + 7}.jpg`;
               const isLarge = photo.size === 'large';
               return (
                 <div key={i} className={`rounded-2xl overflow-hidden ${isLarge ? 'col-span-2 md:col-span-2 h-56' : 'h-36'} ${i < 2 ? 'h-56' : 'h-36'}`}>
@@ -139,7 +139,7 @@ export default function CalaDorPage({ query, variables, data, lang }: Props) {
             {/* Mini gallery */}
             <div className="grid grid-cols-2 gap-3">
               {(g.contactGallery ?? gallery.slice(0, 3)).map((photo: any, i: number) => {
-                const src = photo.src ? `/${photo.src.replace(/^\/+/, '').replace(/^public\//, '')}` : `/images/img_${i + 7}.jpg`;
+                const src = photo.src ? (photo.src.startsWith('http') ? photo.src : `/${photo.src.replace(/^\/+/, '').replace(/^public\//, '')}`) : `/images/img_${i + 7}.jpg`;
                 return (
                   <div key={i} className={`rounded-2xl overflow-hidden ${i === 0 ? 'col-span-2 h-48' : 'h-32'}`}>
                     <img

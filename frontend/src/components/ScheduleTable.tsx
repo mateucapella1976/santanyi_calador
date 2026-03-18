@@ -61,7 +61,7 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
               <tr key={i} className={`border-t border-gray-100 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                 <td className="px-4 py-3 font-semibold text-dark">
                   <span className="flex items-center gap-2">
-                    {row.logo && <img src={`/${row.logo.replace(/^\/+/, '').replace(/^public\//, '')}`} alt="" className="h-6 w-auto" loading="lazy" data-tina-field={tinaField(row, 'logo')} />}
+                    {row.logo && <img src={row.logo.startsWith('http') ? row.logo : `/${row.logo.replace(/^\/+/, '').replace(/^public\//, '')}`} alt="" className="h-6 w-auto" loading="lazy" data-tina-field={tinaField(row, 'logo')} />}
                     <span data-tina-field={tinaField(row, 'activitat')}>{row.activitat}</span>
                   </span>
                 </td>
@@ -94,7 +94,7 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
                 <tr key={i} className="border-t border-primary-100">
                   <td className="py-1.5 pr-3 font-semibold text-dark">
                     <span className="flex items-center gap-2">
-                      {row.logo && <img src={`/${row.logo.replace(/^\/+/, '').replace(/^public\//, '')}`} alt="" className="h-5 w-auto" loading="lazy" />}
+                      {row.logo && <img src={row.logo.startsWith('http') ? row.logo : `/${row.logo.replace(/^\/+/, '').replace(/^public\//, '')}`} alt="" className="h-5 w-auto" loading="lazy" />}
                       <span data-tina-field={tinaField(row, 'activitat')}>{row.activitat}</span>
                     </span>
                   </td>
