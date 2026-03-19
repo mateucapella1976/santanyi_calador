@@ -180,83 +180,32 @@ fragment HorarisParts on Horaris {
   footerNoteEs
   footerNoteEn
   footerNoteDe
+  activitats {
+    __typename
+    nom
+    logo
+  }
   rows {
     __typename
     hora
-    dilluns {
-      __typename
-      activitat
-      logo
-    }
-    dimarts {
-      __typename
-      activitat
-      logo
-    }
-    dimecres {
-      __typename
-      activitat
-      logo
-    }
-    dijous {
-      __typename
-      activitat
-      logo
-    }
-    divendres {
-      __typename
-      activitat
-      logo
-    }
-    dissabte {
-      __typename
-      activitat
-      logo
-    }
-    diumenge {
-      __typename
-      activitat
-      logo
-    }
+    dilluns
+    dimarts
+    dimecres
+    dijous
+    divendres
+    dissabte
+    diumenge
   }
   rowsCalaDor {
     __typename
     hora
-    dilluns {
-      __typename
-      activitat
-      logo
-    }
-    dimarts {
-      __typename
-      activitat
-      logo
-    }
-    dimecres {
-      __typename
-      activitat
-      logo
-    }
-    dijous {
-      __typename
-      activitat
-      logo
-    }
-    divendres {
-      __typename
-      activitat
-      logo
-    }
-    dissabte {
-      __typename
-      activitat
-      logo
-    }
-    diumenge {
-      __typename
-      activitat
-      logo
-    }
+    dilluns
+    dimarts
+    dimecres
+    dijous
+    divendres
+    dissabte
+    diumenge
   }
 }
 
@@ -805,7 +754,7 @@ fragment PaginaActivitatsParts on PaginaActivitats {
   activities {
     __typename
     name
-    emoji
+    logo
     intensityCa
     intensityEs
     intensityEn

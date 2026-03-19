@@ -290,40 +290,28 @@ export default defineConfig({
           { type: 'string', name: 'footerNoteEs', label: 'Nota peu (ES)' },
           { type: 'string', name: 'footerNoteEn', label: 'Nota peu (EN)' },
           { type: 'string', name: 'footerNoteDe', label: 'Nota peu (DE)' },
+          // ── Activitats (logos) ──
+          {
+            type: 'object', name: 'activitats', label: '🏷️ Activitats (logos)', list: true,
+            ui: { itemProps: (item: any) => ({ label: item?.nom || 'Activitat' }) },
+            fields: [
+              { type: 'string', name: 'nom',  label: 'Nom activitat' },
+              { type: 'image',  name: 'logo', label: 'Logo', uploadDir: () => 'logos' },
+            ],
+          },
           // ── Files horari Santanyí ──
           {
             type: 'object', name: 'rows', label: "📍 Horari Santanyí", list: true,
             ui: { itemProps: (item: any) => ({ label: item?.hora || 'Hora' }) },
             fields: [
-              { type: 'string', name: 'hora', label: 'Hora' },
-              { type: 'object', name: 'dilluns',   label: 'Dilluns',   fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dimarts',   label: 'Dimarts',   fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dimecres',  label: 'Dimecres',  fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dijous',    label: 'Dijous',    fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'divendres', label: 'Divendres', fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dissabte',  label: 'Dissabte',  fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'diumenge',  label: 'Diumenge',  fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
+              { type: 'string', name: 'hora',      label: 'Hora' },
+              { type: 'string', name: 'dilluns',    label: 'Dilluns' },
+              { type: 'string', name: 'dimarts',    label: 'Dimarts' },
+              { type: 'string', name: 'dimecres',   label: 'Dimecres' },
+              { type: 'string', name: 'dijous',     label: 'Dijous' },
+              { type: 'string', name: 'divendres',  label: 'Divendres' },
+              { type: 'string', name: 'dissabte',   label: 'Dissabte' },
+              { type: 'string', name: 'diumenge',   label: 'Diumenge' },
             ],
           },
           // ── Files horari Cala d'Or ──
@@ -331,35 +319,14 @@ export default defineConfig({
             type: 'object', name: 'rowsCalaDor', label: "📍 Horari Cala d'Or", list: true,
             ui: { itemProps: (item: any) => ({ label: item?.hora || 'Hora' }) },
             fields: [
-              { type: 'string', name: 'hora', label: 'Hora' },
-              { type: 'object', name: 'dilluns',   label: 'Dilluns',   fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dimarts',   label: 'Dimarts',   fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dimecres',  label: 'Dimecres',  fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dijous',    label: 'Dijous',    fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'divendres', label: 'Divendres', fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'dissabte',  label: 'Dissabte',  fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
-              { type: 'object', name: 'diumenge',  label: 'Diumenge',  fields: [
-                { type: 'string', name: 'activitat', label: 'Activitat' },
-                { type: 'image',  name: 'logo',      label: 'Logo', uploadDir: () => 'logos' },
-              ]},
+              { type: 'string', name: 'hora',      label: 'Hora' },
+              { type: 'string', name: 'dilluns',    label: 'Dilluns' },
+              { type: 'string', name: 'dimarts',    label: 'Dimarts' },
+              { type: 'string', name: 'dimecres',   label: 'Dimecres' },
+              { type: 'string', name: 'dijous',     label: 'Dijous' },
+              { type: 'string', name: 'divendres',  label: 'Divendres' },
+              { type: 'string', name: 'dissabte',   label: 'Dissabte' },
+              { type: 'string', name: 'diumenge',   label: 'Diumenge' },
             ],
           },
         ],
@@ -1125,7 +1092,7 @@ export default defineConfig({
             ui: { itemProps: (item: any) => ({ label: item?.name || 'Activitat' }) },
             fields: [
               { type: 'string', name: 'name',        label: 'Nom' },
-              { type: 'string', name: 'emoji',       label: 'Emoji' },
+              { type: 'image',  name: 'logo',        label: 'Logo', uploadDir: () => 'logos' },
               { type: 'string', name: 'intensityCa', label: 'Intensitat (CA)' },
               { type: 'string', name: 'intensityEs', label: 'Intensitat (ES)' },
               { type: 'string', name: 'intensityEn', label: 'Intensitat (EN)' },

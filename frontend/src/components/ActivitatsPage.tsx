@@ -102,7 +102,11 @@ export default function ActivitatsPage({ query, variables, data, lang }: Props) 
               return (
                 <div key={i} className="card p-5 hover:shadow-md transition-shadow">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-2xl" data-tina-field={tinaField(act, 'emoji')}>{act.emoji}</span>
+                    {act.logo ? (
+                      <img src={act.logo.startsWith('/') ? act.logo : `/images/${act.logo}`} alt="" className="h-8 w-auto" loading="lazy" data-tina-field={tinaField(act, 'logo')} />
+                    ) : (
+                      <span className="text-2xl" data-tina-field={tinaField(act, 'logo')}></span>
+                    )}
                     <span className={`text-xs font-semibold px-2 py-1 rounded-full ${colorClass}`} data-tina-field={tinaField(act, intensityKey)}>{intensity}</span>
                   </div>
                   <h3 className="font-display font-semibold text-dark mb-2" data-tina-field={tinaField(act, 'name')}>{act.name}</h3>

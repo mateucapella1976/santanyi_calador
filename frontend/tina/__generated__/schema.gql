@@ -539,96 +539,31 @@ type PreusConnection implements Connection {
   edges: [PreusConnectionEdges]
 }
 
-type HorarisRowsDilluns {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsDimarts {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsDimecres {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsDijous {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsDivendres {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsDissabte {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsDiumenge {
-  activitat: String
+type HorarisActivitats {
+  nom: String
   logo: String
 }
 
 type HorarisRows {
   hora: String
-  dilluns: HorarisRowsDilluns
-  dimarts: HorarisRowsDimarts
-  dimecres: HorarisRowsDimecres
-  dijous: HorarisRowsDijous
-  divendres: HorarisRowsDivendres
-  dissabte: HorarisRowsDissabte
-  diumenge: HorarisRowsDiumenge
-}
-
-type HorarisRowsCalaDorDilluns {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsCalaDorDimarts {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsCalaDorDimecres {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsCalaDorDijous {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsCalaDorDivendres {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsCalaDorDissabte {
-  activitat: String
-  logo: String
-}
-
-type HorarisRowsCalaDorDiumenge {
-  activitat: String
-  logo: String
+  dilluns: String
+  dimarts: String
+  dimecres: String
+  dijous: String
+  divendres: String
+  dissabte: String
+  diumenge: String
 }
 
 type HorarisRowsCalaDor {
   hora: String
-  dilluns: HorarisRowsCalaDorDilluns
-  dimarts: HorarisRowsCalaDorDimarts
-  dimecres: HorarisRowsCalaDorDimecres
-  dijous: HorarisRowsCalaDorDijous
-  divendres: HorarisRowsCalaDorDivendres
-  dissabte: HorarisRowsCalaDorDissabte
-  diumenge: HorarisRowsCalaDorDiumenge
+  dilluns: String
+  dimarts: String
+  dimecres: String
+  dijous: String
+  divendres: String
+  dissabte: String
+  diumenge: String
 }
 
 type Horaris implements Node & Document {
@@ -655,6 +590,7 @@ type Horaris implements Node & Document {
   footerNoteEs: String
   footerNoteEn: String
   footerNoteDe: String
+  activitats: [HorarisActivitats]
   rows: [HorarisRows]
   rowsCalaDor: [HorarisRowsCalaDor]
   id: ID!
@@ -662,96 +598,31 @@ type Horaris implements Node & Document {
   _values: JSON!
 }
 
-input HorarisRowsDillunsFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsDimartsFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsDimecresFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsDijousFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsDivendresFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsDissabteFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsDiumengeFilter {
-  activitat: StringFilter
+input HorarisActivitatsFilter {
+  nom: StringFilter
   logo: ImageFilter
 }
 
 input HorarisRowsFilter {
   hora: StringFilter
-  dilluns: HorarisRowsDillunsFilter
-  dimarts: HorarisRowsDimartsFilter
-  dimecres: HorarisRowsDimecresFilter
-  dijous: HorarisRowsDijousFilter
-  divendres: HorarisRowsDivendresFilter
-  dissabte: HorarisRowsDissabteFilter
-  diumenge: HorarisRowsDiumengeFilter
-}
-
-input HorarisRowsCalaDorDillunsFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsCalaDorDimartsFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsCalaDorDimecresFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsCalaDorDijousFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsCalaDorDivendresFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsCalaDorDissabteFilter {
-  activitat: StringFilter
-  logo: ImageFilter
-}
-
-input HorarisRowsCalaDorDiumengeFilter {
-  activitat: StringFilter
-  logo: ImageFilter
+  dilluns: StringFilter
+  dimarts: StringFilter
+  dimecres: StringFilter
+  dijous: StringFilter
+  divendres: StringFilter
+  dissabte: StringFilter
+  diumenge: StringFilter
 }
 
 input HorarisRowsCalaDorFilter {
   hora: StringFilter
-  dilluns: HorarisRowsCalaDorDillunsFilter
-  dimarts: HorarisRowsCalaDorDimartsFilter
-  dimecres: HorarisRowsCalaDorDimecresFilter
-  dijous: HorarisRowsCalaDorDijousFilter
-  divendres: HorarisRowsCalaDorDivendresFilter
-  dissabte: HorarisRowsCalaDorDissabteFilter
-  diumenge: HorarisRowsCalaDorDiumengeFilter
+  dilluns: StringFilter
+  dimarts: StringFilter
+  dimecres: StringFilter
+  dijous: StringFilter
+  divendres: StringFilter
+  dissabte: StringFilter
+  diumenge: StringFilter
 }
 
 input HorarisFilter {
@@ -778,6 +649,7 @@ input HorarisFilter {
   footerNoteEs: StringFilter
   footerNoteEn: StringFilter
   footerNoteDe: StringFilter
+  activitats: HorarisActivitatsFilter
   rows: HorarisRowsFilter
   rowsCalaDor: HorarisRowsCalaDorFilter
 }
@@ -1945,7 +1817,7 @@ type PaginaNatacioConnection implements Connection {
 
 type PaginaActivitatsActivities {
   name: String
-  emoji: String
+  logo: String
   intensityCa: String
   intensityEs: String
   intensityEn: String
@@ -2013,7 +1885,7 @@ type PaginaActivitats implements Node & Document {
 
 input PaginaActivitatsActivitiesFilter {
   name: StringFilter
-  emoji: StringFilter
+  logo: ImageFilter
   intensityCa: StringFilter
   intensityEs: StringFilter
   intensityEn: StringFilter
@@ -2847,96 +2719,31 @@ input PreusMutation {
   referralCtaDe: String
 }
 
-input HorarisRowsDillunsMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsDimartsMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsDimecresMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsDijousMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsDivendresMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsDissabteMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsDiumengeMutation {
-  activitat: String
+input HorarisActivitatsMutation {
+  nom: String
   logo: String
 }
 
 input HorarisRowsMutation {
   hora: String
-  dilluns: HorarisRowsDillunsMutation
-  dimarts: HorarisRowsDimartsMutation
-  dimecres: HorarisRowsDimecresMutation
-  dijous: HorarisRowsDijousMutation
-  divendres: HorarisRowsDivendresMutation
-  dissabte: HorarisRowsDissabteMutation
-  diumenge: HorarisRowsDiumengeMutation
-}
-
-input HorarisRowsCalaDorDillunsMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsCalaDorDimartsMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsCalaDorDimecresMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsCalaDorDijousMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsCalaDorDivendresMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsCalaDorDissabteMutation {
-  activitat: String
-  logo: String
-}
-
-input HorarisRowsCalaDorDiumengeMutation {
-  activitat: String
-  logo: String
+  dilluns: String
+  dimarts: String
+  dimecres: String
+  dijous: String
+  divendres: String
+  dissabte: String
+  diumenge: String
 }
 
 input HorarisRowsCalaDorMutation {
   hora: String
-  dilluns: HorarisRowsCalaDorDillunsMutation
-  dimarts: HorarisRowsCalaDorDimartsMutation
-  dimecres: HorarisRowsCalaDorDimecresMutation
-  dijous: HorarisRowsCalaDorDijousMutation
-  divendres: HorarisRowsCalaDorDivendresMutation
-  dissabte: HorarisRowsCalaDorDissabteMutation
-  diumenge: HorarisRowsCalaDorDiumengeMutation
+  dilluns: String
+  dimarts: String
+  dimecres: String
+  dijous: String
+  divendres: String
+  dissabte: String
+  diumenge: String
 }
 
 input HorarisMutation {
@@ -2963,6 +2770,7 @@ input HorarisMutation {
   footerNoteEs: String
   footerNoteEn: String
   footerNoteDe: String
+  activitats: [HorarisActivitatsMutation]
   rows: [HorarisRowsMutation]
   rowsCalaDor: [HorarisRowsCalaDorMutation]
 }
@@ -3467,7 +3275,7 @@ input PaginaNatacioMutation {
 
 input PaginaActivitatsActivitiesMutation {
   name: String
-  emoji: String
+  logo: String
   intensityCa: String
   intensityEs: String
   intensityEn: String

@@ -29,6 +29,16 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
   const lk = lang === 'es' ? 'Es' : lang === 'en' ? 'En' : lang === 'de' ? 'De' : 'Ca';
   const tf = (field: string) => d?.horaris ? tinaField(d.horaris, field) : undefined;
 
+  // Build activity → logo map from activitats list
+  const activitats: any[] = horaris.activitats ?? [];
+  const logoMap: Record<string, string> = {};
+  activitats.forEach((a: any) => {
+    if (a?.nom) {
+      const logo = a.logo || '';
+      logoMap[a.nom.toLowerCase()] = logo ? fixImg(logo) : '';
+    }
+  });
+
   const horaLabel = horaris.horaLabel || 'HORA';
   const allDays = [
     { key: 'dilluns',   label: horaris.dayLabelDl || 'DILLUNS' },
@@ -47,13 +57,13 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
   const heroSub   = horaris[`heroSubtitle${lk}`] || horaris.heroSubtitleCa || '';
 
   const currentRows = activeTab === 'calador' ? rowsCalaDor : rowsSantanyi;
-  const hasSunday = currentRows.some((r: any) => r.diumenge?.activitat?.trim());
+  const hasSunday = currentRows.some((r: any) => r.diumenge && r.diumenge.trim() !== '');
   const days = hasSunday ? allDays : allDays.slice(0, 6);
 
-  function renderCell(cell: any) {
-    if (!cell || !cell.activitat) return <span className="text-gray-300">&ndash;</span>;
-    const name = cell.activitat;
-    const logo = fixImg(cell.logo || '');
+  function renderCell(value: string) {
+    if (!value) return <span className="text-gray-300">&ndash;</span>;
+    const name = value.trim();
+    const logo = logoMap[name.toLowerCase()] || '';
     return (
       <div className="flex flex-col items-center gap-1">
         {logo && <img src={logo} alt="" className="h-7 w-auto" loading="lazy" />}
@@ -81,8 +91,8 @@ export default function ScheduleTable({ query, variables, data, lang, compact = 
                   {row.hora}
                 </td>
                 {days.map(day => (
-                  <td key={day.key} className="text-center px-2 py-3 min-w-[100px]" data-tina-field={row[day.key] ? tinaField(row[day.key], 'activitat') : undefined}>
-                    {renderCell(row[day.key])}
+                  <td key={day.key} className="text-center px-2 py-3 min-w-[100px]" data-tina-field={tinaField(row, day.key)}>
+                    {renderCell(row[day.key] || '')}
                   </td>
                 ))}
               </tr>

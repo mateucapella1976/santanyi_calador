@@ -948,112 +948,34 @@ export type PreusConnection = Connection & {
   edges?: Maybe<Array<Maybe<PreusConnectionEdges>>>;
 };
 
-export type HorarisRowsDilluns = {
-  __typename?: 'HorarisRowsDilluns';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsDimarts = {
-  __typename?: 'HorarisRowsDimarts';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsDimecres = {
-  __typename?: 'HorarisRowsDimecres';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsDijous = {
-  __typename?: 'HorarisRowsDijous';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsDivendres = {
-  __typename?: 'HorarisRowsDivendres';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsDissabte = {
-  __typename?: 'HorarisRowsDissabte';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsDiumenge = {
-  __typename?: 'HorarisRowsDiumenge';
-  activitat?: Maybe<Scalars['String']['output']>;
+export type HorarisActivitats = {
+  __typename?: 'HorarisActivitats';
+  nom?: Maybe<Scalars['String']['output']>;
   logo?: Maybe<Scalars['String']['output']>;
 };
 
 export type HorarisRows = {
   __typename?: 'HorarisRows';
   hora?: Maybe<Scalars['String']['output']>;
-  dilluns?: Maybe<HorarisRowsDilluns>;
-  dimarts?: Maybe<HorarisRowsDimarts>;
-  dimecres?: Maybe<HorarisRowsDimecres>;
-  dijous?: Maybe<HorarisRowsDijous>;
-  divendres?: Maybe<HorarisRowsDivendres>;
-  dissabte?: Maybe<HorarisRowsDissabte>;
-  diumenge?: Maybe<HorarisRowsDiumenge>;
-};
-
-export type HorarisRowsCalaDorDilluns = {
-  __typename?: 'HorarisRowsCalaDorDilluns';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsCalaDorDimarts = {
-  __typename?: 'HorarisRowsCalaDorDimarts';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsCalaDorDimecres = {
-  __typename?: 'HorarisRowsCalaDorDimecres';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsCalaDorDijous = {
-  __typename?: 'HorarisRowsCalaDorDijous';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsCalaDorDivendres = {
-  __typename?: 'HorarisRowsCalaDorDivendres';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsCalaDorDissabte = {
-  __typename?: 'HorarisRowsCalaDorDissabte';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
-};
-
-export type HorarisRowsCalaDorDiumenge = {
-  __typename?: 'HorarisRowsCalaDorDiumenge';
-  activitat?: Maybe<Scalars['String']['output']>;
-  logo?: Maybe<Scalars['String']['output']>;
+  dilluns?: Maybe<Scalars['String']['output']>;
+  dimarts?: Maybe<Scalars['String']['output']>;
+  dimecres?: Maybe<Scalars['String']['output']>;
+  dijous?: Maybe<Scalars['String']['output']>;
+  divendres?: Maybe<Scalars['String']['output']>;
+  dissabte?: Maybe<Scalars['String']['output']>;
+  diumenge?: Maybe<Scalars['String']['output']>;
 };
 
 export type HorarisRowsCalaDor = {
   __typename?: 'HorarisRowsCalaDor';
   hora?: Maybe<Scalars['String']['output']>;
-  dilluns?: Maybe<HorarisRowsCalaDorDilluns>;
-  dimarts?: Maybe<HorarisRowsCalaDorDimarts>;
-  dimecres?: Maybe<HorarisRowsCalaDorDimecres>;
-  dijous?: Maybe<HorarisRowsCalaDorDijous>;
-  divendres?: Maybe<HorarisRowsCalaDorDivendres>;
-  dissabte?: Maybe<HorarisRowsCalaDorDissabte>;
-  diumenge?: Maybe<HorarisRowsCalaDorDiumenge>;
+  dilluns?: Maybe<Scalars['String']['output']>;
+  dimarts?: Maybe<Scalars['String']['output']>;
+  dimecres?: Maybe<Scalars['String']['output']>;
+  dijous?: Maybe<Scalars['String']['output']>;
+  divendres?: Maybe<Scalars['String']['output']>;
+  dissabte?: Maybe<Scalars['String']['output']>;
+  diumenge?: Maybe<Scalars['String']['output']>;
 };
 
 export type Horaris = Node & Document & {
@@ -1081,6 +1003,7 @@ export type Horaris = Node & Document & {
   footerNoteEs?: Maybe<Scalars['String']['output']>;
   footerNoteEn?: Maybe<Scalars['String']['output']>;
   footerNoteDe?: Maybe<Scalars['String']['output']>;
+  activitats?: Maybe<Array<Maybe<HorarisActivitats>>>;
   rows?: Maybe<Array<Maybe<HorarisRows>>>;
   rowsCalaDor?: Maybe<Array<Maybe<HorarisRowsCalaDor>>>;
   id: Scalars['ID']['output'];
@@ -1088,96 +1011,31 @@ export type Horaris = Node & Document & {
   _values: Scalars['JSON']['output'];
 };
 
-export type HorarisRowsDillunsFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsDimartsFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsDimecresFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsDijousFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsDivendresFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsDissabteFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsDiumengeFilter = {
-  activitat?: InputMaybe<StringFilter>;
+export type HorarisActivitatsFilter = {
+  nom?: InputMaybe<StringFilter>;
   logo?: InputMaybe<ImageFilter>;
 };
 
 export type HorarisRowsFilter = {
   hora?: InputMaybe<StringFilter>;
-  dilluns?: InputMaybe<HorarisRowsDillunsFilter>;
-  dimarts?: InputMaybe<HorarisRowsDimartsFilter>;
-  dimecres?: InputMaybe<HorarisRowsDimecresFilter>;
-  dijous?: InputMaybe<HorarisRowsDijousFilter>;
-  divendres?: InputMaybe<HorarisRowsDivendresFilter>;
-  dissabte?: InputMaybe<HorarisRowsDissabteFilter>;
-  diumenge?: InputMaybe<HorarisRowsDiumengeFilter>;
-};
-
-export type HorarisRowsCalaDorDillunsFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsCalaDorDimartsFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsCalaDorDimecresFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsCalaDorDijousFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsCalaDorDivendresFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsCalaDorDissabteFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
-};
-
-export type HorarisRowsCalaDorDiumengeFilter = {
-  activitat?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<ImageFilter>;
+  dilluns?: InputMaybe<StringFilter>;
+  dimarts?: InputMaybe<StringFilter>;
+  dimecres?: InputMaybe<StringFilter>;
+  dijous?: InputMaybe<StringFilter>;
+  divendres?: InputMaybe<StringFilter>;
+  dissabte?: InputMaybe<StringFilter>;
+  diumenge?: InputMaybe<StringFilter>;
 };
 
 export type HorarisRowsCalaDorFilter = {
   hora?: InputMaybe<StringFilter>;
-  dilluns?: InputMaybe<HorarisRowsCalaDorDillunsFilter>;
-  dimarts?: InputMaybe<HorarisRowsCalaDorDimartsFilter>;
-  dimecres?: InputMaybe<HorarisRowsCalaDorDimecresFilter>;
-  dijous?: InputMaybe<HorarisRowsCalaDorDijousFilter>;
-  divendres?: InputMaybe<HorarisRowsCalaDorDivendresFilter>;
-  dissabte?: InputMaybe<HorarisRowsCalaDorDissabteFilter>;
-  diumenge?: InputMaybe<HorarisRowsCalaDorDiumengeFilter>;
+  dilluns?: InputMaybe<StringFilter>;
+  dimarts?: InputMaybe<StringFilter>;
+  dimecres?: InputMaybe<StringFilter>;
+  dijous?: InputMaybe<StringFilter>;
+  divendres?: InputMaybe<StringFilter>;
+  dissabte?: InputMaybe<StringFilter>;
+  diumenge?: InputMaybe<StringFilter>;
 };
 
 export type HorarisFilter = {
@@ -1204,6 +1062,7 @@ export type HorarisFilter = {
   footerNoteEs?: InputMaybe<StringFilter>;
   footerNoteEn?: InputMaybe<StringFilter>;
   footerNoteDe?: InputMaybe<StringFilter>;
+  activitats?: InputMaybe<HorarisActivitatsFilter>;
   rows?: InputMaybe<HorarisRowsFilter>;
   rowsCalaDor?: InputMaybe<HorarisRowsCalaDorFilter>;
 };
@@ -2425,7 +2284,7 @@ export type PaginaNatacioConnection = Connection & {
 export type PaginaActivitatsActivities = {
   __typename?: 'PaginaActivitatsActivities';
   name?: Maybe<Scalars['String']['output']>;
-  emoji?: Maybe<Scalars['String']['output']>;
+  logo?: Maybe<Scalars['String']['output']>;
   intensityCa?: Maybe<Scalars['String']['output']>;
   intensityEs?: Maybe<Scalars['String']['output']>;
   intensityEn?: Maybe<Scalars['String']['output']>;
@@ -2494,7 +2353,7 @@ export type PaginaActivitats = Node & Document & {
 
 export type PaginaActivitatsActivitiesFilter = {
   name?: InputMaybe<StringFilter>;
-  emoji?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
   intensityCa?: InputMaybe<StringFilter>;
   intensityEs?: InputMaybe<StringFilter>;
   intensityEn?: InputMaybe<StringFilter>;
@@ -3645,96 +3504,31 @@ export type PreusMutation = {
   referralCtaDe?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type HorarisRowsDillunsMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsDimartsMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsDimecresMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsDijousMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsDivendresMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsDissabteMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsDiumengeMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
+export type HorarisActivitatsMutation = {
+  nom?: InputMaybe<Scalars['String']['input']>;
   logo?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HorarisRowsMutation = {
   hora?: InputMaybe<Scalars['String']['input']>;
-  dilluns?: InputMaybe<HorarisRowsDillunsMutation>;
-  dimarts?: InputMaybe<HorarisRowsDimartsMutation>;
-  dimecres?: InputMaybe<HorarisRowsDimecresMutation>;
-  dijous?: InputMaybe<HorarisRowsDijousMutation>;
-  divendres?: InputMaybe<HorarisRowsDivendresMutation>;
-  dissabte?: InputMaybe<HorarisRowsDissabteMutation>;
-  diumenge?: InputMaybe<HorarisRowsDiumengeMutation>;
-};
-
-export type HorarisRowsCalaDorDillunsMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsCalaDorDimartsMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsCalaDorDimecresMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsCalaDorDijousMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsCalaDorDivendresMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsCalaDorDissabteMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type HorarisRowsCalaDorDiumengeMutation = {
-  activitat?: InputMaybe<Scalars['String']['input']>;
-  logo?: InputMaybe<Scalars['String']['input']>;
+  dilluns?: InputMaybe<Scalars['String']['input']>;
+  dimarts?: InputMaybe<Scalars['String']['input']>;
+  dimecres?: InputMaybe<Scalars['String']['input']>;
+  dijous?: InputMaybe<Scalars['String']['input']>;
+  divendres?: InputMaybe<Scalars['String']['input']>;
+  dissabte?: InputMaybe<Scalars['String']['input']>;
+  diumenge?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HorarisRowsCalaDorMutation = {
   hora?: InputMaybe<Scalars['String']['input']>;
-  dilluns?: InputMaybe<HorarisRowsCalaDorDillunsMutation>;
-  dimarts?: InputMaybe<HorarisRowsCalaDorDimartsMutation>;
-  dimecres?: InputMaybe<HorarisRowsCalaDorDimecresMutation>;
-  dijous?: InputMaybe<HorarisRowsCalaDorDijousMutation>;
-  divendres?: InputMaybe<HorarisRowsCalaDorDivendresMutation>;
-  dissabte?: InputMaybe<HorarisRowsCalaDorDissabteMutation>;
-  diumenge?: InputMaybe<HorarisRowsCalaDorDiumengeMutation>;
+  dilluns?: InputMaybe<Scalars['String']['input']>;
+  dimarts?: InputMaybe<Scalars['String']['input']>;
+  dimecres?: InputMaybe<Scalars['String']['input']>;
+  dijous?: InputMaybe<Scalars['String']['input']>;
+  divendres?: InputMaybe<Scalars['String']['input']>;
+  dissabte?: InputMaybe<Scalars['String']['input']>;
+  diumenge?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HorarisMutation = {
@@ -3761,6 +3555,7 @@ export type HorarisMutation = {
   footerNoteEs?: InputMaybe<Scalars['String']['input']>;
   footerNoteEn?: InputMaybe<Scalars['String']['input']>;
   footerNoteDe?: InputMaybe<Scalars['String']['input']>;
+  activitats?: InputMaybe<Array<InputMaybe<HorarisActivitatsMutation>>>;
   rows?: InputMaybe<Array<InputMaybe<HorarisRowsMutation>>>;
   rowsCalaDor?: InputMaybe<Array<InputMaybe<HorarisRowsCalaDorMutation>>>;
 };
@@ -4265,7 +4060,7 @@ export type PaginaNatacioMutation = {
 
 export type PaginaActivitatsActivitiesMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
-  emoji?: InputMaybe<Scalars['String']['input']>;
+  logo?: InputMaybe<Scalars['String']['input']>;
   intensityCa?: InputMaybe<Scalars['String']['input']>;
   intensityEs?: InputMaybe<Scalars['String']['input']>;
   intensityEn?: InputMaybe<Scalars['String']['input']>;
@@ -4544,7 +4339,7 @@ export type HeroPartsFragment = { __typename: 'Hero', badgeCa?: string | null, b
 
 export type PreusPartsFragment = { __typename: 'Preus', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, membershipsTitleCa?: string | null, membershipsTitleEs?: string | null, membershipsTitleEn?: string | null, membershipsTitleDe?: string | null, membershipsSubCa?: string | null, membershipsSubEs?: string | null, membershipsSubEn?: string | null, membershipsSubDe?: string | null, membershipsNoteCa?: string | null, membershipsNoteEs?: string | null, membershipsNoteEn?: string | null, membershipsNoteDe?: string | null, membershipsCtaCa?: string | null, membershipsCtaEs?: string | null, membershipsCtaEn?: string | null, membershipsCtaDe?: string | null, extraTitleCa?: string | null, extraTitleEs?: string | null, extraTitleEn?: string | null, extraTitleDe?: string | null, referralTitleCa?: string | null, referralTitleEs?: string | null, referralTitleEn?: string | null, referralTitleDe?: string | null, referralDescCa?: string | null, referralDescEs?: string | null, referralDescEn?: string | null, referralDescDe?: string | null, referralCtaCa?: string | null, referralCtaEs?: string | null, referralCtaEn?: string | null, referralCtaDe?: string | null, plans?: Array<{ __typename: 'PreusPlans', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, period?: string | null, ageCa?: string | null, ageEs?: string | null, ageEn?: string | null, ageDe?: string | null, badgeCa?: string | null, badgeEs?: string | null, badgeEn?: string | null, badgeDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null, featuresCa?: Array<string | null> | null, featuresEs?: Array<string | null> | null, featuresEn?: Array<string | null> | null, featuresDe?: Array<string | null> | null, highlighted?: boolean | null } | null> | null, extraServices?: Array<{ __typename: 'PreusExtraServices', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, price?: string | null, noteCa?: string | null, noteEs?: string | null, noteEn?: string | null, noteDe?: string | null } | null> | null };
 
-export type HorarisPartsFragment = { __typename: 'Horaris', heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: { __typename: 'HorarisRowsDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: { __typename: 'HorarisRowsCalaDorDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsCalaDorDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsCalaDorDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsCalaDorDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsCalaDorDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsCalaDorDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsCalaDorDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null };
+export type HorarisPartsFragment = { __typename: 'Horaris', heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, activitats?: Array<{ __typename: 'HorarisActivitats', nom?: string | null, logo?: string | null } | null> | null, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null };
 
 export type PaginaSantanyiPartsFragment = { __typename: 'PaginaSantanyi', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroDescCa?: string | null, heroDescEs?: string | null, heroDescEn?: string | null, heroDescDe?: string | null, heroAddress?: string | null, heroPhone?: string | null, heroMapsUrl?: string | null, heroMapsLabelCa?: string | null, heroMapsLabelEs?: string | null, heroMapsLabelEn?: string | null, heroMapsLabelDe?: string | null, servicesTitleCa?: string | null, servicesTitleEs?: string | null, servicesTitleEn?: string | null, servicesTitleDe?: string | null, mapTitleCa?: string | null, mapTitleEs?: string | null, mapTitleEn?: string | null, mapTitleDe?: string | null, addressLabelCa?: string | null, addressLabelEs?: string | null, addressLabelEn?: string | null, addressLabelDe?: string | null, fullAddress?: string | null, email?: string | null, mapBtnCa?: string | null, mapBtnEs?: string | null, mapBtnEn?: string | null, mapBtnDe?: string | null, gallery?: Array<{ __typename: 'PaginaSantanyiGallery', src?: string | null, alt?: string | null, size?: string | null } | null> | null, services?: Array<{ __typename: 'PaginaSantanyiServices', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null };
 
@@ -4568,7 +4363,7 @@ export type PaginaGimnasPartsFragment = { __typename: 'PaginaGimnas', heroBadgeC
 
 export type PaginaNatacioPartsFragment = { __typename: 'PaginaNatacio', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, whyTitleCa?: string | null, whyTitleEs?: string | null, whyTitleEn?: string | null, whyTitleDe?: string | null, whyImage?: string | null, coursesTitleCa?: string | null, coursesTitleEs?: string | null, coursesTitleEn?: string | null, coursesTitleDe?: string | null, coursesSubCa?: string | null, coursesSubEs?: string | null, coursesSubEn?: string | null, coursesSubDe?: string | null, coursesCtaCa?: string | null, coursesCtaEs?: string | null, coursesCtaEn?: string | null, coursesCtaDe?: string | null, coursesCtaUrl?: string | null, freeTitleCa?: string | null, freeTitleEs?: string | null, freeTitleEn?: string | null, freeTitleDe?: string | null, freeDescCa?: string | null, freeDescEs?: string | null, freeDescEn?: string | null, freeDescDe?: string | null, freeCtaCa?: string | null, freeCtaEs?: string | null, freeCtaEn?: string | null, freeCtaDe?: string | null, freeCtaUrl?: string | null, whyGallery?: Array<{ __typename: 'PaginaNatacioWhyGallery', src?: string | null, alt?: string | null } | null> | null, whyItems?: Array<{ __typename: 'PaginaNatacioWhyItems', textCa?: string | null, textEs?: string | null, textEn?: string | null, textDe?: string | null } | null> | null, courses?: Array<{ __typename: 'PaginaNatacioCourses', nameCa?: string | null, nameEs?: string | null, nameEn?: string | null, nameDe?: string | null, age?: string | null, max?: string | null } | null> | null };
 
-export type PaginaActivitatsPartsFragment = { __typename: 'PaginaActivitats', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null };
+export type PaginaActivitatsPartsFragment = { __typename: 'PaginaActivitats', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, logo?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null };
 
 export type PaginaPadelPartsFragment = { __typename: 'PaginaPadel', heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, featuresTitleCa?: string | null, featuresTitleEs?: string | null, featuresTitleEn?: string | null, featuresTitleDe?: string | null, courtLabel?: string | null, courtSublabel?: string | null, playtomicLabel?: string | null, playtomicUrl?: string | null, pricingTitleCa?: string | null, pricingTitleEs?: string | null, pricingTitleEn?: string | null, pricingTitleDe?: string | null, pricingNoteCa?: string | null, pricingNoteEs?: string | null, pricingNoteEn?: string | null, pricingNoteDe?: string | null, features?: Array<{ __typename: 'PaginaPadelFeatures', icon?: string | null, titleCa?: string | null, titleEs?: string | null, titleEn?: string | null, titleDe?: string | null, descCa?: string | null, descEs?: string | null, descEn?: string | null, descDe?: string | null } | null> | null, pricingSlots?: Array<{ __typename: 'PaginaPadelPricingSlots', labelCa?: string | null, labelEs?: string | null, labelEn?: string | null, labelDe?: string | null, hours?: string | null, price?: string | null } | null> | null };
 
@@ -4661,7 +4456,7 @@ export type HorarisQueryVariables = Exact<{
 }>;
 
 
-export type HorarisQuery = { __typename?: 'Query', horaris: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: { __typename: 'HorarisRowsDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: { __typename: 'HorarisRowsCalaDorDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsCalaDorDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsCalaDorDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsCalaDorDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsCalaDorDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsCalaDorDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsCalaDorDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null } };
+export type HorarisQuery = { __typename?: 'Query', horaris: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activitats?: Array<{ __typename: 'HorarisActivitats', nom?: string | null, logo?: string | null } | null> | null, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null } };
 
 export type HorarisConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4673,7 +4468,7 @@ export type HorarisConnectionQueryVariables = Exact<{
 }>;
 
 
-export type HorarisConnectionQuery = { __typename?: 'Query', horarisConnection: { __typename?: 'HorarisConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HorarisConnectionEdges', cursor: string, node?: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: { __typename: 'HorarisRowsDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: { __typename: 'HorarisRowsCalaDorDilluns', activitat?: string | null, logo?: string | null } | null, dimarts?: { __typename: 'HorarisRowsCalaDorDimarts', activitat?: string | null, logo?: string | null } | null, dimecres?: { __typename: 'HorarisRowsCalaDorDimecres', activitat?: string | null, logo?: string | null } | null, dijous?: { __typename: 'HorarisRowsCalaDorDijous', activitat?: string | null, logo?: string | null } | null, divendres?: { __typename: 'HorarisRowsCalaDorDivendres', activitat?: string | null, logo?: string | null } | null, dissabte?: { __typename: 'HorarisRowsCalaDorDissabte', activitat?: string | null, logo?: string | null } | null, diumenge?: { __typename: 'HorarisRowsCalaDorDiumenge', activitat?: string | null, logo?: string | null } | null } | null> | null } | null } | null> | null } };
+export type HorarisConnectionQuery = { __typename?: 'Query', horarisConnection: { __typename?: 'HorarisConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HorarisConnectionEdges', cursor: string, node?: { __typename: 'Horaris', id: string, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, temporada?: string | null, pdfSantanyi?: string | null, pdfCalaDor?: string | null, horaLabel?: string | null, dayLabelDl?: string | null, dayLabelDm?: string | null, dayLabelDc?: string | null, dayLabelDj?: string | null, dayLabelDv?: string | null, dayLabelDs?: string | null, dayLabelDg?: string | null, footerNoteCa?: string | null, footerNoteEs?: string | null, footerNoteEn?: string | null, footerNoteDe?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activitats?: Array<{ __typename: 'HorarisActivitats', nom?: string | null, logo?: string | null } | null> | null, rows?: Array<{ __typename: 'HorarisRows', hora?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null, rowsCalaDor?: Array<{ __typename: 'HorarisRowsCalaDor', hora?: string | null, dilluns?: string | null, dimarts?: string | null, dimecres?: string | null, dijous?: string | null, divendres?: string | null, dissabte?: string | null, diumenge?: string | null } | null> | null } | null } | null> | null } };
 
 export type PaginaSantanyiQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -4889,7 +4684,7 @@ export type PaginaActivitatsQueryVariables = Exact<{
 }>;
 
 
-export type PaginaActivitatsQuery = { __typename?: 'Query', paginaActivitats: { __typename: 'PaginaActivitats', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } };
+export type PaginaActivitatsQuery = { __typename?: 'Query', paginaActivitats: { __typename: 'PaginaActivitats', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, logo?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } };
 
 export type PaginaActivitatsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -4901,7 +4696,7 @@ export type PaginaActivitatsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginaActivitatsConnectionQuery = { __typename?: 'Query', paginaActivitatsConnection: { __typename?: 'PaginaActivitatsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaActivitatsConnectionEdges', cursor: string, node?: { __typename: 'PaginaActivitats', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, emoji?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } | null } | null> | null } };
+export type PaginaActivitatsConnectionQuery = { __typename?: 'Query', paginaActivitatsConnection: { __typename?: 'PaginaActivitatsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginaActivitatsConnectionEdges', cursor: string, node?: { __typename: 'PaginaActivitats', id: string, heroImage?: string | null, heroBadgeCa?: string | null, heroBadgeEs?: string | null, heroBadgeEn?: string | null, heroBadgeDe?: string | null, heroTitleCa?: string | null, heroTitleEs?: string | null, heroTitleEn?: string | null, heroTitleDe?: string | null, heroSubtitleCa?: string | null, heroSubtitleEs?: string | null, heroSubtitleEn?: string | null, heroSubtitleDe?: string | null, heroCtaCa?: string | null, heroCtaEs?: string | null, heroCtaEn?: string | null, heroCtaDe?: string | null, heroCtaUrl?: string | null, heroCta2Ca?: string | null, heroCta2Es?: string | null, heroCta2En?: string | null, heroCta2De?: string | null, heroCta2Url?: string | null, allTitleCa?: string | null, allTitleEs?: string | null, allTitleEn?: string | null, allTitleDe?: string | null, allSubCa?: string | null, allSubEs?: string | null, allSubEn?: string | null, allSubDe?: string | null, ctaTitleCa?: string | null, ctaTitleEs?: string | null, ctaTitleEn?: string | null, ctaTitleDe?: string | null, ctaSubCa?: string | null, ctaSubEs?: string | null, ctaSubEn?: string | null, ctaSubDe?: string | null, ctaBtnCa?: string | null, ctaBtnEs?: string | null, ctaBtnEn?: string | null, ctaBtnDe?: string | null, ctaBtnUrl?: string | null, ctaBtn2Ca?: string | null, ctaBtn2Es?: string | null, ctaBtn2En?: string | null, ctaBtn2De?: string | null, ctaBtn2Url?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, activities?: Array<{ __typename: 'PaginaActivitatsActivities', name?: string | null, logo?: string | null, intensityCa?: string | null, intensityEs?: string | null, intensityEn?: string | null, intensityDe?: string | null, days?: string | null, time?: string | null, location?: string | null } | null> | null } | null } | null> | null } };
 
 export type PaginaPadelQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -5185,83 +4980,32 @@ export const HorarisPartsFragmentDoc = gql`
   footerNoteEs
   footerNoteEn
   footerNoteDe
+  activitats {
+    __typename
+    nom
+    logo
+  }
   rows {
     __typename
     hora
-    dilluns {
-      __typename
-      activitat
-      logo
-    }
-    dimarts {
-      __typename
-      activitat
-      logo
-    }
-    dimecres {
-      __typename
-      activitat
-      logo
-    }
-    dijous {
-      __typename
-      activitat
-      logo
-    }
-    divendres {
-      __typename
-      activitat
-      logo
-    }
-    dissabte {
-      __typename
-      activitat
-      logo
-    }
-    diumenge {
-      __typename
-      activitat
-      logo
-    }
+    dilluns
+    dimarts
+    dimecres
+    dijous
+    divendres
+    dissabte
+    diumenge
   }
   rowsCalaDor {
     __typename
     hora
-    dilluns {
-      __typename
-      activitat
-      logo
-    }
-    dimarts {
-      __typename
-      activitat
-      logo
-    }
-    dimecres {
-      __typename
-      activitat
-      logo
-    }
-    dijous {
-      __typename
-      activitat
-      logo
-    }
-    divendres {
-      __typename
-      activitat
-      logo
-    }
-    dissabte {
-      __typename
-      activitat
-      logo
-    }
-    diumenge {
-      __typename
-      activitat
-      logo
-    }
+    dilluns
+    dimarts
+    dimecres
+    dijous
+    divendres
+    dissabte
+    diumenge
   }
 }
     `;
@@ -5822,7 +5566,7 @@ export const PaginaActivitatsPartsFragmentDoc = gql`
   activities {
     __typename
     name
-    emoji
+    logo
     intensityCa
     intensityEs
     intensityEn

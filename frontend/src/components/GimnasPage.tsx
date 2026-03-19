@@ -149,7 +149,7 @@ export default function GimnasPage({ query, variables, data, horarisQuery, horar
       </section>
 
       {/* Schedule */}
-      <ScheduleTable query={horarisQuery} variables={horarisVariables} data={horarisData} lang={lang} compact />
+      <ScheduleTable query={horarisQuery} variables={horarisVariables} data={horarisData} lang={lang} />
       <section className="py-4 bg-white">
         <div className="container-site">
           <div className="text-center mt-4">
